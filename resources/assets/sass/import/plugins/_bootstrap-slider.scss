@@ -1,0 +1,67 @@
+.control-group {
+    .slider {
+        &.slider-horizontal {
+            width: 100%;
+            height: 20px;
+
+            .slider-track {
+                height: 20px;
+                margin-top: -10px;
+            }
+        }
+        .tooltip {
+            &.top {
+                padding: 5px 0;
+            }
+        }
+    }
+    .slider-handle {
+        @include box-shadow(0, 0, 3px, rgba(0, 0, 0, .75));
+        width: 24px;
+        height: 24px;
+        top: -2px;
+        background-color: #fff;
+        background-image: none;
+        cursor: pointer;
+    }
+    .slider-track {
+        @include box-shadow(0, 1px, 2px, rgba(0, 0, 0, .5), true);
+    }
+    .slider-selection {
+        &.tick-slider-selection {
+            background: rgb(38, 185, 154);
+        }
+    }
+    .slider-tick {
+        @include box-shadow(0, 0, 1px, rgba(0, 0, 0, .75), true);
+        opacity: 1;
+        width: 24px;
+        height: 24px;
+        top: -2px;
+
+        &.in-selection {
+            @include box-shadow(0, 0, 2px, rgb(38, 185, 154));
+            border: none;
+            background-color: #fff;
+            background-image: none;
+        }
+    }
+    .progress {
+        @include rounded(3em);
+        height: 34px;
+
+        .progress-bar {
+            @include rounded(3em);
+            @include box-shadow(0, -2px, 0, rgba(0, 0, 0, .25), true);
+        }
+
+        &.progress-file {
+            @include rounded(3px);
+            height: 43px;
+
+            .progress-bar {
+                @include rounded(3px);
+            }
+        }
+    }
+}

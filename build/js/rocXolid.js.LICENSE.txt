@@ -1,0 +1,172 @@
+/* NProgress, (c) 2013, 2014 Rico Sta. Cruz - http://ricostacruz.com/nprogress
+ * @license MIT */
+
+/*!
+ * 
+ * Super simple wysiwyg editor v0.8.16
+ * https://summernote.org
+ * 
+ * 
+ * Copyright 2013- Alan Hong. and other contributors
+ * summernote may be freely distributed under the MIT license.
+ * 
+ * Date: 2020-02-19T09:12Z
+ * 
+ */
+
+/*!
+ * Ajax Bootstrap Select
+ *
+ * Extends existing [Bootstrap Select] implementations by adding the ability to search via AJAX requests as you type. Originally for CROSCON.
+ *
+ * @version 1.4.5
+ * @author Adam Heim - https://github.com/truckingsim
+ * @link https://github.com/truckingsim/Ajax-Bootstrap-Select
+ * @copyright 2019 Adam Heim
+ * @license Released under the MIT license.
+ *
+ * Contributors:
+ *   Mark Carver - https://github.com/markcarver
+ *
+ * Last build: 2019-04-23 12:18:55 PM EDT
+ */
+
+/*!
+ * Bootstrap-select v1.13.12 (https://developer.snapappointments.com/bootstrap-select)
+ *
+ * Copyright 2012-2019 SnapAppointments, LLC
+ * Licensed under MIT (https://github.com/snapappointments/bootstrap-select/blob/master/LICENSE)
+ */
+
+/*!
+ * Chart.js v2.9.3
+ * https://www.chartjs.org
+ * (c) 2019 Chart.js Contributors
+ * Released under the MIT License
+ */
+
+/*!
+ * English translation for the "en-US" and "en" language codes.
+ * Mark Carver <mark.carver@me.com>
+ */
+
+/*!
+ * FileInput Slovakian Translations
+ *
+ * This file must be loaded after 'fileinput.js'. Patterns in braces '{}', or
+ * any HTML markup tags in the messages must not be converted or translated.
+ *
+ * @see http://github.com/kartik-v/bootstrap-fileinput
+ *
+ * NOTE: this file must be saved in UTF-8 encoding.
+ */
+
+/*!
+ * bootstrap-fileinput v5.0.8
+ * http://plugins.krajee.com/file-input
+ *
+ * Author: Kartik Visweswaran
+ * Copyright: 2014 - 2019, Kartik Visweswaran, Krajee.com
+ *
+ * Licensed under the BSD-3-Clause
+ * https://github.com/kartik-v/bootstrap-fileinput/blob/master/LICENSE.md
+ */
+
+/*!
+ * bootstrap-fileinput v5.0.8
+ * http://plugins.krajee.com/file-input
+ *
+ * Font Awesome icon theme configuration for bootstrap-fileinput. Requires font awesome assets to be loaded.
+ *
+ * Author: Kartik Visweswaran
+ * Copyright: 2014 - 2019, Kartik Visweswaran, Krajee.com
+ *
+ * Licensed under the BSD-3-Clause
+ * https://github.com/kartik-v/bootstrap-fileinput/blob/master/LICENSE.md
+ */
+
+/*!
+ * bootstrap-progressbar v0.9.0 by @minddust
+ * Copyright (c) 2012-2015 Stephan Groß
+ *
+ * http://www.minddust.com/project/bootstrap-progressbar/
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+
+/*!
+ * clipboard.js v2.0.6
+ * https://clipboardjs.com/
+ * 
+ * Licensed MIT © Zeno Rocha
+ */
+
+/*!
+ * jQuery Form Plugin
+ * version: 4.2.2
+ * Requires jQuery v1.7.2 or later
+ * Project repository: https://github.com/jquery-form/form
+
+ * Copyright 2017 Kevin Morris
+ * Copyright 2006 M. Alsup
+
+ * Dual licensed under the LGPL-2.1+ or MIT licenses
+ * https://github.com/jquery-form/form#license
+
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ */
+
+/*! =======================================================
+                      VERSION  10.6.2              
+========================================================= */
+
+/*! ========================================================================
+ * Bootstrap Toggle: bootstrap-toggle.js v2.2.0
+ * http://www.bootstraptoggle.com
+ * ========================================================================
+ * Copyright 2014 Min Hur, The New York Times Company
+ * Licensed under MIT
+ * ======================================================================== */
+
+/*! For license information please see summernote-sk-SK.min.js.LICENSE.txt */
+
+/*! tooltipster v4.2.7 */
+
+/*! version : 4.17.47
+ =========================================================
+ bootstrap-datetimejs
+ https://github.com/Eonasdan/bootstrap-datetimepicker
+ Copyright (c) 2015 Jonathan Peterson
+ =========================================================
+ */
+
+/**
+ * jQuery serializeObject
+ * @copyright 2014, macek <paulmacek@gmail.com>
+ * @link https://github.com/macek/jquery-serialize-object
+ * @license BSD
+ * @version 2.5.0
+ */
+
+/**
+* @version: 3.0.5
+* @author: Dan Grossman http://www.dangrossman.info/
+* @copyright: Copyright (c) 2012-2019 Dan Grossman. All rights reserved.
+* @license: Licensed under the MIT license. See http://www.opensource.org/licenses/mit-license.php
+* @website: http://www.daterangepicker.com/
+*/
+
+/**!
+ * Sortable 1.10.2
+ * @author	RubaXa   <trash@rubaxa.org>
+ * @author	owenm    <owen23355@gmail.com>
+ * @license MIT
+ */

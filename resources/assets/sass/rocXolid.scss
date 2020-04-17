@@ -1,0 +1,40 @@
+@import 'bootstrap/bootstrap/variables';
+@import 'bootstrap/bootstrap/mixins/responsive-visibility';
+@import 'bootstrap/bootstrap/mixins/grid-framework';
+
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~font-awesome/css/font-awesome.min.css';
+@import '~animate.css/animate.min.css';
+@import '~gentelella/build/css/custom.css';
+
+// @import 'bootstrap/bootstrap/mixins/text-overflow'; // customized
+// @import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap-grid';
+// @import 'import/fonts.css';
+
+@import 'import/variables';
+@import 'import/mixins';
+@import 'import/helpers';
+@import 'import/alerts';
+@import 'import/base';
+@import 'import/navigation';
+@import 'import/panels';
+@import 'import/tabs';
+@import 'import/forms';
+@import 'import/tables';
+@import 'import/lists';
+@import 'import/media';
+@import 'import/wizard';
+@import 'import/auth';
+@import 'import/plugins/bootstrap-maxlength';
+@import 'import/plugins/bootstrap-select';
+@import 'import/plugins/bootstrap-slider';
+@import 'import/plugins/bootstrap-tagsinput';
+@import 'import/plugins/bootstrap-toggle';
+@import 'import/plugins/fileinput';
+@import 'import/plugins/loading-overlay';
+@import 'import/plugins/note-editor';
+@import 'import/plugins/pnotify';
+@import 'import/plugins/sortable';
+@import 'import/plugins/masonry';
+@import 'import/plugins/keditor';

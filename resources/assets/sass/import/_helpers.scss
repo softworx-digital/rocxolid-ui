@@ -1,0 +1,266 @@
+$orientations: top, left, bottom, right;
+
+// paddings
+.padding-no {
+    padding: 0;
+}
+.padding-right-no {
+    padding-right: 0;
+}
+.padding-left-no {
+    padding-left: 0;
+}
+.padding-top-no {
+    padding-top: 0;
+}
+.padding-bottom-no {
+    padding-bottom: 0;
+}
+@for $i from 0 through 100 {
+    .padding-#{$i} {
+        padding: #{$i}px;
+    }
+}
+@each $orientation in $orientations {
+    @for $i from 0 through 100 {
+        .padding-#{$orientation}-#{$i} {
+            padding-#{$orientation}: #{$i}px;
+        }
+    }
+}
+@for $i from 0 through 100 {
+    .padding-rel-#{$i} {
+        padding: percentage($i/100);
+    }
+}
+@each $orientation in $orientations {
+    @for $i from 0 through 100 {
+        .padding-rel-#{$orientation}-#{$i} {
+            padding-#{$orientation}: percentage($i/100);
+        }
+    }
+}
+// margins
+.margin-no {
+    margin: 0;
+}
+.margin-right-no {
+    margin-right: 0;
+}
+.margin-left-no {
+    margin-left: 0;
+}
+.margin-top-no {
+    margin-top: 0;
+}
+.margin-bottom-no {
+    margin-bottom: 0;
+}
+@for $i from 0 through 100 {
+    .margin-#{$i} {
+        margin: #{$i}px;
+    }
+}
+@each $orientation in $orientations {
+    @for $i from 0 through 100 {
+        .margin-#{$orientation}-#{$i} {
+            margin-#{$orientation}: #{$i}px;
+        }
+    }
+}
+@for $i from 0 through 100 {
+    .margin-rel-#{$i} {
+        margin: percentage($i/100);
+    }
+}
+@each $orientation in $orientations {
+    @for $i from 0 through 100 {
+        .margin-rel-#{$orientation}-#{$i} {
+            margin-#{$orientation}: percentage($i/100);
+        }
+    }
+}
+// alignment
+.vertical-align-center {
+    display: flex;
+    align-items: center;
+}
+.text-vertical-align-middle {
+    vertical-align: middle;
+}
+// absolutes
+.absolute-left {
+    position: absolute;
+    left: 0;
+
+    &.form-control-feedback {
+        margin-top: 5px;
+        z-index: 999;
+    }
+}
+.absolute-right {
+    position: absolute;
+    right: 0;
+    z-index: 999;
+
+    &.form-control-feedback {
+        margin-top: 5px;
+        z-index: 999;
+    }
+}
+//
+.hover-background {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+
+    &.form-horizontal {
+        padding-top: 10px;
+    }
+    &:hover {
+        background: rgba(38, 185, 154, 0.2);
+        border-top: 1px solid rgba(38, 185, 154, 0.5);
+        border-bottom: 1px solid rgba(38, 185, 154, 0.5);
+    }
+}
+//
+.text-wrap {
+    white-space: normal;
+}
+//
+.highlight {
+    @include box-shadow(0, 0, 10px, $highlight-color);
+    z-index: 1000;
+
+    &-inset {
+        @include box-shadow(0, 0, 10px, $highlight-color, true);
+    }
+}
+//
+.overflow-auto {
+    overflow: auto;
+}
+.overflow-hidden {
+    overflow: hidden;
+}
+//
+.d-none {
+    display: none;
+}
+.d-inline {
+    display: inline;
+}
+.d-inline-block {
+    display: inline-block;
+}
+.d-block {
+    display: block;
+}
+.d-table {
+    display: table;
+}
+.d-table-cell {
+    display: table-cell;
+}
+.d-flex {
+    display: flex;
+}
+.d-inline-flex {
+    display: inline-flex;
+}
+//
+.link-unstyled {
+    &,
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus,
+    &:active:hover {
+      font-style: inherit;
+      color: inherit;
+      background-color: transparent;
+      font-size: inherit;
+      text-decoration: none;
+      font-variant: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+      font-family: inherit;
+      border-radius: inherit;
+      border: inherit;
+      outline: inherit;
+      box-shadow: inherit;
+      padding: inherit;
+      vertical-align: inherit;
+    }
+}
+.text-shadow-default {
+    @include text-shadow(0, 0, 5px, #fff);
+}
+.text-shadow-info {
+    @include text-shadow(0, 0, 5px, #31708f);
+}
+.text-shadow-primary {
+    @include text-shadow(0, 0, 5px, #286090);
+}
+.text-shadow-success {
+    @include text-shadow(0, 0, 5px, #3c763d);
+}
+.text-shadow-warning {
+    @include text-shadow(0, 0, 5px, #8a6d3b);
+}
+.text-shadow-danger {
+    @include text-shadow(0, 0, 5px, #a94442);
+}
+// typography
+.text-big {
+    font-size: larger;
+
+    h1 & {
+        color: $text-big-color
+    }
+}
+
+// width
+@for $i from 0 through 100 {
+    .width-#{$i} {
+        width: round(percentage($i/100))!important;
+    }
+}
+
+// height
+@for $i from 0 through 300 {
+    .height-#{$i} {
+        height: #{$i}px;
+    }
+}
+
+// cursor
+$cursor: (
+    auto,
+    crosshair,
+    default,
+    e-resize,
+    help,
+    move,
+    n-resize,
+    ne-resize,
+    nw-resize,
+    pointer,
+    progress,
+    s-resize,
+    se-resize,
+    sw-resize,
+    text,
+    w-resize,
+    wait,
+    inherit
+);
+
+@each $i in $cursor {
+    .c-#{nth($i, 1)} {
+        cursor: nth($i, 1) !important;
+    }
+}
+
+.text-overflow {
+    @include text-overflow();
+}

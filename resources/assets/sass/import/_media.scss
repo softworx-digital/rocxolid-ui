@@ -1,0 +1,314 @@
+@media (max-width: 576px) {
+    .text-big {
+        font-size: 10vw;
+    }
+
+    .rocXolid {
+        .right_col {
+            padding: 0 !important;
+
+            &.offset-top {
+                padding-top: 50px !important;
+            }
+
+            &.offset-bottom {
+                padding-bottom: 15px !important;
+            }
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .rocXolid {
+        .top_nav {
+            &.navbar-static-top {
+                left: 0;
+            }
+        }
+
+        &.footer_fixed {
+            footer {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 1199px) {
+    .btn-group {
+        &.btn-group-responsive {
+            > .btn,
+            > .btn-group {
+                display: block;
+                width: 100%;
+
+                &:first-child {
+                    @include rounded-top(6px);
+
+                    &:not(:last-child):not(.dropdown-toggle) {
+                        border-top-right-radius: 6px;
+                    }
+                }
+                &:last-child:not(:first-child) {
+                    @include rounded-bottom(6px);
+                }
+            }
+            > .btn-group {
+                > .btn {
+                    @include rounded-bottom(0);
+                    width: 90%;
+
+                    &.dropdown-toggle {
+                        width: 10%;
+                    }
+                    &:first-child {
+                        border-top-left-radius: 6px;
+                    }
+                    &:last-child:not(:first-child) {
+                        border-top-right-radius: 6px;
+                    }
+                }
+            }
+            .btn + .btn {
+                margin-left: 0;
+            }
+            .btn-group + .btn {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .modal-xl {
+        width: 90%;
+        max-width: 1200px;
+    }
+
+    .dl-horizontal {
+        display: flex;
+        flex-flow: row wrap;
+
+        dt {
+            flex-basis: 30%;
+            padding: 1px;
+            border-bottom: 1px dotted $description-list-border-color;
+            text-align: right;
+            width: auto;
+            float: none;
+            white-space: normal;
+        }
+
+        dd {
+            flex-basis: 70%;
+            flex-grow: 1;
+            margin: 0;
+            padding: 2px 10px;
+        }
+    }
+}
+
+/**
+ * XL & XXL screens
+ */
+$screen-xl:                  1600px !default;
+$screen-xl-min:              $screen-xl !default;
+$screen-xl-desktop:          $screen-xl-min !default;
+$screen-lg-max:              ($screen-xl-min - 1) !default;
+$container-xlarge-desktop:   (1530px + $grid-gutter-width) !default;
+$container-xl:               $container-xlarge-desktop !default;
+
+// xLarge grid
+//
+// Columns, offsets, pushes, and pulls for the large desktop device range.
+@media (min-width: $screen-xl-min) {
+    @include make-grid(xl);
+}
+
+// Generate the xlarge columns
+@mixin make-xl-column($columns, $gutter: $grid-gutter-width) {
+    position: relative;
+    min-height: 1px;
+    padding-left:  ($gutter / 2);
+    padding-right: ($gutter / 2);
+
+    @media (min-width: $screen-xl-min) {
+        float: left;
+        width: percentage(($columns / $grid-columns));
+    }
+}
+@mixin make-xl-column-offset($columns) {
+    @media (min-width: $screen-xl-min) {
+        margin-left: percentage(($columns / $grid-columns));
+    }
+}
+@mixin make-xl-column-push($columns) {
+    @media (min-width: $screen-xl-min) {
+        left: percentage(($columns / $grid-columns));
+    }
+}
+@mixin make-xl-column-pull($columns) {
+    @media (min-width: $screen-xl-min) {
+        right: percentage(($columns / $grid-columns));
+    }
+}
+
+@mixin make-grid-columns($i: 1, $list: ".col-xl-#{$i}") {
+    @for $i from (1 + 1) through $grid-columns {
+        $list: "#{$list}, .col-xl-#{$i}";
+    }
+    #{$list} {
+        position: relative;
+        // Prevent columns from collapsing when empty
+        min-height: 1px;
+        // Inner gutter via padding
+        padding-left:  ($grid-gutter-width / 2);
+        padding-right: ($grid-gutter-width / 2);
+    }
+}
+
+@include make-grid-columns;
+
+@include responsive-invisibility('.visible-xl');
+
+.visible-xl-block,
+.visible-xl-inline,
+.visible-xl-inline-block {
+    display: none !important;
+}
+
+@media (min-width: $screen-xl-min) {
+    @include responsive-invisibility('.visible-lg');
+    @include responsive-visibility('.visible-xl');
+}
+.visible-xl-block {
+    @media (min-width: $screen-xl-min) {
+        display: block !important;
+    }
+}
+.visible-xl-inline {
+    @media (min-width: $screen-xl-min) {
+        display: inline !important;
+    }
+}
+.visible-xl-inline-block {
+    @media (min-width: $screen-xl-min) {
+        display: inline-block !important;
+    }
+}
+
+@media (min-width: $screen-lg-min) and (max-width: $screen-lg-max) {
+    @include responsive-invisibility('.hidden-lg');
+}
+
+@media (min-width: $screen-xl-min) {
+    @include responsive-invisibility('.hidden-xl');
+    @include responsive-visibility('.hidden-lg');
+
+    .visible-lg-block,
+    .visible-lg-inline,
+    .visible-lg-inline-block {
+        display: none !important;
+    }
+}
+
+$screen-xxl:                  1860px !default;
+$screen-xxl-min:              $screen-xxl !default;
+$screen-xxl-desktop:          $screen-xxl-min !default;
+$screen-xl-max:              ($screen-xxl-min - 1) !default;
+$container-xxlarge-desktop:   (1530px + $grid-gutter-width) !default;
+$container-xxl:               $container-xxlarge-desktop !default;
+
+// xxlarge grid
+//
+// Columns, offsets, pushes, and pulls for the large desktop device range.
+@media (min-width: $screen-xxl-min) {
+    @include make-grid(xxl);
+}
+
+// Generate the xxlarge columns
+@mixin make-xxl-column($columns, $gutter: $grid-gutter-width) {
+    position: relative;
+    min-height: 1px;
+    padding-left:  ($gutter / 2);
+    padding-right: ($gutter / 2);
+
+    @media (min-width: $screen-xxl-min) {
+        float: left;
+        width: percentage(($columns / $grid-columns));
+    }
+}
+@mixin make-xxl-column-offset($columns) {
+    @media (min-width: $screen-xxl-min) {
+        margin-left: percentage(($columns / $grid-columns));
+    }
+}
+@mixin make-xxl-column-push($columns) {
+    @media (min-width: $screen-xxl-min) {
+        left: percentage(($columns / $grid-columns));
+    }
+}
+@mixin make-xxl-column-pull($columns) {
+    @media (min-width: $screen-xxl-min) {
+        right: percentage(($columns / $grid-columns));
+    }
+}
+
+@mixin make-grid-columns($i: 1, $list: ".col-xxl-#{$i}") {
+    @for $i from (1 + 1) through $grid-columns {
+        $list: "#{$list}, .col-xxl-#{$i}";
+    }
+    #{$list} {
+        position: relative;
+        // Prevent columns from collapsing when empty
+        min-height: 1px;
+        // Inner gutter via padding
+        padding-left:  ($grid-gutter-width / 2);
+        padding-right: ($grid-gutter-width / 2);
+    }
+}
+
+@include make-grid-columns;
+
+@include responsive-invisibility('.visible-xxl');
+
+.visible-xxl-block,
+.visible-xxl-inline,
+.visible-xxl-inline-block {
+    display: none !important;
+}
+
+@media (min-width: $screen-xxl-min) {
+    @include responsive-invisibility('.visible-xl');
+    @include responsive-visibility('.visible-xxl');
+}
+.visible-xxl-block {
+    @media (min-width: $screen-xxl-min) {
+        display: block !important;
+    }
+}
+.visible-xxl-inline {
+    @media (min-width: $screen-xxl-min) {
+        display: inline !important;
+    }
+}
+.visible-xxl-inline-block {
+    @media (min-width: $screen-xxl-min) {
+        display: inline-block !important;
+    }
+}
+
+@media (min-width: $screen-xl-min) and (max-width: $screen-xl-max) {
+    @include responsive-invisibility('.hidden-xl');
+}
+
+@media (min-width: $screen-xxl-min) {
+    @include responsive-invisibility('.hidden-xxl');
+    @include responsive-visibility('.hidden-xl');
+
+    .visible-xl-block,
+    .visible-xl-inline,
+    .visible-xl-inline-block {
+        display: none !important;
+    }
+}

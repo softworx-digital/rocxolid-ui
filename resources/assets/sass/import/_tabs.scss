@@ -1,0 +1,40 @@
+.tabs-left {
+    &.tabs-seamless {
+        padding-top: 0;
+
+        > li {
+            z-index: 1;
+
+            &:hover {
+                margin-right: -2px;
+            }
+
+            &.active {
+                margin-right: -2px;
+
+                > a {
+                    border-bottom-color: $border-tab-active-color;
+                    border-right-color: transparent;
+
+                    &:hover {
+                        border-color:$border-tab-active-color;
+                        border-right: 1px solid transparent;
+                    }
+                }
+            }
+
+            > a {
+                &:hover {
+                    border-color: $border-tab-hover-color;
+                    border-right-color: $border-tab-active-color;
+                }
+            }
+        }
+    }
+}
+
+.tab-content {
+    &.tab-content-seamless {
+        border: 1px solid $border-tab-active-color;
+    }
+}

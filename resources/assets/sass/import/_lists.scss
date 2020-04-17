@@ -1,0 +1,25 @@
+dl {
+    dt, dd {
+        line-height: 1.75;
+    }
+
+    dd {
+        padding-left: 1em;
+        border-bottom: 1px dotted $description-list-border-color;
+        @include text-overflow();
+    }
+
+    &.dl-horizontal-high {
+        dd {
+            line-height: 2;
+        }
+    }
+}
+
+ul {
+    &.files {
+        li {
+            line-height: 30px;
+        }
+    }
+}

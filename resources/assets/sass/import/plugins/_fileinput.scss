@@ -1,0 +1,141 @@
+.file-input {
+    .file-preview {
+        border: none;
+        padding: 0;
+        margin-bottom: 0;
+    }
+
+    .file-drop-zone {
+        margin: 0;
+
+        &.clickable {
+            &:hover {
+                border: 1px dashed $box-focus-color;
+                background: rgba($box-focus-color, .1);
+
+                .file-preview-thumbnails {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .file-drop-zone-title {
+            padding: 1em;
+            font-size: 1.3em;
+        }
+
+        .file-preview-thumbnails {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: stretch;
+            align-content: stretch;
+        }
+
+        .file-preview-frame {
+            @include rounded(6px);
+            background: #fff;
+            width: auto;
+            flex: 0 1 18.8%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: stretch;
+            cursor: default;
+
+            .kv-file-content {
+                max-width: 100%;
+                /*max-height: 200px;*/
+                height: auto;
+                width: auto;
+            }
+
+            .file-thumbnail-footer {
+                height: auto;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, .5);
+                padding-bottom: 1em;
+
+                .file-thumb-progress {
+                    padding: 0 .5em;
+                }
+            }
+
+            .file-upload-indicator {
+                display: none;
+            }
+
+            .file-actions {
+                text-align: center;
+                padding-top: .8em;
+
+                .file-footer-buttons {
+                    float: none;
+                    position: relative;
+                    display: inline-block;
+                    vertical-align: middle;
+
+                    > .btn {
+                        margin-bottom: 5px;
+                        margin-right: 0;
+                        position: relative;
+                        float: left;
+
+                        & + .btn {
+                            margin-left: -1px;
+                        }
+
+                        &:first-child {
+                            margin-left: 0;
+
+                            &:not(:last-child):not(.dropdown-toggle) {
+                                border-top-right-radius: 0;
+                                border-bottom-right-radius: 0;
+                            }
+                        }
+
+                        &:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+                            @include rounded(0);
+                        }
+                    }
+                }
+            }
+        }
+
+        .file-thumbnail-footer {
+            .file-footer-caption {
+                padding: .5em 0;
+                margin: 0;
+            }
+
+            .progress {
+                .progress-bar {
+                    line-height: 11px;
+                }
+            }
+        }
+    }
+
+    .file-caption-main {
+        .fileinput-remove-button,
+        .fileinput-upload-button {
+            margin-right: 0;
+        }
+    }
+
+    .kv-upload-progress .progress {
+        @include rounded(0);
+        height: 3px;
+        margin: 0;
+
+        .progress-bar {
+            @include rounded(0);
+            line-height: 3px;
+            height: 3px;
+            color: transparent;
+        }
+    }
+}

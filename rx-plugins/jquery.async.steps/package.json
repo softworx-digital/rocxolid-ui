@@ -1,0 +1,17 @@
+{
+  "bundleDependencies": [],
+  "deprecated": false,
+  "description": "...",
+  "devDependencies": {},
+  "dependencies": {
+    "jquery": ">=1.8.3"
+  },
+  "homepage": "...",
+  "license": "MIT",
+  "main": "dist/jquery-async-steps",
+  "name": "jquery.async.steps",
+  "scripts": {
+    "test": "grunt -v"
+  },
+  "version": "0.0.1"
+}

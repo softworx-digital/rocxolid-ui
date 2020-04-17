@@ -1,0 +1,142 @@
+.x_panel {
+    @include rounded(6px);
+    @include box-shadow(0, 0, 10px, rgba(0, 0, 0, 0.25));
+
+    border: 0;
+
+    .x_title {
+        h2 {
+            float: none;
+
+            small {
+                color: #BDBDBD;
+
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+
+            span {
+                color: #777;
+            }
+        }
+
+        .text-big {
+            color: $text-big-color;
+        }
+    }
+
+    .x_footer {
+        border-top: 1px solid #e5e5e5;
+        padding: 20px 0 10px 0;
+        float: left;
+        clear: both;
+        margin-top: 5px;
+        width: 100%;
+        position: relative;
+
+        .btn {
+            &.pull-right {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+.timeline {
+    &.timeline-no-overflow {
+        .block {
+            border-right: 3px solid #e8e8e8;
+            margin-right: 145px;
+            min-height: 150px;
+
+            .tags {
+                position: relative;
+                left: -120px;
+                width: 105px;
+
+                .tag {
+                    height: auto;
+                    min-height: 30px;
+
+                    span {
+                        overflow: initial;
+                        white-space: normal;
+                    }
+                }
+            }
+
+            .block_content {
+                position: relative;
+                margin-top: -35px;
+                min-height: 110px;
+
+                .img {
+                    &-small {
+                        max-width: 134px;
+                        max-height: 134px;
+                    }
+                }
+            }
+
+            .actions {
+                position: absolute;
+                right: 0;
+                width: 145px;
+                top: 10px;
+            }
+        }
+    }
+
+    ul {
+        &.containee-only {
+            margin-left: 105px;
+            margin-right: -5px;
+            border-top: 1px solid #e8e8e8;
+
+            li {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.d-inline-block {
+    img {
+        max-width: 100%;
+    }
+}
+
+.panel-permissions {
+    padding: 0 10px;
+
+    .row {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #ddd;
+
+        &:hover {
+            background: $row-hover-color;
+        }
+    }
+
+    &:last-child {
+        .row {
+            border: none;
+        }
+    }
+}
+
+.panel {
+    &.with-nav-tabs {
+        .nav-justified {
+            margin-bottom: -1px;
+
+            li {
+                a {
+                    font-size: 1.2em;
+                }
+            }
+        }
+    }
+}

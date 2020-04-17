@@ -1,0 +1,136 @@
+table.table-crud {
+    > thead,
+    > tbody,
+    > tfoot {
+        > tr {
+            > th,
+            > td {
+                vertical-align: middle;
+            }
+        }
+    }
+    > thead {
+        > tr {
+            > th,
+            > td {
+                max-width: 220px;
+
+                &.check {
+                    width: 36px;
+                }
+                &.last {
+                    //width: 148px;
+                    min-width: 178px;
+                }
+            }
+            > th {
+                border: none;
+
+                a {
+                    color: rgba(255, 255, 255, .75);
+
+                    &:hover {
+                        color: rgba(255, 255, 255, 1);
+                    }
+                }
+
+                &.ordered-by {
+                    background: #26B99A;
+                }
+            }
+        }
+    }
+    > tbody {
+        > tr {
+            &:hover {
+                td {
+                    background: rgba(38, 185, 154, 0.2);
+                    border-top: 1px solid rgba(38, 185, 154, 0.5);
+                    border-bottom: 1px solid rgba(38, 185, 154, 0.5);
+                }
+            }
+            &.selected {
+                td {
+                    background: rgba(38, 185, 154, 0.3);
+                    border-top: 1px solid rgba(38, 185, 154, 0.75);
+                    border-bottom: 1px solid rgba(38, 185, 154, 0.75);
+                }
+            }
+            &.blacklisted {
+                td {
+                    background: rgba(201, 48, 44, 0.2);
+                    border-top: 1px solid rgba(201, 48, 44, 0.5);
+                    border-bottom: 1px solid rgba(201, 48, 44, 0.5);
+                }
+                &:hover {
+                    td {
+                        background: rgba(201, 48, 44, 0.3);
+                        border-top: 1px solid rgba(201, 48, 44, 0.75);
+                        border-bottom: 1px solid rgba(201, 48, 44, 0.75);
+                    }
+                }
+            }
+            &.paid {
+                td {
+                    background: rgba(188, 226, 34, 0.2);
+                    border-top: 1px solid rgba(188, 226, 34, 0.5);
+                    border-bottom: 1px solid rgba(188, 226, 34, 0.5);
+                }
+                &:hover {
+                    td {
+                        background: rgba(188, 226, 34, 0.3);
+                        border-top: 1px solid rgba(188, 226, 34, 0.75);
+                        border-bottom: 1px solid rgba(188, 226, 34, 0.75);
+                    }
+                }
+            }
+
+            > td {
+                max-width: 220px;
+
+                .label {
+                    font-size: 100%;
+                    display: inline-block;
+                    margin: 1px;
+                    @include text-overflow();
+                    max-width: 100%;
+
+                    &.has-image {
+                        padding: .5em .4em .5em;
+                    }
+                }
+
+                .text-muted {
+                    color: #ccc;
+                }
+
+                .btn-group {
+                    display: flex;
+                    justify-content: flex-end;
+                }
+
+                &.ordered-by {
+                    border-left: #26B99A;
+                    border-right: #26B99A;
+                    background: rgba(38, 185, 154, .1);
+                }
+            }
+        }
+    }
+}
+
+.table-striped {
+    > tbody {
+        > tr {
+            > td {
+                vertical-align: middle;
+            }
+
+            &:last-child {
+                > td {
+                    border-bottom: 2px solid #ddd;
+                }
+            }
+        }
+    }
+}

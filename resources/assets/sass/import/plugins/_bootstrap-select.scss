@@ -1,0 +1,49 @@
+.bootstrap-select {
+    &.form-control {
+        height: 34px;
+    }
+
+    .form-group &,
+    .form-horizontal &,
+    .form-inline & {
+        /*margin-bottom: 10px;*/
+    }
+
+    &.btn-group {
+        .dropdown-menu {
+            @include box-shadow(0, 5px, 15px, rgba(0, 0, 0, .25));
+
+            li {
+                a {
+                    &:hover {
+                        background: rgba(63, 192, 165, 1);
+                        color: #fff;
+                    }
+                }
+                &.selected {
+                    a {
+                        /*background: rgba(63, 192, 165, .15);*/
+
+                        &:hover {
+                            background: rgba(63, 192, 165, 1);
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+            &.dropdown-header {
+                font-weight: bold;
+            }
+        }
+    }
+
+    .dropdown-menu {
+        &.open {
+            .inner {
+                &.open {
+                    max-height: 245px!important;
+                }
+            }
+        }
+    }
+}

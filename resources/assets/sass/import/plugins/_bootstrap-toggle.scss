@@ -1,0 +1,24 @@
+.toggle {
+    &.btn {
+        margin: 0;
+
+        .toggle-group {
+            .btn {
+                margin: 0;
+            }
+            .toggle-handle {
+                top: 0;
+            }
+        }
+
+        &.round {
+            @include rounded(20px);
+        }
+
+        + label {
+            &.label-fit-height {
+                margin-top: 4px;
+            }
+        }
+    }
+}

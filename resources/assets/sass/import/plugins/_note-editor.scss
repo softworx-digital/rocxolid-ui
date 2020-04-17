@@ -1,0 +1,12 @@
+.note-popover .popover-content,
+.panel-heading.note-toolbar {
+    padding-bottom: 10px;
+}
+
+.note-editor {
+    &.note-frame {
+        &.fullscreen {
+            top: 57px;
+        }
+    }
+}

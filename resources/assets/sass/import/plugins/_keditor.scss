@@ -1,0 +1,10 @@
+.keditor-iframe-width-switcher {
+    height: calc(100vh - 315px);
+}
+
+.keditor-modal {
+    &.showed {
+        top: 55px;
+        height: calc(100vh - 90px);
+    }
+}

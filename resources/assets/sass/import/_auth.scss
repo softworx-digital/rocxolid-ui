@@ -1,0 +1,57 @@
+.unauthenticated {
+    background: #C0C2C9 url(#{$rx-image-path}/background/unauthenticated.jpg) no-repeat bottom center;
+    background-size: cover;
+}
+
+.login_wrapper {
+    margin-top: 0;
+    max-width: 380px;
+}
+
+.login_content {
+    padding: 20px;
+    margin-top: 40%;
+
+    h1 {
+        &:before,
+        &:after {
+            display: none;
+        }
+    }
+}
+
+.login_form {
+    text-shadow: none;
+
+    > div {
+        margin: 20px 0;
+        position: relative;
+    }
+
+    form {
+        margin: 0;
+
+        div a {
+            margin: 0;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            margin: 0;
+
+            .has-error &.form-control {
+                border-color: #a94442;
+                @include box-shadow(0, 1px, 1px, rgba(0,0,0,.075), true);
+            }
+        }
+    }
+
+    a {
+        &.btn {
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
