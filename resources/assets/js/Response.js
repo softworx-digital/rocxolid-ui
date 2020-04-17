@@ -3,7 +3,7 @@ import { Utility } from './Utility';
 
 /**
  * @author softworx <hello@softworx.digital>
- * @package Softworx\RocXolid\Design
+ * @package Softworx\RocXolid\UI
  * @version 1.0.0
  */
 class Response

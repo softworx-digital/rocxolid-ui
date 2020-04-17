@@ -4,7 +4,7 @@ import 'tinymce/themes/mobile/theme';
 
 /**
  * @author softworx <hello@softworx.digital>
- * @package Softworx\RocXolid\Design
+ * @package Softworx\RocXolid\UI
  * @version 1.0.0
  */
 class TinyMCE extends PluginBinder

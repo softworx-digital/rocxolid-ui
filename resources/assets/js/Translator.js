@@ -2,7 +2,7 @@ import * as translations from './lang/sk';
 
 /**
  * @author softworx <hello@softworx.digital>
- * @package Softworx\RocXolid\Design
+ * @package Softworx\RocXolid\UI
  * @version 1.0.0
  * @todo consider translations from packages' lang files
  */
