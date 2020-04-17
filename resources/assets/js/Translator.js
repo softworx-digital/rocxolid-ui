@@ -1,4 +1,4 @@
-import * as translations from './lang/sk';
+import { translations } from './lang/sk';
 
 /**
  * @author softworx <hello@softworx.digital>
@@ -11,12 +11,12 @@ class Translator
     constructor(rx, lang) {
         this.rx = rx;
         this.lang = lang;
-        this.translations = {};
+        this.translations = translations;
     }
 
     translate(packageName, key)
     {
-        return translations[packageName][key];
+        return this.translations[packageName][key];
     }
 
     load(packageName)

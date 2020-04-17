@@ -31,7 +31,7 @@ class PluginBinder
 
     t(key)
     {
-        return this.rx.translator.translate(this.constructor.name, key);
+        return this.rx.translator.translate(this.constructor.packageName, key);
     }
 }
 

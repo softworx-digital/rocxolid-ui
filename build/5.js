@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{"4QT0":function(o,s,a){"use strict";a.r(s),s.default={success:"Skopírované",error:"Vyskytla sa chyba pri kopírovaní"}}}]);
+//# sourceMappingURL=5.js.map
