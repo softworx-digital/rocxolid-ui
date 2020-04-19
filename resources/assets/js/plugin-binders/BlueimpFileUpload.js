@@ -1,5 +1,5 @@
-import { PluginBinder } from '../PluginBinder';
-import { Utility } from '../Utility';
+import { PluginBinder } from '../core/PluginBinder';
+import { Utility } from '../core/Utility';
 
 /**
  * @author softworx <hello@softworx.digital>

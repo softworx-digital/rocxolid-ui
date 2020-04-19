@@ -2,7 +2,7 @@
 // import '../../../../bower_components/jquery-palette-color-picker/src/palette-color-picker';
 import 'jquery-palette-color-picker/src/palette-color-picker.css';
 import 'jquery-palette-color-picker/src/palette-color-picker.js';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>

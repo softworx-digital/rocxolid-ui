@@ -1,7 +1,7 @@
 import 'ckeditor4/skins/moono-lisa/editor.css';
 import 'ckeditor4';
 import 'ckeditor4/adapters/jquery';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>

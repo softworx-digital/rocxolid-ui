@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{jZwT:function(e,a,t){"use strict";t.r(a),a.default={currentlySelected:"Aktuálny výber",emptyTitle:"Zadajte hľadaný výraz",errorText:"Nebolo možné získať výsledky",searchPlaceholder:"Aktuálny výber",statusInitialized:"",statusNoResults:"Neboli nájdené žiadne záznamy",statusSearching:"Hľadá sa...",statusTooShort:"Hľadaný výraz je príliš krátky"}}}]);
-//# sourceMappingURL=4.js.map

@@ -1,5 +1,5 @@
 import 'stickr.js/jquery.stickr';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>

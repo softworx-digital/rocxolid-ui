@@ -1,5 +1,5 @@
 import 'jquery.async.steps'; // in place of 'jquery.steps';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>

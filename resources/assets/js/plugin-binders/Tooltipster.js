@@ -1,6 +1,6 @@
 import 'tooltipster/dist/css/tooltipster.bundle.min.css';
 import 'tooltipster';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>

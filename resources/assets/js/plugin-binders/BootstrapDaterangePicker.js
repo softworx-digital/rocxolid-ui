@@ -1,6 +1,6 @@
 import 'bootstrap-daterangepicker/daterangepicker.css';
 import 'bootstrap-daterangepicker';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>

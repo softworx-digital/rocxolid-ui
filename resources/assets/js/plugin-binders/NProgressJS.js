@@ -1,6 +1,6 @@
 import 'nprogress/nprogress.css';
 import NProgress from 'nprogress';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>

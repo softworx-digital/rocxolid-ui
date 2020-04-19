@@ -4,8 +4,8 @@ import 'bootstrap-fileinput';
 import 'bootstrap-fileinput/themes/fa/theme';
 import '../lang/sk/BootstrapFileinput'; // customized translation, @todo: find out how to support multiple and switch between them at runtime
 import 'form-serializer';
-import { PluginBinder } from '../PluginBinder';
-import { Utility } from '../Utility';
+import { PluginBinder } from '../core/PluginBinder';
+import { Utility } from '../core/Utility';
 
 /**
  * @author softworx <hello@softworx.digital>

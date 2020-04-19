@@ -6,9 +6,9 @@ require('bootstrap');
 // require('font-awesome/css/font-awesome.min.css');
 // require('animate.css/animate.min.css');
 
-import binders from './plugins';
-import { Utility } from './Utility';
-import { RocXolid } from './RocXolid';
+import binders from './config/plugins';
+import { Utility } from './core/Utility';
+import { RocXolid } from './core/RocXolid';
 
 /**
  * @author softworx <hello@softworx.digital>

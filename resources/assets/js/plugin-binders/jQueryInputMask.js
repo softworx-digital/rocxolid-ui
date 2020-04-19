@@ -1,5 +1,5 @@
 import 'inputmask/dist/jquery.inputmask';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>

@@ -7,7 +7,7 @@ import 'keditor/dependencies/jquery-ui-1.12.1.custom/jquery-ui';
 // import { KEditor, KEditorComponents } from 'keditor';
 // import 'keditor';
 // import 'keditor/dist/js/keditor-components';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 // @todo: temporarily leaving as is, since every attempt to use it in bundled fashion failed
 // used currently as inline javascript in show.blades of page elementables

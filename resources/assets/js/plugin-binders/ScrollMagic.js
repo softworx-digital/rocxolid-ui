@@ -1,6 +1,6 @@
 import 'scrollmagic/scrollmagic/minified/ScrollMagic';
 import 'scrollmagic/scrollmagic/minified/plugins/debug.addIndicators';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>

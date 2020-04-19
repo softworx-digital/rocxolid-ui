@@ -1,6 +1,6 @@
 import 'bootstrap-toggle/css/bootstrap-toggle.min.css';
 import 'bootstrap-toggle';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>

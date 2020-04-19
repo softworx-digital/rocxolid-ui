@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./resources/assets/js/lang/sk/BlueimpFileUpload.js"],"names":[],"mappings":"6FAAA,OAAe,WACX,cAAiB,0CACjB,UAAa","file":"3.js","sourcesContent":["export default {\n    \"errorFileType\": \" je nesprávny typ súboru, povolené sú: \",\n    \"errorSize\": \" je príliš veľký, maximálna povolená veľkosť je: \"\n}"],"sourceRoot":""}

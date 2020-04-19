@@ -1,6 +1,6 @@
-import { PluginBinder } from '../PluginBinder';
 import tinymce from 'tinymce/tinymce';
 import 'tinymce/themes/mobile/theme';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>

@@ -2,7 +2,7 @@ import 'summernote/dist/summernote.css';
 import 'summernote';
 import 'summernote/dist/lang/summernote-sk-SK.min';
 import 'summernote-extensions/maxlength';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>

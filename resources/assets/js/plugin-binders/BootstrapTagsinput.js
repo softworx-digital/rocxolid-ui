@@ -1,6 +1,6 @@
 import '@adactive/bootstrap-tagsinput/dist/bootstrap-tagsinput.css';
 import '@adactive/bootstrap-tagsinput';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>

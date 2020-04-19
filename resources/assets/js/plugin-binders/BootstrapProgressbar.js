@@ -1,6 +1,6 @@
 import 'bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css';
 import 'bootstrap-progressbar/bootstrap-progressbar';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>

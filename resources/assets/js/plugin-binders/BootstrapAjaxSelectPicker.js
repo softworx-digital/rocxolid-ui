@@ -1,7 +1,7 @@
 import 'ajax-bootstrap-select/dist/css/ajax-bootstrap-select.min.css';
 import 'ajax-bootstrap-select';
 // import 'ajax-bootstrap-select/dist/js/locale/ajax-bootstrap-select.sk-SK.js'; // @todo: not available & find out how to support multiple and switch between them at runtime
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>
