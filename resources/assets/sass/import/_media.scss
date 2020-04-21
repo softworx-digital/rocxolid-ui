@@ -34,7 +34,7 @@
     }
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1200px) {
     .btn-group {
         &.btn-group-responsive {
             > .btn,
@@ -75,6 +75,12 @@
             .btn-group + .btn {
                 margin-left: 0;
             }
+        }
+    }
+
+    .x_title {
+        h2 {
+            width: 100%;
         }
     }
 }

@@ -104,6 +104,7 @@ module.exports = {
         // keditor: 'keditor',
         jquery: 'jQuery', // works for using in html, throws warnings when importing to bundle
         keditor: 'KEditor', // works for using in html, throws warnings when importing to bundle
+        ckeditor: 'CKEDITOR',
     },
     resolve: {
         modules: [

@@ -239,12 +239,17 @@ class EventsBinder
     {
         let rx = this.rx;
 
-        $(window).on('beforeunload', function() {
-            $('body').addClass('unloading');
-            $('.modal').modal('hide');
+        $(window).on('beforeunload', function(e) {
+            if (window.isContentDirty) {
+                (e || window.event).returnValue = configuration.leaveConfirmationMessage; //Gecko + IE
+                return configuration.leaveConfirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+            } else {
+                $('body').addClass('unloading');
+                $('.modal').modal('hide');
 
-            if (rx.hasPlugin('loading-overlay')) {
-                rx.getPlugin('loading-overlay').show($('.right_col .x_panel'));
+                if (rx.hasPlugin('loading-overlay')) {
+                    rx.getPlugin('loading-overlay').show($('.right_col .x_panel'));
+                }
             }
         });
 
