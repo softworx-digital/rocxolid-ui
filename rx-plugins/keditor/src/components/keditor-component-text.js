@@ -33,49 +33,51 @@ KEditor.components['text'] = {
         removeButtons: 'Save,NewPage,Preview,Print,Templates,PasteText,PasteFromWord,Find,Replace,SelectAll,Scayt,Form,HiddenField,ImageButton,Button,Select,Textarea,TextField,Radio,Checkbox,Outdent,Indent,Blockquote,CreateDiv,Language,Table,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe,Styles,BGColor,Maximize,About,ShowBlocks,BidiLtr,BidiRtl,Flash,Image,Subscript,Superscript,Anchor',
         minimumChangeMilliseconds: 100
     },
-    
+
     init: function (contentArea, container, component, keditor) {
         let self = this;
         let options = keditor.options;
-        
+
         let componentContent = component.children('.keditor-component-content');
-        componentContent.prop('contenteditable', true);
-        
-        componentContent.on('input', function (e) {
+        let componentContentEditable = componentContent.children('.editable');
+        componentContentEditable.prop('contenteditable', true);
+
+        componentContentEditable.on('input', function (e) {
             if (typeof options.onComponentChanged === 'function') {
                 options.onComponentChanged.call(keditor, e, component);
             }
-            
+
             if (typeof options.onContainerChanged === 'function') {
                 options.onContainerChanged.call(keditor, e, container, contentArea);
             }
-            
+
             if (typeof options.onContentChanged === 'function') {
                 options.onContentChanged.call(keditor, e, contentArea);
             }
         });
-        
-        let editor = CKEDITOR.inline(componentContent[0], self.options);
+
+        let editor = CKEDITOR.inline(componentContentEditable[0], self.options);
         editor.on('instanceReady', function () {
             $('#cke_' + componentContent.attr('id')).appendTo(keditor.wrapper);
-            
+
             if (typeof options.onComponentReady === 'function') {
                 options.onComponentReady.call(contentArea, component, editor);
             }
         });
     },
-    
+
     getContent: function (component, keditor) {
         let componentContent = component.find('.keditor-component-content');
+        let componentContentEditable = componentContent.children('.editable');
         let id = componentContent.attr('id');
         let editor = CKEDITOR.instances[id];
         if (editor) {
             return editor.getData();
         } else {
-            return componentContent.html();
+            return componentContentEditable.html();
         }
     },
-    
+
     destroy: function (component, keditor) {
         let id = component.find('.keditor-component-content').attr('id');
         CKEDITOR.instances[id] && CKEDITOR.instances[id].destroy();
