@@ -88,6 +88,11 @@ class Response
         $(location).attr('href', url);
     }
 
+    openTab(url)
+    {
+        window.open(url, '_blank');
+    }
+
     replace(data)
     {
         var res = this;

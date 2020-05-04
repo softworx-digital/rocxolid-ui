@@ -1,3 +1,9 @@
+body.fullscreen {
+    .keditor-iframe-width-switcher {
+        height: 100vh;
+    }
+}
+
 .keditor-iframe-width-switcher {
     height: calc(100vh - 315px);
 }

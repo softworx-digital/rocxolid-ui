@@ -18,7 +18,8 @@ class EventsBinder
 
         this
             .bindWindowUnload()
-            .bindWindowFocus();
+            .bindWindowFocus()
+            .bindWindowFullscreen();
 
         this
             .bindSubmit(container)
@@ -279,6 +280,15 @@ class EventsBinder
                     }
                 });
             }
+        });
+
+        return this;
+    }
+
+    bindWindowFullscreen()
+    {
+        document.addEventListener('fullscreenchange', function () {
+            $('body').toggleClass('fullscreen', !!document.fullscreenElement);
         });
 
         return this;
