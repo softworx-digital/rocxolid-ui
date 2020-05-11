@@ -26,15 +26,19 @@
 @import 'import/media';
 @import 'import/wizard';
 @import 'import/auth';
-@import 'import/plugins/bootstrap-maxlength';
-@import 'import/plugins/bootstrap-select';
-@import 'import/plugins/bootstrap-slider';
-@import 'import/plugins/bootstrap-tagsinput';
-@import 'import/plugins/bootstrap-toggle';
-@import 'import/plugins/fileinput';
-@import 'import/plugins/loading-overlay';
-@import 'import/plugins/note-editor';
-@import 'import/plugins/pnotify';
-@import 'import/plugins/sortable';
-@import 'import/plugins/masonry';
-@import 'import/plugins/keditor';
+
+body.rocXolid {
+    @import 'import/plugins/bootstrap-maxlength';
+    @import 'import/plugins/bootstrap-select';
+    @import 'import/plugins/bootstrap-slider';
+    @import 'import/plugins/bootstrap-tagsinput';
+    @import 'import/plugins/bootstrap-toggle';
+    @import 'import/plugins/fileinput';
+    @import 'import/plugins/loading-overlay';
+    @import 'import/plugins/note-editor';
+    @import 'import/plugins/pnotify';
+    @import 'import/plugins/sortable';
+    @import 'import/plugins/masonry';
+    @import 'import/plugins/ckeditor';
+    @import 'import/plugins/keditor';
+}

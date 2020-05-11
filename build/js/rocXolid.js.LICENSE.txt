@@ -2,6 +2,33 @@
  * @license MIT */
 
 /*!
+   * jQuery UI :data 1.12.1
+   * http://jqueryui.com
+   *
+   * Copyright jQuery Foundation and other contributors
+   * Released under the MIT license.
+   * http://jquery.org/license
+   */
+
+/*!
+   * jQuery UI Resizable 1.12.1
+   * http://jqueryui.com
+   *
+   * Copyright jQuery Foundation and other contributors
+   * Released under the MIT license.
+   * http://jquery.org/license
+   */
+
+/*!
+   * jQuery UI Widget 1.12.1
+   * http://jqueryui.com
+   *
+   * Copyright jQuery Foundation and other contributors
+   * Released under the MIT license.
+   * http://jquery.org/license
+   */
+
+/*!
  * 
  * Super simple wysiwyg editor v0.8.16
  * https://summernote.org
@@ -137,6 +164,13 @@
  * ======================================================================== */
 
 /*! For license information please see summernote-sk-SK.min.js.LICENSE.txt */
+
+/*! RocXolid Document Composer v1.0.0 | Copyright (c) 2016-present Kademi (http://kademi.co) & 2020 softworx (hello@softworx.digital) */
+
+/*! jQuery UI - v1.12.1 - 2019-07-24
+* http://jqueryui.com
+* Includes: widget.js, data.js, disable-selection.js, scroll-parent.js, widgets/resizable.js, widgets/sortable.js, widgets/mouse.js
+* Copyright jQuery Foundation and other contributors; Licensed MIT */
 
 /*! tooltipster v4.2.7 */
 

@@ -1,4 +1,4 @@
-import KEditor from 'keditor';
+// import KEditor from 'keditor';
 
 KEditor.components['vimeo'] = {
     init: function (contentArea, container, component, keditor) {
@@ -6,11 +6,11 @@ KEditor.components['vimeo'] = {
         let wrapper = iframe.parent();
         keditor.initIframeCover(iframe, wrapper);
     },
-    
+
     settingEnabled: true,
-    
+
     settingTitle: 'Vimeo Settings',
-    
+
     initSettingForm: function (form, keditor) {
         form.append(
             '<form class="form-horizontal">' +
@@ -34,11 +34,11 @@ KEditor.components['vimeo'] = {
             '   </div>' +
             '</form>'
         );
-        
+
         let btnEdit = form.find('.btn-vimeo-edit');
         btnEdit.on('click', function (e) {
             e.preventDefault();
-            
+
             let inputData = prompt('Please enter Vimeo URL in here:');
             let vimeoRegex = /https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)/;
             let match = inputData.match(vimeoRegex);
@@ -48,21 +48,21 @@ KEditor.components['vimeo'] = {
                 alert('Your Vimeo URL is invalid!');
             }
         });
-        
+
         let btn169 = form.find('.btn-vimeo-169');
         btn169.on('click', function (e) {
             e.preventDefault();
-            
+
             keditor.getSettingComponent().find('.embed-responsive').removeClass('embed-responsive-4by3').addClass('embed-responsive-16by9');
         });
-        
+
         let btn43 = form.find('.btn-vimeo-43');
         btn43.on('click', function (e) {
             e.preventDefault();
-            
+
             keditor.getSettingComponent().find('.embed-responsive').removeClass('embed-responsive-16by9').addClass('embed-responsive-4by3');
         });
-        
+
         let chkAutoplay = form.find('#vimeo-autoplay');
         chkAutoplay.on('click', function () {
             let embedItem = keditor.getSettingComponent().find('.embed-responsive-item');
@@ -71,12 +71,12 @@ KEditor.components['vimeo'] = {
             embedItem.attr('src', newUrl);
         });
     },
-    
+
     showSettingForm: function (form, component, keditor) {
         let embedItem = component.find('.embed-responsive-item');
         let chkAutoplay = form.find('#vimeo-autoplay');
         let src = embedItem.attr('src');
-        
+
         chkAutoplay.prop('checked', src.indexOf('autoplay=1') !== -1);
     }
 };

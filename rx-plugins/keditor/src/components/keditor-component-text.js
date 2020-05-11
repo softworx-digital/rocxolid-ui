@@ -1,50 +1,18 @@
 import '../styles/keditor-component-text.less';
 
-import KEditor from 'keditor';
-import CKEDITOR from 'ckeditor';
-
-CKEDITOR.disableAutoInline = true;
+// import KEditor from 'keditor';
 
 // Text component
 // ---------------------------------------------------------------------
 KEditor.components['text'] = {
-    options: {
-        /*
-        toolbarGroups: [
-            {name: 'document', groups: ['mode', 'document', 'doctools']},
-            {name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing']},
-            {name: 'forms', groups: ['forms']},
-            {name: 'basicstyles', groups: ['basicstyles', 'cleanup']},
-            {name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph']},
-            {name: 'links', groups: ['links']},
-            {name: 'insert', groups: ['insert']},
-            '/',
-            {name: 'clipboard', groups: ['clipboard', 'undo']},
-            {name: 'styles', groups: ['styles']},
-            {name: 'colors', groups: ['colors']},
-        ],
-        */
-        title: false,
-        allowedContent: true, // DISABLES Advanced Content Filter. This is so templates with classes: allowed through
-        bodyId: 'editor',
-        templates_replaceContent: false,
-        enterMode: 'P',
-        forceEnterMode: true,
-        format_tags: 'p;h1;h2;h3;h4;h5;h6',
-        //removePlugins: 'table,magicline,tableselection,tabletools',
-        //removeButtons: 'Save,NewPage,Preview,Print,Templates,PasteText,PasteFromWord,Find,Replace,SelectAll,Scayt,Form,HiddenField,ImageButton,Button,Select,Textarea,TextField,Radio,Checkbox,Outdent,Indent,Blockquote,CreateDiv,Language,Table,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe,Styles,BGColor,Maximize,About,ShowBlocks,BidiLtr,BidiRtl,Flash,Image,Subscript,Superscript,Anchor',
-        minimumChangeMilliseconds: 100
-    },
-
-    init: function (contentArea, container, component, keditor) {
+    init: function (contentArea, container, component, keditor)
+    {
         let self = this;
         let options = keditor.options;
 
         let componentContent = component.children('.keditor-component-content');
-        let componentContentEditable = componentContent.children('.editable');
-        componentContentEditable.prop('contenteditable', true);
 
-        componentContentEditable.on('input', function (e) {
+        componentContent.on('input', function (e) {
             if (typeof options.onComponentChanged === 'function') {
                 options.onComponentChanged.call(keditor, e, component);
             }
@@ -57,31 +25,116 @@ KEditor.components['text'] = {
                 options.onContentChanged.call(keditor, e, contentArea);
             }
         });
-console.log(options);
-        let editor = CKEDITOR.inline(componentContentEditable[0], self.options);
-        editor.on('instanceReady', function () {
-            $('#cke_' + componentContent.attr('id')).appendTo(keditor.wrapper);
 
-            if (typeof options.onComponentReady === 'function') {
-                options.onComponentReady.call(contentArea, component, editor);
+        self.withEditables(keditor, contentArea, component, componentContent, self.bindEditor);
+    },
+
+    getContent: function (component, keditor)
+    {
+        let self = this;
+        let componentContent = component.find('.keditor-component-content');
+        let componentContentElement = component.find('[data-element-type]');
+        let contentParts = {};
+        var $content = $('<div>')
+            .addClass('content-container')
+            .attr('data-element-type', componentContentElement.data('elementType'))
+            .attr('data-element-id', componentContentElement.data('elementId'));
+
+        self.withEditables(keditor, null, component, componentContent, self.getEditorContent, contentParts);
+
+        $.each(contentParts, function(name, html) {
+            let $wrapper = $('<div>')
+                .addClass('editable-content')
+                .attr('data-name', name)
+                .html(html);
+
+            $wrapper.appendTo($content)
+        })
+
+        return $content;
+    },
+
+    destroy: function (component, keditor)
+    {
+        let componentContent = component.find('.keditor-component-content');
+
+        self.withEditables(keditor, null, component, componentContent, self.destroyEditor);
+    },
+
+    withEditables: function(keditor, contentArea, component, componentContent, callback, callbackResponse)
+    {
+        let self = this;
+        let names = [];
+
+        componentContent.find('.editable').each(function(index, editable) {
+            try {
+                let isSingleEditable = (componentContent.find('.editable').length == 1);
+
+                if (!isSingleEditable && !$(editable).is('[data-name]')) {
+                    throw "[data-name] missing in editable element";
+                }
+
+                if ($(editable).is('[data-name]')) {
+                    if (names.includes($(editable).data('name'))) {
+                        throw `[data-name="${$(editable).data('name')}"] already used in this component's editable elements`;
+                    }
+
+                    names.push($(editable).data('name'));
+                }
+
+                callback.call(self, keditor, contentArea, component, componentContent, editable, isSingleEditable, callbackResponse);
+            } catch (e) {
+                console.error(e, editable);
+
+                if (rx().hasPlugin('notification')) {
+                    rx().getPlugin('notification').show(e, 'error');
+                }
             }
         });
     },
 
-    getContent: function (component, keditor) {
-        let componentContent = component.find('.keditor-component-content');
-        let componentContentEditable = componentContent.children('.editable');
-        let id = componentContent.attr('id');
-        let editor = CKEDITOR.instances[id];
-        if (editor) {
-            return editor.getData();
-        } else {
-            return componentContentEditable.html();
+    bindEditor: function(keditor, contentArea, component, componentContent, editable, isSingleEditable, callbackResponse)
+    {
+        $(editable)
+            .prop('contenteditable', true)
+            .attr('data-editable-id', this.makeEditableId(componentContent, editable, isSingleEditable));
+
+        if (!rx().hasPlugin('inline-editor')) {
+            return;
+        }
+
+        let editor = rx().getPlugin('inline-editor').inline(editable);
+
+        editor.on('instanceReady', function () {
+            // $('#cke_' + componentContent.attr('id')).appendTo(keditor.wrapper);
+            $(`.${editor.id}`).appendTo(keditor.wrapper);
+
+            if (typeof keditor.options.onComponentReady === 'function') {
+                keditor.options.onComponentReady.call(contentArea, component, editable, editor);
+            }
+        });
+    },
+
+    getEditorContent: function(keditor, contentArea, component, componentContent, editable, isSingleEditable, callbackResponse)
+    {
+        const param = isSingleEditable ? null : $(editable).data('name');
+
+        if (rx().hasPlugin('inline-editor')) {
+            var editor = rx().getPlugin('inline-editor').findInstance(editable);
+        }
+
+        callbackResponse[param] = editor ? editor.getData() : $(editable).html();
+    },
+
+    destroyEditor: function(keditor, contentArea, component, componentContent, editable, isSingleEditable, callbackResponse)
+    {
+        if (rx().hasPlugin('inline-editor')) {
+            rx().getPlugin('inline-editor').findInstance(editable).destroy();
         }
     },
 
-    destroy: function (component, keditor) {
-        let id = component.find('.keditor-component-content').attr('id');
-        CKEDITOR.instances[id] && CKEDITOR.instances[id].destroy();
+    makeEditableId: function(componentContent, editable, isSingleEditable)
+    {
+        return isSingleEditable ? componentContent.attr('id') : componentContent.attr('id') + '-' + $(editable).data('name');
     }
 };

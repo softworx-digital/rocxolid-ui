@@ -30,14 +30,15 @@ import { BootstrapProgressbar as ProgressbarPluginBinder } from '../plugin-binde
 import { PaletteColorPicker as PaletteColorPickerPluginBinder } from '../plugin-binders/PaletteColorPicker';
 import { Summernote as WysiwygTextareaPluginBinder } from '../plugin-binders/Summernote';
 // import { TinyMCE as WysiwygTextareaPluginBinder } from '../plugin-binders/TinyMCE';
-// import { CKEditor as WysiwygTextareaPluginBinder } from '../plugin-binders/CKEditor';
-// import { RxDocumentComposer as DocumentComposerPluginBinder } from '../plugin-binders/RxDocumentComposer';
+import { CKEditor as InlineWysiwygTextareaPluginBinder } from '../plugin-binders/CKEditor';
 // import { ScrollMagicJS as ScrollMagicJSPluginBinder } from '../plugin-binders/ScrollMagic';
 // rx
 import { jQueryVisibility as ElementVisibilityPluginBinder } from '../plugin-binders/jQueryVisibility';
 import { jQueryDependency as ElementDependencyPluginBinder } from '../plugin-binders/jQueryDependency';
 import { Autosubmit as AutosubmitPluginBinder } from '../plugin-binders/Autosubmit';
 import { ImagePlaceholder as ImagePlaceholderPluginBinder } from '../plugin-binders/ImagePlaceholder';
+// import { RxDocumentComposer as DocumentComposerPluginBinder } from '../plugin-binders/RxDocumentComposer';
+import { KEditorBinder as DocumentComposerPluginBinder } from '../plugin-binders/KEditorBinder';
 
 /**
  * Plugins definition with their binders.
@@ -129,14 +130,13 @@ export default {
     },
     'editor': {
         'binder': WysiwygTextareaPluginBinder
+    },
+    'inline-editor': {
+        'binder': InlineWysiwygTextareaPluginBinder
     },/*
-    'document-composer': {
-        'binder': DocumentComposerPluginBinder
-    },*//*
     'scroll-utility': {
         'binder': ScrollMagicJSPluginBinder
-    },
-    */
+    },*/
     // rx
     'dependency': {
         'binder': ElementDependencyPluginBinder
@@ -149,5 +149,8 @@ export default {
     },
     'image-placeholder': {
         'binder': ImagePlaceholderPluginBinder
+    },
+    'document-composer': {
+        'binder': DocumentComposerPluginBinder
     },
 };

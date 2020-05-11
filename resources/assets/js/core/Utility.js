@@ -61,7 +61,7 @@ Utility.base64ToArrayBuffer = (data) => {
     }
 
     return bytes;
-};
+}
 
 Utility.formatBytes = (bytes, decimals = 2) => {
     if (bytes === 0) return '0 B';
@@ -72,6 +72,17 @@ Utility.formatBytes = (bytes, decimals = 2) => {
     const i = Math.floor(Math.log(bytes) / Math.log(k));
 
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+}
+
+Utility.loadScript = (src) => {
+    return new Promise(function (resolve, reject) {
+        var s;
+        s = document.createElement('script');
+        s.src = src;
+        s.onload = resolve;
+        s.onerror = reject;
+        document.head.appendChild(s);
+    });
 }
 
 Utility.ajaxCall = (settings, success, error) => {

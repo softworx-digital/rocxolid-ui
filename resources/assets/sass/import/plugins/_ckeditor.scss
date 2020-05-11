@@ -1,0 +1,18 @@
+.cke_toolgroup {
+    border: 0;
+    padding: 0;
+}
+
+.cke_button {
+    padding: 5px;
+
+    &.cke_button_on {
+        background: #E6E6DE;
+        @include box-shadow(0, 3px, 5px, rgba(0, 0, 0, .125), true);
+    }
+
+    .cke_button_icon {
+        opacity: 1;
+        color: #000;
+    }
+}

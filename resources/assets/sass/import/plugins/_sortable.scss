@@ -56,8 +56,8 @@ ul.sortable {
     }
 }
 
-body.dragging,
-body.dragging * {
+&.dragging,
+&.dragging * {
     cursor: move !important;
 
     ul.sortable {

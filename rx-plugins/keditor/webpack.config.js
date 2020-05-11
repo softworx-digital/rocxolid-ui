@@ -25,6 +25,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         libraryTarget: 'umd',
+        // library: 'KEditor',
         umdNamedDefine: true,
         filename: `js/[name].js`,
         globalObject: `typeof self !== 'undefined' ? self : this`
@@ -100,11 +101,10 @@ module.exports = {
         ]
     },
     externals: {
-        // jquery: 'jquery',
-        // keditor: 'keditor',
-        jquery: 'jQuery', // works for using in html, throws warnings when importing to bundle
-        keditor: 'KEditor', // works for using in html, throws warnings when importing to bundle
-        ckeditor: 'CKEDITOR',
+        jquery: 'jquery',
+        // ckeditor: 'CKEDITOR',
+        // jquery: 'jQuery', // works for using in html, throws warnings when importing to bundle
+        // keditor: 'KEditor', // works for using in html, throws warnings when importing to bundle
     },
     resolve: {
         modules: [

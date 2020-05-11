@@ -1,4 +1,4 @@
-import KEditor from 'keditor';
+// import KEditor from 'keditor';
 
 KEditor.components['youtube'] = {
     init: function (contentArea, container, component, keditor) {
@@ -6,11 +6,11 @@ KEditor.components['youtube'] = {
         let wrapper = iframe.parent();
         keditor.initIframeCover(iframe, wrapper);
     },
-    
+
     settingEnabled: true,
-    
+
     settingTitle: 'Youtube Settings',
-    
+
     initSettingForm: function (form, keditor) {
         form.append(
             '<form class="form-horizontal">' +
@@ -34,11 +34,11 @@ KEditor.components['youtube'] = {
             '   </div>' +
             '</form>'
         );
-        
+
         let btnEdit = form.find('.btn-youtube-edit');
         btnEdit.on('click', function (e) {
             e.preventDefault();
-            
+
             let inputData = prompt('Please enter Youtube URL in here:');
             let youtubeRegex = /^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/;
             let match = inputData.match(youtubeRegex);
@@ -48,21 +48,21 @@ KEditor.components['youtube'] = {
                 alert('Your Youtube URL is invalid!');
             }
         });
-        
+
         let btn169 = form.find('.btn-youtube-169');
         btn169.on('click', function (e) {
             e.preventDefault();
-            
+
             keditor.getSettingComponent().find('.embed-responsive').removeClass('embed-responsive-4by3').addClass('embed-responsive-16by9');
         });
-        
+
         let btn43 = form.find('.btn-youtube-43');
         btn43.on('click', function (e) {
             e.preventDefault();
-            
+
             keditor.getSettingComponent().find('.embed-responsive').removeClass('embed-responsive-16by9').addClass('embed-responsive-4by3');
         });
-        
+
         let chkAutoplay = form.find('#youtube-autoplay');
         chkAutoplay.on('click', function () {
             let embedItem = keditor.getSettingComponent().find('.embed-responsive-item');
@@ -71,12 +71,12 @@ KEditor.components['youtube'] = {
             embedItem.attr('src', newUrl);
         });
     },
-    
+
     showSettingForm: function (form, component, keditor) {
         let embedItem = component.find('.embed-responsive-item');
         let chkAutoplay = form.find('#youtube-autoplay');
         let src = embedItem.attr('src');
-        
+
         chkAutoplay.prop('checked', src.indexOf('autoplay=1') !== -1);
     }
 };

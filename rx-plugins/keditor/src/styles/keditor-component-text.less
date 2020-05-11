@@ -5,45 +5,57 @@
 
 // CKEditor
 // -------------------------------------------------
-div.cke_float[id*="cke_keditor-ui-"] {
-    padding: 0 6px;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    border-radius: 0 !important;
-    margin: 0 !important;
-    background: rgba(243,156,18,.88);
-    height: @topbar-height;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid @border-color;
+.keditor-wrapper {
+    div.cke_float {
+        padding: 0 6px;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        height: @topbar-height;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: @black;
+        border-bottom: 1px solid @border-color;
 
-    .cke_inner {
-        padding: 0 !important;
-    }
+        .cke_inner {
+            padding: 0 !important;
+            background: transparent;
+        }
 
-    .cke_top {
-        padding: 0;
-        border: 0;
-        background: none !important;
-    }
+        .cke_top {
+            padding: 0;
+            border: 0;
+            background: none !important;
+            .box-shadow(none);
+        }
 
-    .cke_toolbox {
-        display: block !important;
-        overflow-x: auto;
-        overflow-y: hidden;
-        .keditor-scrollbar(5px);
-    }
+        .cke_toolbox {
+            display: block !important;
+            overflow-x: auto;
+            overflow-y: hidden;
+            .keditor-scrollbar(5px);
+        }
 
-    .cke_toolbar {
-        float: none !important;
-        display: inline-block !important;
-        vertical-align: top !important;
-    }
+        .cke_toolbar {
+            float: none !important;
+            display: inline-block !important;
+            vertical-align: top !important;
+        }
 
-    .cke_toolbar_break {
-        display: none !important;
+        .cke_toolbar_break {
+            display: none !important;
+        }
+
+        .cke_toolgroup {
+            .box-shadow(none);
+        }
+
+        a.cke_combo_button {
+            .box-shadow(none);
+        }
     }
 }
 

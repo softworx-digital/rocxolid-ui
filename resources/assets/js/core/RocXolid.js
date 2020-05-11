@@ -10,7 +10,8 @@ import { Translator } from './Translator';
  */
 class RocXolid
 {
-    constructor() {
+    constructor()
+    {
         this.response = new Response(this);
         this.eventsBinder = new EventsBinder(this);
         this.elementBinder = new ElementBinder(this);

@@ -1,11 +1,11 @@
-body.fullscreen {
+&.fullscreen {
     .keditor-iframe-width-switcher {
-        height: 100vh;
+        height: calc(100vh - 50px);
     }
 }
 
 .keditor-iframe-width-switcher {
-    height: calc(100vh - 315px);
+    height: calc(100vh - 320px);
 }
 
 .keditor-modal {

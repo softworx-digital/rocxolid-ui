@@ -16,7 +16,8 @@ class PluginBinder
         this.rx = rx;
         this.settings = settings || {};
 
-        console.debug('Creating', new.target.name, 'plugin binder');
+        // console.debug('Creating', new.target.name, 'plugin binder');
+        console.debug('Creating', this.constructor.packageName, 'plugin binder');
     }
 
     bind(container)
