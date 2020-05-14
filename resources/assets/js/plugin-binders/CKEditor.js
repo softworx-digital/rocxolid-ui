@@ -16,7 +16,7 @@ class CKEditor extends PluginBinder
         // global CKEditor configuration
         CKEDITOR.disableAutoInline = true;
         CKEDITOR.config.language = settings.lang || this.lang;
-        CKEDITOR.config.extraPlugins = 'justify,font,colorbutton,colordialog';
+        CKEDITOR.config.extraPlugins = 'justify,font,colorbutton,colordialog,placeholder';
         CKEDITOR.config.skin = 'bootstrapck';
         CKEDITOR.config.format_tags = 'p;h1;h2;h3;h4;h5;h6';
 
@@ -38,6 +38,7 @@ class CKEditor extends PluginBinder
             allowedContent: true, // DISABLES Advanced Content Filter. This is so templates with classes: allowed through
             bodyId: 'editor',
             // templates_replaceContent: false,
+            enterMode: 2,
             removeButtons: 'Subscript,Superscript,Cut,Copy,Paste,PasteText,PasteFromWord',
             minimumChangeMilliseconds: 100
         };

@@ -56,6 +56,7 @@ KEditor.components['text'] = {
 
     destroy: function (component, keditor)
     {
+        let self = this;
         let componentContent = component.find('.keditor-component-content');
 
         self.withEditables(keditor, null, component, componentContent, self.destroyEditor);
@@ -117,7 +118,8 @@ KEditor.components['text'] = {
 
     getEditorContent: function(keditor, contentArea, component, componentContent, editable, isSingleEditable, callbackResponse)
     {
-        const param = isSingleEditable ? null : $(editable).data('name');
+        // const param = isSingleEditable ? null : $(editable).data('name');
+        const param = $(editable).is('[data-name]') ? $(editable).data('name') : null;
 
         if (rx().hasPlugin('inline-editor')) {
             var editor = rx().getPlugin('inline-editor').findInstance(editable);
@@ -129,12 +131,14 @@ KEditor.components['text'] = {
     destroyEditor: function(keditor, contentArea, component, componentContent, editable, isSingleEditable, callbackResponse)
     {
         if (rx().hasPlugin('inline-editor')) {
-            rx().getPlugin('inline-editor').findInstance(editable).destroy();
+            const editor = rx().getPlugin('inline-editor').findInstance(editable);
+
+            editor && editor.destroy();
         }
     },
 
     makeEditableId: function(componentContent, editable, isSingleEditable)
     {
-        return isSingleEditable ? componentContent.attr('id') : componentContent.attr('id') + '-' + $(editable).data('name');
+        return isSingleEditable && !$(editable).is('[data-name]') ? componentContent.attr('id') : componentContent.attr('id') + '-' + $(editable).data('name');
     }
 };
