@@ -264,3 +264,20 @@ $cursor: (
 .text-overflow {
     @include text-overflow();
 }
+
+// animation speed
+.animated {
+    @for $i from 1 through 10 {
+        &.speed-#{$i * 100} {
+            -webkit-animation-duration: #{$i * 100}ms;
+            animation-duration: #{$i * 100}ms;
+        }
+    }
+
+    @for $i from 1 through 9 {
+        &.speed-#{$i * 10} {
+            -webkit-animation-duration: #{$i * 10}ms;
+            animation-duration: #{$i * 10}ms;
+        }
+    }
+}

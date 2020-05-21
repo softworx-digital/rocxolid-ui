@@ -1,11 +1,12 @@
 .ui-pnotify {
     &.rx {
         .fa {
-            font-size: 1.5em
+            font-size: 1.5em;
         }
 
         .ui-pnotify-text {
-            font-size: 1.15em
+            font-size: 1.15em;
+            word-wrap: break-word;
         }
     }
 }
