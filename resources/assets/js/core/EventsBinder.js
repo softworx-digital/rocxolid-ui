@@ -94,6 +94,32 @@ class EventsBinder
             $elm.closest('fieldset').append($clone);
         });
 
+        $(container).on('click', '[data-append-custom-value]', function(e)
+        {
+            const $input = $($(this).data('append-custom-value'));
+            const $target = $($(this).data('append-custom-value-target'));
+            const $template = $target.find('.append-template');
+            const $clone = $template.clone();
+
+            $clone
+                .removeClass('append-template')
+                .removeClass('hidden')
+                .addClass('active');
+
+            $clone.find('.title').text($input.val());
+            $clone.find('input').val($input.val()).removeAttr('disabled');
+
+            if ($input.val() !== '') {
+                $template.before($clone);
+                $input.val('');
+            }
+        });
+
+        $(container).on('click', '[data-remove-parent]', function(e)
+        {
+            $(this).closest($(this).data('remove-parent')).remove();
+        });
+
         $(container).on('click', '[data-add-form-field-group]', function(e)
         {
             const selector = $(this).data('add-form-field-group');
@@ -146,9 +172,14 @@ class EventsBinder
             let econtainer = $(this).attr('data-click-check-container') || container;
             let $elm = $(this).closest(econtainer).find(selector);
 
-            $elm.closest('[data-toggle]').find(':checked').removeAttr('checked').parent().removeClass('active');
+            $elm.closest('[data-toggle]').find(':checked').removeAttr('checked').parent().removeClass('active').removeClass('focus');
             $elm.attr('checked', 'checked').parent().addClass('active');
 
+        });
+
+        $(container).on('click', '[data-toggle="buttons"] > .btn, [data-toggle="buttons"] > .btn-group > .btn', function(e)
+        {
+            $(this).removeClass('focus');
         });
 
         $(container).on('click', '[data-click-uncheck]', function(e)
@@ -156,7 +187,7 @@ class EventsBinder
             let selector = $(this).attr('data-click-uncheck');
             let econtainer = $(this).attr('data-click-uncheck-container') || container;
 
-            $(this).closest(econtainer).find(selector).removeAttr('checked').parent().removeClass('active');
+            $(this).closest(econtainer).find(selector).removeAttr('checked').parent().removeClass('active').removeClass('focus');
         });
 
         $(container).on('click', '[data-click-enable]', function(e)

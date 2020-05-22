@@ -281,3 +281,29 @@ $cursor: (
         }
     }
 }
+
+.no-border {
+    border: 0!important;
+}
+
+.no-top-border {
+    border-top: 0!important;
+}
+
+.no-right-border {
+    border-right: 0!important;
+}
+
+.no-bottom-border {
+    border-bottom: 0!important;
+}
+
+.no-left-border {
+    border-left: 0!important;
+}
+
+.no-shadow {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}

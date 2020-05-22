@@ -6,6 +6,16 @@
     > .input-group {
         margin-bottom: 0;
     }
+
+    .btn-group-vertical {
+        .btn {
+            margin-bottom: 0;
+
+            &.text-left {
+                text-align: left;
+            }
+        }
+    }
 }
 
 .form-control {
@@ -47,6 +57,11 @@ label {
         position: relative;
         /*top: 2px;*/
     }
+}
+
+.btn-group-xs > .btn,
+.btn-xs {
+    padding: 0 4px;
 }
 
 .btn-group {

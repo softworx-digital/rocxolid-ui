@@ -23,3 +23,20 @@ ul {
         }
     }
 }
+
+.list-group-item {
+    &.active {
+        .title {
+            &:before {
+                font-family: FontAwesome;
+                font-size: inherit;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                content: '\f00c';
+                color: #fff;
+                margin-right: 1em;
+            }
+        }
+    }
+}
