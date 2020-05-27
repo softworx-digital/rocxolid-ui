@@ -283,27 +283,6 @@ h6 {
     }
     */
 
-    .show-up {
-        display: none;
-        position: absolute;
-        top: 5%;
-        left: 5%;
-        /*top: 50%;
-        left: 50%;
-        margin-left: -56.5px;
-        margin-top: -17px;*/
-
-        &.show-up-left {
-            margin-left: -28%;
-        }
-        &.show-up-center {
-            margin-left: -7%;
-        }
-        &.show-up-right {
-            margin-left: 14%;
-        }
-    }
-
     img {
         transition: all .25s ease;
     }
@@ -315,9 +294,6 @@ h6 {
         img.loaded {
             opacity: .5;
             transform: scale(1.1);
-        }
-        .show-up {
-            display: block;
         }
     }
 }
@@ -351,6 +327,38 @@ h6 {
 
         &.loaded {
             opacity: 1;
+        }
+    }
+}
+
+.has-controls {
+    position: relative;
+
+    .show-up {
+        display: none;
+        position: absolute;
+        top: .5em;
+        left: .5em;
+        /*top: 50%;
+        left: 50%;
+        margin-left: -56.5px;
+        margin-top: -17px;*/
+
+        &.show-up-left {
+            margin-left: -28%;
+        }
+        &.show-up-center {
+            margin-left: -7%;
+        }
+        &.show-up-right {
+            left: unset;
+            right: .5em;
+        }
+    }
+
+    &:hover {
+        .show-up {
+            display: block;
         }
     }
 }
