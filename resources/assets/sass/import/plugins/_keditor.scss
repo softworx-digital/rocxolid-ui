@@ -5,14 +5,16 @@
 }
 
 .keditor-iframe-width-switcher {
-    height: calc(100vh - 320px);
+    height: calc(100vh - 505px);
 }
 
+/*
 .editable-part {
     .keditor-iframe-width-switcher {
         height: calc(20vh);
     }
 }
+*/
 
 .keditor-modal {
     transition: top .3s;

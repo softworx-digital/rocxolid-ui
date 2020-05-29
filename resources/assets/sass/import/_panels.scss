@@ -140,8 +140,40 @@
         }
     }
 
+    .panel-title {
+        &.with-controls {
+            padding: 7px 0;
+        }
+    }
+
     .panel-body + .panel-heading {
         @include rounded(0);
         border-top: 1px solid #255986;
+    }
+}
+
+.panel-group {
+    &.panel-group-collapsed {
+        .panel {
+            @include rounded(0);
+        }
+
+        .panel + .panel {
+            margin-top: 0;
+            border-top-color: #386aa7;
+            @include rounded(0);
+
+            .panel-heading {
+                @include rounded(0);
+            }
+        }
+
+        .panel:first-child {
+            @include rounded-top(4px);
+        }
+
+        .panel:last-child {
+            @include rounded-bottom(4px);
+        }
     }
 }

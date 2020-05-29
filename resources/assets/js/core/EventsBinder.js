@@ -348,7 +348,8 @@ class EventsBinder
         {
             const $btn = $('[data-target="#' + $(this).attr('id') + '"]');
 
-            $btn.find('.glyphicon-chevron-right').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-down');
+            $btn.find('.glyphicon-chevron-right').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-left');
+            $btn.find('.glyphicon-chevron-down').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
             $btn.find('.title').text($btn.data('label-shown'));
         });
 
@@ -356,7 +357,8 @@ class EventsBinder
         {
             const $btn = $('[data-target="#' + $(this).attr('id') + '"]');
 
-            $btn.find('.glyphicon-chevron-down').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-right');
+            $btn.find('.glyphicon-chevron-left').removeClass('glyphicon-chevron-left').addClass('glyphicon-chevron-right');
+            $btn.find('.glyphicon-chevron-up').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
             $btn.find('.title').text($btn.data('label-hidden'));
         });
 
