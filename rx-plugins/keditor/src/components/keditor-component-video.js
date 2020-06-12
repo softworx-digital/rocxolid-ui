@@ -10,7 +10,7 @@ KEditor.components['video'] = {
         }
     },
 
-    getContent: function (component, keditor) {
+    getContent: function (component, keditor, format) {
         let componentContent = component.children('.keditor-component-content');
         let video = componentContent.find('video');
         video.unwrap();

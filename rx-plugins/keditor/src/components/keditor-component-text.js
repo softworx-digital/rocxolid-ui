@@ -29,27 +29,34 @@ KEditor.components['text'] = {
         self.withEditables(keditor, contentArea, component, componentContent, self.bindEditor);
     },
 
-    getContent: function (component, keditor)
+    getContent: function (component, keditor, format)
     {
         let self = this;
         let componentContent = component.find('.keditor-component-content');
         let componentContentElement = component.find('[data-element-type]');
-        let contentParts = {};
-        var $content = $('<div>')
-            .addClass('content-container')
-            .attr('data-element-type', componentContentElement.data('elementType'))
-            .attr('data-element-id', componentContentElement.data('elementId'));
 
-        self.withEditables(keditor, null, component, componentContent, self.getEditorContent, contentParts);
+        if (format === 'raw') {
+            $content = componentContent.html();
+        } else {
+            let contentParts = {};
+            var $content = $('<div>')
+                .addClass('content-container')
+                .attr('data-element-type', componentContentElement.data('elementType'))
+                .attr('data-element-id', componentContentElement.data('elementId'));
 
-        $.each(contentParts, function(name, html) {
-            let $wrapper = $('<div>')
-                .addClass('editable-content')
-                .attr('data-name', name)
-                .html(html);
+            self.withEditables(keditor, null, component, componentContent, self.getEditorContent, contentParts);
 
-            $wrapper.appendTo($content)
-        })
+            $.each(contentParts, function(name, html) {
+                let $wrapper = $('<div>')
+                    .addClass('editable-content')
+                    .attr('data-name', name)
+                    .html(html);
+
+                $wrapper.appendTo($content)
+            });
+        }
+
+        KEditor.log(`Component [${componentContentElement.data('elementType')}][${componentContentElement.data('elementId')}] [${format}] content`, $content);
 
         return $content;
     },
@@ -108,7 +115,11 @@ KEditor.components['text'] = {
 
         editor.on('instanceReady', function () {
             // $('#cke_' + componentContent.attr('id')).appendTo(keditor.wrapper);
-            $(`.${editor.id}`).appendTo(keditor.wrapper);
+            $(`.${editor.id}`)
+                .addClass('animated')
+                .addClass('fadeIn')
+                .addClass('speed-200')
+                .appendTo(keditor.wrapper); // add it to the keditor wrapper to apply specific styling
 
             if (typeof keditor.options.onComponentReady === 'function') {
                 keditor.options.onComponentReady.call(contentArea, component, editable, editor);

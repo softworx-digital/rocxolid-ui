@@ -16,7 +16,7 @@ class CKEditor extends PluginBinder
         // global CKEditor configuration
         CKEDITOR.disableAutoInline = true;
         CKEDITOR.config.language = settings.lang || this.lang;
-        CKEDITOR.config.extraPlugins = 'justify,font,colorbutton,colordialog,placeholder';
+        CKEDITOR.config.extraPlugins = 'justify,font,colorbutton,colordialog,rxplaceholder';
         CKEDITOR.config.skin = 'bootstrapck';
         CKEDITOR.config.format_tags = 'p;h1;h2;h3;h4;h5;h6';
 
@@ -34,6 +34,7 @@ class CKEditor extends PluginBinder
                 { name: 'insert', groups: [ 'insert' ] },
                 { name: 'styles', groups: [ 'styles' ] },
                 { name: 'colors', groups: [ 'colors' ] },
+                { name: 'rx', groups: [ 'rx' ] },
             ],
             allowedContent: true, // DISABLES Advanced Content Filter. This is so templates with classes: allowed through
             bodyId: 'editor',

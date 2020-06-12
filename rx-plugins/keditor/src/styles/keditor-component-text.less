@@ -8,17 +8,18 @@
 .keditor-wrapper {
     div.cke_float {
         padding: 0 6px;
-        top: 0 !important;
+        top: 50px !important;
         left: 0 !important;
         right: 0 !important;
         border-radius: 0 !important;
         margin: 0 !important;
-        height: @topbar-height;
+        // height: @topbar-height;
         display: flex;
         justify-content: center;
         align-items: center;
         background: @black;
-        border-bottom: 1px solid @border-color;
+        // background: rgb(26,29,39);
+        // background: linear-gradient(180deg, rgba(26,29,39,1) 0%, rgba(83,83,83,1) 10%, rgba(85,85,85,1) 100%);
 
         .cke_inner {
             padding: 0 !important;
@@ -63,4 +64,23 @@
     top: 0;
     left: 0;
     z-index: -1;
+}
+
+@media only screen and (min-width: 1612px) {
+    .keditor-wrapper {
+        div.cke_float {
+            height: @topbar-height;
+            width: fit-content;
+            top: 0 !important;
+            justify-content: flex-start;
+        }
+    }
+}
+
+@media only screen and (min-width: 2160px) {
+    .keditor-wrapper {
+        div.cke_float {
+            left: 25% !important;
+        }
+    }
 }
