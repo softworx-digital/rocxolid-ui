@@ -10,8 +10,12 @@ export default function getContainerContent (container, isNested, format = null)
 
         containerContent
             .removeClass(`${CSS_CLASS.CONTAINER_CONTENT} ${CSS_CLASS.SUB_CONTAINER_CONTENT} ${CSS_CLASS.SORTABLE} ${CSS_CLASS.RESIZABLE}`)
-            .removeAttr('data-element-id')
             .removeAttr('id');
+
+        // remove element id when copy-pasting content
+        if (format === 'raw') {
+            containerContent.removeAttr('data-element-id');
+        }
 
         let containerContentInner = containerContent.children();
         let content = '';

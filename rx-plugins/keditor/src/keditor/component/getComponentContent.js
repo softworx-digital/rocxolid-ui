@@ -39,7 +39,10 @@ export default function (component, format = null) {
 
     clonedComponent.children().attr(dataAttributes).attr('data-type', `component-${componentType}`);
 
-    clonedComponent.find('[data-element-id]').removeAttr('data-element-id');
+    // remove element id when copy-pasting raw content
+    if (format === 'raw') {
+        clonedComponent.find('[data-element-id]').removeAttr('data-element-id');
+    }
 
     return clonedComponent.html();
 };

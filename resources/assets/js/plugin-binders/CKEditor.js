@@ -73,14 +73,15 @@ class CKEditor extends PluginBinder
             ...options
         });
 
-        this.instances[$(element).data('editableId')] = editor.id;
+        // this.instances[$(element).data('editableId')] = editor.id;
+        this.instances[$(element).data('editableId')] = editor.name;
 
         return editor;
     }
 
-    instance(id)
+    instance(name)
     {
-        return CKEDITOR.instances[id];
+        return CKEDITOR.instances[name];
     }
 
     findInstance(element)

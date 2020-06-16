@@ -20,7 +20,7 @@ class Response
         return this;
     }
 
-    handle()
+    handle(callback)
     {
         var res = this;
 
@@ -33,10 +33,18 @@ class Response
             if (pack instanceof Array) {
                 $.each(pack, function(i, data)
                 {
-                    res[cmd](data);
+                    let ret = res[cmd](data);
+
+                    if (ret && (typeof callback === 'function')) {
+                        callback(ret);
+                    }
                 });
             } else {
-                res[cmd](pack);
+                let ret = res[cmd](pack);
+
+                if (ret && (typeof callback === 'function')) {
+                    callback(ret);
+                }
             }
         });
     }
@@ -56,7 +64,7 @@ class Response
     {
         var res = this;
 
-        $(modal)
+        return $(modal)
             .appendTo('body')
             .on('show.bs.modal', function(e) {
                 res._bindPlugins($(this));
@@ -70,12 +78,12 @@ class Response
 
     modalOpen(selector)
     {
-        $(selector).modal();
+        return $(selector).modal();
     }
 
     modalClose(selector)
     {
-        $(selector).modal('hide');
+        return $(selector).modal('hide');
     }
 
     reload()

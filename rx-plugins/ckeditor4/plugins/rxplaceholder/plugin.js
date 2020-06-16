@@ -20,22 +20,61 @@
 		},
 
 		init: function(editor) {
+			var rx = window.rx();
 			var lang = editor.lang.rxplaceholder;
-			var $element = $(editor.element.$ ).closest('[data-element-type]');
+			var $element = $(editor.element.$).closest('[data-element-type]');
 			var $composition = window.parent.$('iframe').closest('[data-keditor]').find('.content-composition');
+			var $loading_element = $('.right_col > .x_panel');
 
 			editor.addCommand('RxPlaceholderDialog', {
 				exec: function (editor) {
 					window.rxUtility().ajaxCall({
-						rx: window.rx(),
-						element: $element,
+						rx: rx,
+						// element: $element,
+						element: $loading_element,
 						type: 'get',
 						url: $composition.data('placeholders-url'),
 						data: {
 							elementType: $element.data('elementType')
 						}
+					}, function (data) {
+						if (rx.hasPlugin('loading-overlay')) {
+							rx.getPlugin('loading-overlay').hide($loading_element);
+						}
+
+						rx.getResponse().set(data).handle(function(modal) {
+							$(modal).on('click', '[data-dependency]', function(e) {
+								$(modal).modal('hide');
+
+								var $placeholder = $('<span>')
+									.attr('contenteditable', false)
+									.attr('data-dependency', $(this).data('dependency'))
+									.addClass('label')
+									.addClass('label-info')
+									.text($(this).data('title'));
+
+								if (false) {
+									$placeholder.attr('data-dependency-on-empty', 'remove-parent')
+								}
+
+								editor.insertHtml($placeholder.get(0).outerHTML);
+							});
+						});
 					});
 				}
+			});
+
+			editor.widgets.add('rxplaceholder', {
+				allowedContent: 'span[data-dependency]',
+				requiredContent: 'span[data-dependency]',
+
+				upcast: function(el) {
+					return el.name == 'span' && ('data-dependency' in el.attributes);
+				},
+
+				downcast: function() {
+					return;
+				},
 			});
 
             editor.ui.addButton && editor.ui.addButton('RxPlaceholderDialog', {
@@ -47,7 +86,7 @@
 		},
 
 		afterInit: function(editor) {
-			alert('placeholder afterInit');
-		}
+			// alert('placeholder afterInit');
+		},
 	});
 })();
