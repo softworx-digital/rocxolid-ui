@@ -44,8 +44,6 @@
 
 						rx.getResponse().set(data).handle(function(modal) {
 							$(modal).on('click', '[data-dependency]', function(e) {
-								$(modal).modal('hide');
-
 								var $placeholder = $('<span>')
 									.attr('contenteditable', false)
 									.attr('data-dependency', $(this).data('dependency'))
@@ -57,7 +55,7 @@
 									$placeholder.attr('data-dependency-on-empty', 'remove-parent')
 								}
 
-								editor.insertHtml($placeholder.get(0).outerHTML);
+								editor.insertHtml($placeholder.get(0).outerHTML + ' ');
 							});
 						});
 					});
@@ -74,6 +72,14 @@
 
 				downcast: function() {
 					return;
+				},
+
+				init: function() {
+					this.on('ready', function(ev) {
+						// this.fire('blur');
+						// this.setSelected(false);
+						// this.setFocused(false);
+					});
 				},
 			});
 

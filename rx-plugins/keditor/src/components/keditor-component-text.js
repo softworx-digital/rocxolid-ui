@@ -42,7 +42,8 @@ KEditor.components['text'] = {
             var $content = $('<div>')
                 .addClass('content-container')
                 .attr('data-element-type', componentContentElement.data('elementType'))
-                .attr('data-element-id', componentContentElement.data('elementId'));
+                .attr('data-element-id', componentContentElement.data('elementId'))
+                .attr('data-element-template', componentContentElement.data('elementTemplate'));
 
             self.withEditables(keditor, null, component, componentContent, self.getEditorContent, contentParts);
 
