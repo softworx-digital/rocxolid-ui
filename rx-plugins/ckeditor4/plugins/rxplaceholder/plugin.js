@@ -11,7 +11,7 @@
 	CKEDITOR.plugins.add('rxplaceholder', {
         requires: 'widget',
 		lang: 'sk',
-		icons: 'rxplaceholder',
+		icons: 'placeholder',
 		hidpi: true,
 
 		onLoad: function() {
