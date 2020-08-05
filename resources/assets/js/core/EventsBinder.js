@@ -110,6 +110,11 @@ class EventsBinder
             $clone.find('input').val($input.val()).removeAttr('disabled');
 
             if ($input.val() !== '') {
+                if ($clone.find('input').is(':radio')) {
+                    $clone.find('input').prop('checked', true).change();
+                    $target.find('input:radio[name="' + $clone.find('input').attr('name') + '"]').attr('checked', false).closest('.active').removeClass('active');
+                }
+
                 $template.before($clone);
                 $input.val('');
             }
@@ -130,11 +135,12 @@ class EventsBinder
 
                 $clone = Utility.resetFormField($clone, function($field)
                 {
+                    $field.appendTo($container);
+
                     rx.bindPlugin('select', $field);
                     rx.bindPlugin('ajax-select', $field);
+                    rx.bindPlugin('toggle', $field);
                 });
-
-                $container.append($clone);
 
                 // reindex the fields incrementally
                 Utility.resetArrayFieldsNameParameters($container, selector);
@@ -172,7 +178,7 @@ class EventsBinder
             let econtainer = $(this).attr('data-click-check-container') || container;
             let $elm = $(this).closest(econtainer).find(selector);
 
-            $elm.closest('[data-toggle]').find(':checked').removeAttr('checked').parent().removeClass('active').removeClass('focus');
+            $elm.closest('[data-toggle]').find(':checked').removeAttr('checked').closest('.active').removeClass('active').removeClass('focus');
             $elm.attr('checked', 'checked').parent().addClass('active');
 
         });
@@ -187,7 +193,7 @@ class EventsBinder
             let selector = $(this).attr('data-click-uncheck');
             let econtainer = $(this).attr('data-click-uncheck-container') || container;
 
-            $(this).closest(econtainer).find(selector).removeAttr('checked').parent().removeClass('active').removeClass('focus');
+            $(this).closest(econtainer).find(selector).removeAttr('checked').closest('.active').removeClass('active').removeClass('focus');
         });
 
         $(container).on('click', '[data-click-enable]', function(e)

@@ -1,7 +1,7 @@
 let mix = require('laravel-mix');
 
 mix
-   .setResourceRoot('../../../../') // this sets the path prefix to font files etc., useful for apps in subdir
+   .setResourceRoot('../') // this sets the path prefix to font files etc., useful for apps in subdir
    .setPublicPath('build')
    .autoload({
       jquery: [ '$', 'jQuery', 'window.jQuery' ]

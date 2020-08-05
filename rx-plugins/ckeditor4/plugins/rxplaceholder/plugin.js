@@ -11,7 +11,7 @@
 	CKEDITOR.plugins.add('rxplaceholder', {
         requires: 'widget',
 		lang: 'sk',
-		icons: 'placeholder',
+		icons: 'rxplaceholder',
 		hidpi: true,
 
 		onLoad: function() {
@@ -65,6 +65,10 @@
 			editor.widgets.add('rxplaceholder', {
 				allowedContent: 'span[data-dependency]',
 				requiredContent: 'span[data-dependency]',
+
+				inline: true,
+				// draggable: true,
+				draggable: false,
 
 				upcast: function(el) {
 					return el.name == 'span' && ('data-dependency' in el.attributes);

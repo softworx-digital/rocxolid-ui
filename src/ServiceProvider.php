@@ -49,6 +49,11 @@ class ServiceProvider extends RocXolidAbstractServiceProvider
         // php artisan vendor:publish --provider="Softworx\RocXolid\UI\ServiceProvider" --tag="assets" (--force to overwrite)
         // @todo: "hotfixed" - unify?
         $this->publishes([
+            __DIR__ . '/../build' => public_path('vendor/softworx/rocXolid'),
+        ], 'assets');
+
+        /*
+        $this->publishes([
             __DIR__ . '/../build/plugins' => public_path('vendor/softworx/rocXolid/plugins'),
             __DIR__ . '/../build/images' => public_path('vendor/softworx/rocXolid/images'),
             __DIR__ . '/../build/css' => public_path('vendor/softworx/rocXolid/css'),
@@ -57,6 +62,7 @@ class ServiceProvider extends RocXolidAbstractServiceProvider
             __DIR__ . '/../build/images/vendor' => public_path('images/vendor'),
             __DIR__ . '/../build/fonts' => public_path('fonts'),
         ], 'assets');
+        */
 
         return $this;
     }

@@ -84,6 +84,19 @@ class RocXolid
         return this;
     }
 
+    unbindPlugin(plugin, selector)
+    {
+        selector = selector || document;
+
+        if (this.hasPlugin(plugin)) {
+            this.getPlugin(plugin).unbind(selector);
+        } else {
+            console.warn('No RocXolid plugin binder for', plugin);
+        }
+
+        return this;
+    }
+
     hasPlugin(plugin)
     {
         return (typeof this.getPluginBinder(plugin) !== 'undefined');

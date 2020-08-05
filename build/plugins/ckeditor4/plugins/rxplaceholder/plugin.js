@@ -66,6 +66,10 @@
 				allowedContent: 'span[data-dependency]',
 				requiredContent: 'span[data-dependency]',
 
+				inline: true,
+				// draggable: true,
+				draggable: false,
+
 				upcast: function(el) {
 					return el.name == 'span' && ('data-dependency' in el.attributes);
 				},

@@ -1,4 +1,6 @@
-import 'summernote/dist/summernote.css';
+// @todo: this doesn't quite work - the processed font paths are relative to the browser URL, not to the published css
+// dunno how to set it up properly right now, current workaround - imported in scss
+// import 'summernote/dist/summernote.css';
 import 'summernote';
 import 'summernote/dist/lang/summernote-sk-SK.min';
 import 'summernote-extensions/maxlength';

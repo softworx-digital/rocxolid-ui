@@ -25,6 +25,11 @@ class PluginBinder
         throw new ReferenceError('Binding must be implemented in specific plugin binder');
     }
 
+    unbind(container)
+    {
+        throw new ReferenceError('Unbinding must be implemented in specific plugin binder');
+    }
+
     onNotAvailable()
     {
         console.warn(this.constructor.packageName, 'not available');

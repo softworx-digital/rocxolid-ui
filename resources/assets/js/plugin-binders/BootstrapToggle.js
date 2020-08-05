@@ -14,6 +14,22 @@ class BootstrapToggle extends PluginBinder
         var rx = this.rx;
 
         $('input:checkbox[data-toggle]', container).bootstrapToggle();
+
+        // @todo: hotfixed
+        const groupcontainer = $(container).is('.row.form-field-group-addable') ? $(container).closest('fieldset') : container;
+
+        $('input:checkbox[data-toggle][data-uncheck-group]', groupcontainer).change(function() {
+            if ($(this).is(':checked')) {
+                $('input:checkbox[data-toggle][data-uncheck-group]', groupcontainer).not(this).bootstrapToggle('off');
+            }
+        });
+    }
+
+    unbind(container)
+    {
+        var rx = this.rx;
+
+        $('input:checkbox[data-toggle]', container).bootstrapToggle('destroy');
     }
 }
 

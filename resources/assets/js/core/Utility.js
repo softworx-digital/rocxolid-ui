@@ -28,6 +28,7 @@ Utility.resetArrayFieldsNameParameters = ($container, selector) => {
 Utility.resetFormField = ($field, callback) => {
     $field.find('[data-add-form-field-group]').parent().remove();
     $field.find('[data-remove-form-field-group]').parent().removeClass('hidden');
+    $field.find('input:checkbox[data-toggle]').prop('checked', false).change().unwrap().next('.toggle-group').remove();
     $field.find('.has-error').removeClass('has-error');
     $field.find('.error-message').remove();
     $field.find('.bootstrap-select').replaceWith(function()
@@ -36,7 +37,7 @@ Utility.resetFormField = ($field, callback) => {
     });
     //$clone.find(':input').val('');
     $field.find('input:not([type=radio], [type=checkbox]), select').val('');
-    $field.find('input[type=radio], input[type=checkbox]').attr('checked', false);
+    $field.find('input:radio, input:checkbox').attr('checked', false);
     $field.find('input.flat').each(function(index)
     {
         $(this).next('ins').remove();
