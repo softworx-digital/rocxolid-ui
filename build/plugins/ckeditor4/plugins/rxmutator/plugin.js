@@ -46,7 +46,7 @@
 						rx.getResponse().set(data).handle(function(modal) {
 							$(modal).on('click', '[data-mutator]', function(e) {
 								var selection = editor.getSelection();
-								var allowed_selection_regex = $(this).data('mutatorAllowedSelectionRegex');
+								var restricted_multiple_placeholder = $(this).data('mutatorMultiplePlaceholder');
 								var mutator = editor.document.createElement('span');
 
 								mutator.setAttributes({
@@ -54,28 +54,27 @@
 									'title': $(this).data('title'),
 								});
 
-								if (self.isMutatorWrapped(selection)) {
-									self.notifyError(lang.error.selection_invalid_wrapped);
-								}
+								try {
+									if (self.isMutatorWrapped(selection)) {
+										throw lang.error.selection_invalid_wrapped;
+									}
 
-								switch (selection.getType()) {
-									case CKEDITOR.SELECTION_NONE:
-										break;
-									case CKEDITOR.SELECTION_TEXT:
-										if (selection.getSelectedText() === '') {
-											self.notifyError(lang.error.selection_empty);
-										} else if (allowed_selection_regex && !(new RegExp(allowed_selection_regex)).test(selection.getSelectedText())) {
-											self.notifyError(lang.error.selection_invalid_regex);
-										} else {
-											mutator.setText(selection.getSelectedText());
-											editor.insertElement(mutator);
-											var widget = editor.widgets.initOn(mutator, 'rxmutator');
-										}
-										break;
-									case CKEDITOR.SELECTION_ELEMENT:
-										mutator.setHtml(selection.getSelectedElement().getHtml());
-										editor.insertElement(mutator);
-										break;
+									if (restricted_multiple_placeholder && (!editor.widgets.selected || (editor.widgets.selected.length < 2))) {
+										throw lang.error.selection_requires_multiple_placeholder;
+									}
+
+									if (!restricted_multiple_placeholder && editor.widgets.selected && (editor.widgets.selected.length > 1)) {
+										throw lang.error.selection_forbids_multiple_placeholder;
+									}
+
+									// @todo: could not find a prettier way to do this
+									if (restricted_multiple_placeholder && editor.widgets.selected && (editor.widgets.selected.length > 1)) {
+										self.handleMultiplePlaceholderMutator(lang, $(this), editor, selection, mutator);
+									} else {
+										self.handleSimpleMutator(lang, $(this), editor, selection, mutator);
+									}
+								} catch (e) {
+									self.notifyError(e);
 								}
 							});
 						});
@@ -133,6 +132,49 @@
 					group: 'rxMutatorGroup'
 				});
 			}
+		},
+
+		handleSimpleMutator: function(lang, $choice, editor, selection, mutator) {
+			let allowed_selection_regex = $choice.data('mutatorAllowedSelectionRegex');
+
+			switch (selection.getType()) {
+				case CKEDITOR.SELECTION_NONE:
+					break;
+				case CKEDITOR.SELECTION_TEXT:
+					if (selection.getSelectedText() === '') {
+						throw lang.error.selection_empty;
+					} else if (allowed_selection_regex && !(new RegExp(allowed_selection_regex)).test(selection.getSelectedText())) {
+						throw lang.error.selection_invalid_regex;
+					} else {
+						mutator.setText(selection.getSelectedText());
+						editor.insertElement(mutator);
+						var widget = editor.widgets.initOn(mutator, 'rxmutator');
+					}
+					break;
+				case CKEDITOR.SELECTION_ELEMENT:
+					mutator.setHtml(selection.getSelectedElement().getHtml());
+					editor.insertElement(mutator);
+					break;
+			}
+		},
+
+		handleMultiplePlaceholderMutator: function(lang, $choice, editor, selection, mutator) {
+			let mutator_content = [];
+
+			editor.widgets.selected.forEach(el => {
+				let $element = $(el.element.$)
+					.removeAttr('data-cke-widget-data')
+					.removeAttr('data-cke-widget-upcasted')
+					.removeAttr('data-cke-widget-keep-attr')
+					.removeAttr('data-widget')
+					.removeAttr('contenteditable')
+					.removeClass('cke_widget_element');
+
+				mutator_content.push($element.wrap('<span></span>').parent().html());
+			});
+
+			mutator.setHtml(mutator_content.join(' + '));
+			editor.insertElement(mutator);
 		},
 
 		afterInit: function(editor) {

@@ -15,17 +15,20 @@ Utility.resetArrayFieldsNameParameters = ($container, selector) => {
     {
         $(this).find('[name]').each(function() // @todo: add additional regex check
         {
-            const attr = $(this).attr('name').replace(/(.*)\[(\d*)\](.*)/, function($0, $1, $2, $3)
-            {
-                return $1 + '[' + i + ']' + $3;
-            });
+            if (!$(this).closest('.control-group-additional').exists()) {
+                const attr = $(this).attr('name').replace(/(.*)\[(\d*)\](.*)/, function($0, $1, $2, $3)
+                {
+                    return $1 + '[' + i + ']' + $3;
+                });
 
-            $(this).attr('name', attr);
+                $(this).attr('name', attr);
+            }
         });
     });
 }
 
 Utility.resetFormField = ($field, callback) => {
+    $field.find('.control-group-additional').remove();
     $field.find('[data-add-form-field-group]').parent().remove();
     $field.find('[data-remove-form-field-group]').parent().removeClass('hidden');
     $field.find('input:checkbox[data-toggle]').prop('checked', false).change().unwrap().next('.toggle-group').remove();

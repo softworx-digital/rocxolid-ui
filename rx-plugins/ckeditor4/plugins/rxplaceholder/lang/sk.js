@@ -7,6 +7,6 @@
  */
 
 CKEDITOR.plugins.setLang('rxplaceholder', 'sk', {
-	toolbar: 'Vložiť placeholder pre dynamický text',
-	pathName: 'placeholder'
+    toolbar: 'Vložiť placeholder pre dynamický text',
+    pathName: 'placeholder'
 });
