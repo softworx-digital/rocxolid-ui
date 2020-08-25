@@ -16,7 +16,7 @@ class CKEditor extends PluginBinder
         // global CKEditor configuration
         CKEDITOR.disableAutoInline = true;
         CKEDITOR.config.language = settings.lang || this.lang;
-        CKEDITOR.config.extraPlugins = 'justify,font,colorbutton,colordialog,rxplaceholder,rxmutator';
+        CKEDITOR.config.extraPlugins = 'justify,font,colorbutton,colordialog,widget,widgetselection,rxplaceholder,rxmutator';
         CKEDITOR.config.skin = 'bootstrapck';
         CKEDITOR.config.format_tags = 'p;h1;h2;h3;h4;h5;h6';
 
@@ -41,7 +41,7 @@ class CKEditor extends PluginBinder
             // templates_replaceContent: false,
             enterMode: 2,
             removeButtons: 'Subscript,Superscript,Cut,Copy,Paste,PasteText,PasteFromWord',
-            removePlugins: 'widgetselection',
+            // removePlugins: 'widgetselection', // throws "editor-plugin-required" exception when removed
             minimumChangeMilliseconds: 100
         };
 

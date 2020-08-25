@@ -28,7 +28,7 @@ class BootstrapAjaxSelectPicker extends PluginBinder
                 statusTooShort: pb.t('statusTooShort')
             },
             ajax: {
-                data: function () {
+                data: function() {
                     return {
                         _param: this.plugin.$element.closest('form').find('[name="_param"]').val(),
                         q: '{{{q}}}',

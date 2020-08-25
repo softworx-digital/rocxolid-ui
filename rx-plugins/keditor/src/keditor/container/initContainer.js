@@ -1,6 +1,7 @@
 import TOOLBAR_TYPE from '../constants/toolbarType';
 import CSS_CLASS from '../constants/cssClass';
 import generateToolbar from '../utils/generateToolbar';
+import generateMetaData from '../utils/generateMetaData';
 import generateId from '../utils/generateId';
 import initContainerContent from './initContainerContent';
 import initColumnResizer from './initColumnResizer';
@@ -9,7 +10,9 @@ export default function (container) {
     let self = this;
     let options = self.options;
     let isNested = container.closest('[data-type="container-content"]').length > 0;
+    let containerContent = container.find('[data-type="container-content"]').first();
     let contentArea = container.closest(`.${CSS_CLASS.CONTENT_AREA}`);
+    let metaData = JSON.parse(containerContent.attr('data-element-meta') || '{}');
 
     if (!container.hasClass(CSS_CLASS.STATE_INITIALIZED) || !container.hasClass(CSS_CLASS.STATE_INITIALIZING)) {
         container.addClass(CSS_CLASS.STATE_INITIALIZING);
@@ -26,6 +29,8 @@ export default function (container) {
             generateToolbar.call(self, isNested ? TOOLBAR_TYPE.SUB_CONTAINER : TOOLBAR_TYPE.CONTAINER, options.containerSettingEnabled)
             +
             generateToolbar.call(self, isNested ? TOOLBAR_TYPE.SUB_CONTAINER_BOTTOM : TOOLBAR_TYPE.CONTAINER_BOTTOM)
+            +
+            generateMetaData.call(self, metaData)
         );
 
         container.attr('id', generateId());
@@ -50,5 +55,9 @@ export default function (container) {
 
         container.addClass(CSS_CLASS.STATE_INITIALIZED);
         container.removeClass(CSS_CLASS.STATE_INITIALIZING);
+
+        if (!$.isEmptyObject(metaData)) {
+            container.addClass(CSS_CLASS.STATE_META_DATA_ACTIVE);
+        }
     }
 };

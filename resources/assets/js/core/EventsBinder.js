@@ -229,7 +229,7 @@ class EventsBinder
             }
 
             const $form = $(this).closest('form');
-            const data = $form.find('[name^="_data"],[name="_section"],[name="_param"]').fieldSerialize();
+            const data = $form.find('[name^="_data"],[name="_section"],[name="_param"]').not(':disabled').fieldSerialize();
 
             Utility.ajaxCall({
                 rx: rx,
@@ -243,18 +243,7 @@ class EventsBinder
         $(container).on('change', ':checkbox[data-change-action], :radio[data-change-action]', function(e)
         {
             const $form = $(this).closest('form');
-            const name = $(this).attr('name');
-            let data = {};
-
-            $form.find('[name^="_data"],[name="_section"],[name="_param"]').each(function() {
-                data[$(this).attr('name')] = $(this).val();
-            });
-
-            if ($(this).is(':checkbox')) {
-                data[name] = $(this).is(':checked') * 1;
-            } else {
-                data[name] = $(this).val();
-            }
+            const data = $form.find('[name^="_data"],[name="_section"],[name="_param"]').not(':disabled').fieldSerialize();
 
             Utility.ajaxCall({
                 rx: rx,
@@ -298,24 +287,30 @@ class EventsBinder
     {
         let rx = this.rx;
 
-        $(window).on('focus', function()
+        $(window).on('focus', function(e)
         {
-            console.debug('Window focused');
+            console.debug('%c Window focused', 'color: #bada55;', e);
 
-            if (typeof configuration.pingUrl !== 'undefined') {
-                $.getJSON(configuration.pingUrl).fail(function(data)
-                {
-                    if (data.status === 401) {
-                        if (!$('#login-modal').exists()) {
-                            $.getJSON(configuration.loginUrl, function(data)
-                            {
-                                rx.getResponse().set(data).handle();
-                            });
+            let need_ping = (rx.ping < ((new Date()).getTime() / 1000));
 
-                            $('body').addClass('offline');
+            if (need_ping && (typeof configuration.pingUrl !== 'undefined')) {
+                $.getJSON(configuration.pingUrl)
+                    .done(function(data) {
+                        rx.ping = data.ping;
+                    })
+                    .fail(function(data)
+                    {
+                        if (data.status === 401) {
+                            if (!$('#login-modal').exists()) {
+                                $.getJSON(configuration.loginUrl, function(data)
+                                {
+                                    rx.getResponse().set(data).handle();
+                                });
+
+                                $('body').addClass('offline');
+                            }
                         }
-                    }
-                });
+                    });
             }
         });
 
@@ -324,7 +319,7 @@ class EventsBinder
 
     bindWindowFullscreen()
     {
-        document.addEventListener('fullscreenchange', function () {
+        document.addEventListener('fullscreenchange', function() {
             $('body').toggleClass('fullscreen', !!document.fullscreenElement);
         });
 
@@ -374,28 +369,28 @@ class EventsBinder
     bindTabsEvents(container)
     {
         /*
-        $('a[data-toggle="tab"]').on('hide.bs.tab', function (e)
+        $('a[data-toggle="tab"]').on('hide.bs.tab', function(e)
         {
             var $old_tab = $($(e.target).attr('href'));
             var $new_tab = $($(e.relatedTarget).attr('href'));
 
             if($new_tab.index() < $old_tab.index()){
                 $old_tab.css('position', 'relative').css('right', '0').show();
-                $old_tab.animate({'right': '-100%'}, 300, function ()
+                $old_tab.animate({'right': '-100%'}, 300, function()
                 {
                     $old_tab.css('right', 0).removeAttr('style');
                 });
             }
             else {
                 $old_tab.css('position', 'relative').css('left', '0').show();
-                $old_tab.animate({'left': '-100%'}, 300, function ()
+                $old_tab.animate({'left': '-100%'}, 300, function()
                 {
                     $old_tab.css('left', 0).removeAttr('style');
                 });
             }
         });
 
-        $('a[data-toggle="tab"]').on('show.bs.tab', function (e)
+        $('a[data-toggle="tab"]').on('show.bs.tab', function(e)
         {
             var $new_tab = $($(e.target).attr('href'));
             var $old_tab = $($(e.relatedTarget).attr('href'));
@@ -410,7 +405,7 @@ class EventsBinder
             }
         });
 
-        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e)
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function(e)
         {
             // your code on active tab shown
         });

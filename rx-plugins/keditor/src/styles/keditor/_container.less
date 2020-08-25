@@ -8,10 +8,10 @@
 // -------------------------------------------------
 .keditor-container {
     position: relative;
-    
+
     > .keditor-container-inner {
         position: relative;
-        
+
         &:before {
             position: absolute;
             top: unit(-@container-outline-with + @container-outline-offset, px);
@@ -24,30 +24,44 @@
             z-index: -1;
         }
     }
-    
+
+    &.meta-data-active {
+        .keditor-container-content {
+            &:before {
+                border-color: @meta-data-border-color;
+            }
+        }
+    }
+
     > .keditor-toolbar {
         top: unit(-@container-outline-with + @container-outline-offset, px);
         left: unit(-@toolbar-item-size + @container-outline-offset, px);
         border-radius: @border-radius 0 0 @border-radius;
-        
+
         > a {
-            background: @container-toolbar-button-bg;
+            background: fade(@container-toolbar-button-bg, 80%);
             color: @container-toolbar-button-color;
-            
+
             &:hover {
                 background: @container-toolbar-button-bg-hover;
             }
         }
+
+        &.keditor-toolbar-sub-container {
+            > a {
+                background: @container-toolbar-button-bg;
+            }
+        }
     }
-    
+
     > .keditor-toolbar-bottom-container {
         bottom: -@container-outline-with;
-        
+
         > a {
             float: left;
         }
     }
-    
+
     &:hover {
         > .keditor-container-inner {
             &:before {
@@ -55,24 +69,30 @@
             }
         }
     }
-    
+
     &.showed-keditor-toolbar {
-        z-index: 2;
-        
+        z-index: 6;
+
         > .keditor-container-inner {
             &:before {
                 border-color: @container-outline-color-selected;
             }
         }
     }
-    
+
     &:hover,
     &.showed-keditor-toolbar {
         > .keditor-toolbar {
             display: block;
         }
+
+        &.meta-data-active {
+            > .keditor-meta-data {
+                display: block;
+            }
+        }
     }
-    
+
     &:last-child,
     &:only-child {
         > .keditor-toolbar-bottom-container {
@@ -83,7 +103,7 @@
 
 .keditor-container-content {
     position: relative;
-    
+
     &:before {
         position: absolute;
         top: 0;

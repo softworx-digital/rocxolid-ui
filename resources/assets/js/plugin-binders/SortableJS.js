@@ -21,21 +21,21 @@ class SortableJS extends PluginBinder
             touchStartThreshold: settings.touchStartThreshold || 0,
             fallbackTolerance: settings.fallbackTolerance || 1,
             dataIdAttr: settings.dataIdAttr || 'data-item-id',
-            onStart: settings.onStart || function (evt)
+            onStart: settings.onStart || function(e)
             {
                 $('body').addClass('dragging');
             },
-            onMove: settings.onMove || function (evt, originalEvent)
+            onMove: settings.onMove || function(e, originalEvent)
             {
-                const $item = $(evt.dragged),
-                      $related = $(evt.related),
-                      $container = $(evt.from);
+                const $item = $(e.dragged),
+                      $related = $(e.related),
+                      $container = $(e.from);
 
                 $('.drag-hover').removeClass('drag-hover');
                 $related.addClass('drag-hover');
                 $item.removeClass('drag-hover');
             },
-            onEnd: settings.onEnd || function (evt)
+            onEnd: settings.onEnd || function(e)
             {
                 const serialize = function($container)
                 {
@@ -65,8 +65,8 @@ class SortableJS extends PluginBinder
                     return [ tree ];
                 };
 
-                const $item = $(evt.item);
-                const $from = $(evt.from);
+                const $item = $(e.item);
+                const $from = $(e.from);
                 const $from_container = $item.closest('.sortable[data-update-url]');
                 const tree = serialize($from_container);
 

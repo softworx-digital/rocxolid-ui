@@ -12,6 +12,7 @@ class RocXolid
 {
     constructor()
     {
+        this.ping = 0;
         this.response = new Response(this);
         this.eventsBinder = new EventsBinder(this);
         this.elementBinder = new ElementBinder(this);

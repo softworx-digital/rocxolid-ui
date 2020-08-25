@@ -4,17 +4,17 @@ const CSS_CLASS = {
     UI_HIDDEN: 'keditor-ui-hidden',
     UI_CUTTING: 'keditor-ui-cutting',
     UI_RESIZER: 'ui-resizable-resizer',
-    
+
     SORTABLE: 'ui-sortable',
     RESIZABLE: 'ui-sortable',
-    
+
     WRAPPER: 'keditor-wrapper',
-    
+
     BTN: 'keditor-btn',
     BTN_GROUP: 'keditor-btn-group',
     BTN_PRIMARY: 'keditor-btn-primary',
     BTN_DEFAULT: 'keditor-btn-default',
-    
+
     STATE_ACTIVE: 'active',
     STATE_OPENED: 'opened',
     STATE_SHOWED: 'showed',
@@ -25,6 +25,7 @@ const CSS_CLASS = {
     STATE_PREVIEWING: 'previewing',
     STATE_TOOLBAR_SHOWED: 'showed-keditor-toolbar',
     STATE_SIDEBAR_SHOWED: 'showed-keditor-sidebar',
+    STATE_META_DATA_ACTIVE: 'meta-data-active',
     STATE_MODAL_OPENED: 'opened-modal',
     STATE_NOT_MATCHED: 'not-matched',
     STATE_HAS_FOOTER: 'has-footer',
@@ -32,23 +33,23 @@ const CSS_CLASS = {
     STATE_COPYING_COMPONENT: 'copying-component',
     STATE_COPYING_CONTAINER: 'copying-container',
     STATE_COPYING_SUB_CONTAINER: 'copying-sub-container',
-    
+
     ADD_CONTENT: 'btn-add-content',
     PASTE_CONTENT: 'btn-paste-content',
-    
+
     SIDEBAR: 'keditor-sidebar',
     SIDEBAR_HEADER: 'keditor-sidebar-header',
     SIDEBAR_BODY: 'keditor-sidebar-body',
     SIDEBAR_TITLE: 'keditor-sidebar-title',
     SIDEBAR_CLOSER: 'keditor-sidebar-closer',
-    
+
     TOPBAR: 'keditor-topbar',
     TOPBAR_LEFT: 'keditor-topbar-left',
     TOPBAR_CENTER: 'keditor-topbar-center',
     TOPBAR_RIGHT: 'keditor-topbar-right',
     TOPBAR_BUTTON: 'keditor-topbar-btn',
     TOPBAR_TITLE: 'keditor-topbar-title',
-    
+
     MODAL: 'keditor-modal',
     MODAL_COMPONENT: 'keditor-modal-component',
     MODAL_CONTAINER: 'keditor-modal-container',
@@ -58,7 +59,7 @@ const CSS_CLASS = {
     MODAL_FOOTER: 'keditor-modal-footer',
     MODAL_CLOSE: 'keditor-modal-close',
     MODAL_ADD: 'keditor-modal-add',
-    
+
     SNIPPET: 'keditor-snippet',
     SNIPPET_INNER: 'keditor-snippet-inner',
     SNIPPET_TITLE: 'keditor-snippet-title',
@@ -74,7 +75,7 @@ const CSS_CLASS = {
     SNIPPETS_FILTER_WRAPPER: 'keditor-snippets-filter-wrapper',
     SNIPPETS_COMPONENT: 'keditor-snippets-component',
     SNIPPETS_WRAPPER: 'keditor-snippets-wrapper',
-    
+
     TOOLBAR: 'keditor-toolbar',
     TOOLBAR_BOTTOM: 'keditor-toolbar-bottom',
     TOOLBAR_CONTENT_AREA: 'keditor-toolbar-content-area',
@@ -86,16 +87,16 @@ const CSS_CLASS = {
     TOOLBAR_SUB_CONTAINER_CONTENT: 'keditor-toolbar-sub-container-content',
     TOOLBAR_COMPONENT: 'keditor-toolbar-component',
     TOOLBAR_COMPONENT_BOTTOM: 'keditor-toolbar-bottom-component',
-    
+
     SETTING: 'keditor-setting',
     SETTING_FORM: 'keditor-setting-form',
     SETTING_FORM_LOADING: 'keditor-setting-form-loading',
-    
+
     CONTENT_AREA: 'keditor-content-area',
     CONTENT_AREA_INNER: 'keditor-content-area-inner',
     CONTENT_AREAS: 'keditor-content-areas',
     CONTENT_AREAS_WRAPPER: 'keditor-content-areas-wrapper',
-    
+
     IFRAME: 'keditor-iframe',
     IFRAME_BODY: 'keditor-iframe-body',
     IFRAME_WRAPPER: 'keditor-iframe-wrapper',
@@ -104,7 +105,7 @@ const CSS_CLASS = {
     IFRAME_COVER_WRAPPER_FAKE: 'keditor-iframe-cover-wrapper-fake',
     IFRAME_COVER: 'keditor-iframe-cover',
     IFRAME_COVER_HIDDEN: 'hidden-cover',
-    
+
     COMPONENT: 'keditor-component',
     COMPONENT_MOVE: 'btn-component-move',
     COMPONENT_MOVE_UP: 'btn-component-move-up',
@@ -116,7 +117,7 @@ const CSS_CLASS = {
     COMPONENT_DELETE: 'btn-component-delete',
     COMPONENT_CONTENT: 'keditor-component-content',
     COMPONENT_EXISTING: 'existing-component',
-    
+
     CONTAINER: 'keditor-container',
     CONTAINER_MOVE: 'btn-container-move',
     CONTAINER_MOVE_UP: 'btn-container-move-up',
@@ -129,11 +130,14 @@ const CSS_CLASS = {
     CONTAINER_INNER: 'keditor-container-inner',
     CONTAINER_CONTENT: 'keditor-container-content',
     CONTAINER_CONTENT_INNER: 'keditor-container-content-inner',
-    
+
     SUB_CONTAINER: 'keditor-sub-container',
     SUB_CONTAINER_CONTENT: 'keditor-sub-container-content',
-    
+
     PREVIEW_AREA: 'keditor-preview-area',
+
+    META_DATA: 'keditor-meta-data',
+    META_DATA_TOP: 'keditor-meta-data-top',
 };
 
 export default CSS_CLASS;

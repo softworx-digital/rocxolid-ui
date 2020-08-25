@@ -26,7 +26,7 @@ class Summernote extends PluginBinder
             dialogsInBody: true,
             dialogsFade: true,
             fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36', '48' , '64', '82', '150'],
-            onCreateLink: function (url) {
+            onCreateLink: function(url) {
                 return url;
             }
         });
@@ -38,7 +38,7 @@ class Summernote extends PluginBinder
 
         return $(selector).summernote({
             airMode: true,
-            onCreateLink: function (url) {
+            onCreateLink: function(url) {
                 return url;
             }
         });

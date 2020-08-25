@@ -79,7 +79,7 @@ Utility.formatBytes = (bytes, decimals = 2) => {
 }
 
 Utility.loadScript = (src) => {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function(resolve, reject) {
         var s;
         s = document.createElement('script');
         s.src = src;
@@ -95,7 +95,7 @@ Utility.ajaxCall = (settings, success, error) => {
     }
 
     if (!settings.element) {
-        throw new ReferenceError('Missing element reference in settings');
+        // throw new ReferenceError('Missing element reference in settings');
     }
 
     if (!settings.type) {
@@ -110,7 +110,7 @@ Utility.ajaxCall = (settings, success, error) => {
         throw new ReferenceError('Missing request data in settings');
     }
 
-    if (settings.rx.hasPlugin('loading-overlay')) {
+    if (settings.element && settings.rx.hasPlugin('loading-overlay')) {
         settings.rx.getPlugin('loading-overlay').show($(settings.element).closest('.ajax-overlay'));
     }
 
@@ -124,7 +124,7 @@ Utility.ajaxCall = (settings, success, error) => {
             if (success && (typeof success === 'function')) {
                 success(data);
             } else {
-                if (settings.rx.hasPlugin('loading-overlay')) {
+                if (settings.element && settings.rx.hasPlugin('loading-overlay')) {
                     settings.rx.getPlugin('loading-overlay').hide($(settings.element).closest('.ajax-overlay'));
                 }
                 settings.rx.getResponse().set(data).handle();
@@ -136,7 +136,7 @@ Utility.ajaxCall = (settings, success, error) => {
             if (error && (typeof error === 'function')) {
                 error(data);
             } else {
-                if (settings.rx.hasPlugin('loading-overlay')) {
+                if (settings.element && settings.rx.hasPlugin('loading-overlay')) {
                     settings.rx.getPlugin('loading-overlay').hide($(settings.element).closest('.ajax-overlay'));
                 }
                 settings.rx.handleAjaxError(data)
@@ -167,6 +167,31 @@ Utility.extendJQuery = () => {
     }
 
     /**
+     * Find all descendant 'selector' elements except those having parent 'except'.
+     *
+     * @param {*} selector
+     * @param {*} except
+     * @param {*} result
+     * @return jQuery
+     */
+    $.fn.findExcept = function(selector, except, result)
+    {
+        var result = typeof result !== 'undefined' ? result : new $();
+
+        this.children().each(function() {
+            if ($(this).is(selector)) {
+                result.push(this);
+            }
+
+            if (!$(this).is(except)) {
+                $(this).findExclude(selector, except, result);
+            }
+        });
+
+        return result;
+    }
+
+    /**
      * Bind form submission by hitting enter on text inputs or on radio/checkbox change.
      *
      * @return jQuery
@@ -175,7 +200,7 @@ Utility.extendJQuery = () => {
     {
         let $form = $(this);
 
-        $('input.autosubmit[type="checkbox"],input.autosubmit[type="radio"]', $form).on('change', function (e)
+        $('input.autosubmit[type="checkbox"],input.autosubmit[type="radio"]', $form).on('change', function(e)
         {
             e.preventDefault();
             $form.find('input[type="submit"], button[type="button"][data-ajax-submit-form]').click();
@@ -315,11 +340,11 @@ Utility.extendJQuery = () => {
         subject.src = $elm.attr('data-image-src');
         $(subject).addClass($elm.attr('data-image-class'));
 
-        img.onload = function () {
+        img.onload = function() {
             $small.addClass('loaded');
         };
 
-        subject.onload = function () {
+        subject.onload = function() {
             $(subject).addClass('loaded');
             // $small.removeClass('loaded');
         };

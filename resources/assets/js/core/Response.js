@@ -69,7 +69,7 @@ class Response
             .on('show.bs.modal', function(e) {
                 res._bindPlugins($(this));
             })
-            .on('hidden.bs.modal', function (e) {
+            .on('hidden.bs.modal', function(e) {
                 $(this).remove();
                 // History.back();
             })
@@ -278,7 +278,7 @@ class Response
                 window.open(downloadUrl, '_blank');
             }
 
-            setTimeout(function () { URL.revokeObjectURL(downloadUrl); }, 100); // cleanup
+            setTimeout(function() { URL.revokeObjectURL(downloadUrl); }, 100); // cleanup
         }
     }
 

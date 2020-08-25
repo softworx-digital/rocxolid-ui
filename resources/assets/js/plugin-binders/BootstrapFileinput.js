@@ -38,7 +38,7 @@ class BootstrapFileinput extends PluginBinder
                 language: pb.lang,
                 uploadUrl: $form.hasClass('ajax-upload') ? $form.attr('action') : null,
                 autoOrientImage: false,
-                uploadExtraData: function (previewId, index) {
+                uploadExtraData: function(previewId, index) {
                     // return $form.find('[name^="_data"],[name="_section"],[name="_param"]').serializeObject();
 
                     let data = {};

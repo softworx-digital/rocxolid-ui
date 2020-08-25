@@ -23,7 +23,7 @@ class BlueimpFileUpload extends PluginBinder
             $elm.fileupload({
                 url: $elm.data('upload-url'),
                 dataType: 'json',
-                add: function (e, data) {
+                add: function(e, data) {
                     let valid = true;
 
                     for (let i in data.files) {
@@ -53,7 +53,7 @@ class BlueimpFileUpload extends PluginBinder
                         data.submit();
                     }
                 },
-                submit: function (e, data)
+                submit: function(e, data)
                 {
                     if (rx.hasPlugin('loading-overlay')) {
                         rx.getPlugin('loading-overlay').show($overlay);
@@ -61,12 +61,12 @@ class BlueimpFileUpload extends PluginBinder
 
                     $progressbar.css('width', '0%');
                 },
-                progressall: function (e, data)
+                progressall: function(e, data)
                 {
                     var progress = parseInt(data.loaded / data.total * 100, 10);
                     $progressbar.css('width', progress + '%');
                 },
-                done: function (e, data)
+                done: function(e, data)
                 {
                     if (rx.hasPlugin('loading-overlay')) {
                         rx.getPlugin('loading-overlay').hide($overlay);
