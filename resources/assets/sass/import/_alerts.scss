@@ -15,8 +15,14 @@
                 &:before {
                     font-family: 'FontAwesome';
                     content: '\f06a';
-                    margin: 0 5px 0 -15px;
+                    margin: 0 10px 0 -15px;
                     color: #fff;
+                }
+
+                a {
+                    &:hover {
+                        text-decoration: underline;
+                    }
                 }
             }
         }

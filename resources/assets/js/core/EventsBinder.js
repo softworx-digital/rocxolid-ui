@@ -112,7 +112,7 @@ class EventsBinder
             if ($input.val() !== '') {
                 if ($clone.find('input').is(':radio')) {
                     $clone.find('input').prop('checked', true).change();
-                    $target.find('input:radio[name="' + $clone.find('input').attr('name') + '"]').attr('checked', false).closest('.active').removeClass('active');
+                    $target.find('input:radio[name="' + $clone.find('input').attr('name') + '"]').attr('checked', false).parent().removeClass('active');
                 }
 
                 $template.before($clone);
@@ -131,15 +131,24 @@ class EventsBinder
             const $container = $(this).closest($(this).data('add-form-field-group-container'));
 
             if ($container.exists()) {
-                let $clone = $container.find(selector).last().clone();
+                let $original = $container.find(selector).last();
+                let $clone = $original.clone();
 
                 $clone = Utility.resetFormField($clone, function($field)
                 {
-                    $field.appendTo($container);
-
+                    // @todo: move to Utility.resetFormField ?
                     rx.bindPlugin('select', $field);
                     rx.bindPlugin('ajax-select', $field);
                     rx.bindPlugin('toggle', $field);
+
+                    // @todo: quick'n'dirty
+                    $field.find('i.tooltipstered').each(function () {
+                        $(this).attr('title', $original.find('i.tooltipstered').tooltipster('content'));
+                    });
+
+                    rx.bindPlugin('tooltips', $field);
+
+                    $field.appendTo($container);
                 });
 
                 // reindex the fields incrementally

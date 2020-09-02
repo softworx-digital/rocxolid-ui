@@ -57,6 +57,10 @@
     color: $error-text-color;
 }
 
+legend {
+    margin-bottom: 1rem;
+}
+
 label {
     &.label-fit-height {
         margin-top: 6px;

@@ -14,8 +14,10 @@ class Tooltipster extends PluginBinder
         var rx = this.rx;
 
         $('[title!=""][title]', container).tooltipster({
+            theme: 'tooltipster-rocXolid',
             animation: 'fade',
-            delay: 100
+            delay: 100,
+            maxWidth: 300,
         });
     }
 }

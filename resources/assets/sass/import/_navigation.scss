@@ -50,6 +50,8 @@
 
                     &.current-page,
                     &.active {
+                        border-right-color: $box-focus-color;
+
                         .fa-chevron-down {
                             display: inline-block;
                         }

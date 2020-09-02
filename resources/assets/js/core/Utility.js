@@ -29,8 +29,8 @@ Utility.resetArrayFieldsNameParameters = ($container, selector) => {
 
 Utility.resetFormField = ($field, callback) => {
     $field.find('.control-group-additional').remove();
-    $field.find('[data-add-form-field-group]').parent().remove();
-    $field.find('[data-remove-form-field-group]').parent().removeClass('hidden');
+    $field.find('[data-add-form-field-group]').remove();
+    $field.find('[data-remove-form-field-group]').removeClass('hidden');
     $field.find('input:checkbox[data-toggle]').prop('checked', false).change().unwrap().next('.toggle-group').remove();
     $field.find('.has-error').removeClass('has-error');
     $field.find('.error-message').remove();
@@ -91,7 +91,7 @@ Utility.loadScript = (src) => {
 
 Utility.ajaxCall = (settings, success, error) => {
     if (!settings.rx) {
-        throw new ReferenceError('Missing RocXolid instance reference in settings');
+        throw new ReferenceError('Missing rocXolid instance reference in settings');
     }
 
     if (!settings.element) {
