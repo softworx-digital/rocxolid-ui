@@ -13,7 +13,7 @@ KEditor.components['photo'] = {
 
     settingTitle: 'Photo Settings',
 
-    initSettingForm: function (form, keditor) {
+    initSettingForm: function (keditor, component, form) {
         let self = this;
         let options = keditor.options;
 
@@ -80,14 +80,14 @@ KEditor.components['photo'] = {
                 let reader = new FileReader();
 
                 reader.addEventListener('load', function (e) {
-                    let img = keditor.getSettingComponent().find('img');
+                    let img = component.find('img');
                     img.attr('src', e.target.result);
                     img.css({
                         width: '',
                         height: ''
                     });
                     img.load(function () {
-                        self.showSettingForm.call(self, form, keditor.getSettingComponent(), keditor);
+                        self.showSettingForm.call(self, form, component, keditor);
                     });
                 });
 
@@ -99,18 +99,18 @@ KEditor.components['photo'] = {
 
         let inputAlign = form.find('#photo-align');
         inputAlign.on('change', function () {
-            let panel = keditor.getSettingComponent().find('.photo-panel');
+            let panel = component.find('.photo-panel');
             panel.css('text-align', this.value);
         });
 
         let inputResponsive = form.find('#photo-responsive');
         inputResponsive.on('click', function () {
-            keditor.getSettingComponent().find('img')[this.checked ? 'addClass' : 'removeClass']('img-responsive');
+            component.find('img')[this.checked ? 'addClass' : 'removeClass']('img-responsive');
         });
 
         let cbbStyle = form.find('#photo-style');
         cbbStyle.on('change', function () {
-            let img = keditor.getSettingComponent().find('img');
+            let img = component.find('img');
             let val = this.value;
 
             img.removeClass('img-rounded img-circle img-thumbnail');
@@ -122,7 +122,7 @@ KEditor.components['photo'] = {
         let inputWidth = form.find('#photo-width');
         let inputHeight = form.find('#photo-height');
         inputWidth.on('change', function () {
-            let img = keditor.getSettingComponent().find('img');
+            let img = component.find('img');
             let newWidth = +this.value;
             let newHeight = Math.round(newWidth / self.ratio);
 
@@ -139,7 +139,7 @@ KEditor.components['photo'] = {
             inputHeight.val(newHeight);
         });
         inputHeight.on('change', function () {
-            let img = keditor.getSettingComponent().find('img');
+            let img = component.find('img');
             let newHeight = +this.value;
             let newWidth = Math.round(newHeight * self.ratio);
 

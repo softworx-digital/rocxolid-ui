@@ -11,7 +11,7 @@ KEditor.components['youtube'] = {
 
     settingTitle: 'Youtube Settings',
 
-    initSettingForm: function (form, keditor) {
+    initSettingForm: function (keditor, component, form) {
         form.append(
             '<form class="form-horizontal">' +
             '   <div class="form-group">' +
@@ -43,7 +43,7 @@ KEditor.components['youtube'] = {
             let youtubeRegex = /^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/;
             let match = inputData.match(youtubeRegex);
             if (match && match[1]) {
-                keditor.getSettingComponent().find('.embed-responsive-item').attr('src', 'https://www.youtube.com/embed/' + match[1]);
+                component.find('.embed-responsive-item').attr('src', 'https://www.youtube.com/embed/' + match[1]);
             } else {
                 alert('Your Youtube URL is invalid!');
             }
@@ -53,19 +53,19 @@ KEditor.components['youtube'] = {
         btn169.on('click', function (e) {
             e.preventDefault();
 
-            keditor.getSettingComponent().find('.embed-responsive').removeClass('embed-responsive-4by3').addClass('embed-responsive-16by9');
+            component.find('.embed-responsive').removeClass('embed-responsive-4by3').addClass('embed-responsive-16by9');
         });
 
         let btn43 = form.find('.btn-youtube-43');
         btn43.on('click', function (e) {
             e.preventDefault();
 
-            keditor.getSettingComponent().find('.embed-responsive').removeClass('embed-responsive-16by9').addClass('embed-responsive-4by3');
+            component.find('.embed-responsive').removeClass('embed-responsive-16by9').addClass('embed-responsive-4by3');
         });
 
         let chkAutoplay = form.find('#youtube-autoplay');
         chkAutoplay.on('click', function () {
-            let embedItem = keditor.getSettingComponent().find('.embed-responsive-item');
+            let embedItem = component.find('.embed-responsive-item');
             let currentUrl = embedItem.attr('src');
             let newUrl = (currentUrl.replace(/(\?.+)+/, '')) + '?autoplay=' + (chkAutoplay.is(':checked') ? 1 : 0);
             embedItem.attr('src', newUrl);

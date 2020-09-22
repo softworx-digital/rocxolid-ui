@@ -10,9 +10,10 @@ export default function (container) {
     let self = this;
     let options = self.options;
     let isNested = container.closest('[data-type="container-content"]').length > 0;
-    let containerContent = container.find('[data-type="container-content"]').first();
+    // let containerContent = container.find('[data-type="container-content"]').first();
+    let containerElement = container.find('[data-type="container"]').first();
     let contentArea = container.closest(`.${CSS_CLASS.CONTENT_AREA}`);
-    let metaData = JSON.parse(containerContent.attr('data-element-meta') || '{}');
+    let metaData = containerElement.data('elementMeta') ? JSON.parse(atob(containerElement.data('elementMeta'))) : {};
 
     if (!container.hasClass(CSS_CLASS.STATE_INITIALIZED) || !container.hasClass(CSS_CLASS.STATE_INITIALIZING)) {
         container.addClass(CSS_CLASS.STATE_INITIALIZING);
@@ -25,13 +26,9 @@ export default function (container) {
             container.addClass(CSS_CLASS.SUB_CONTAINER);
         }
 
-        container.append(
-            generateToolbar.call(self, isNested ? TOOLBAR_TYPE.SUB_CONTAINER : TOOLBAR_TYPE.CONTAINER, options.containerSettingEnabled)
-            +
-            generateToolbar.call(self, isNested ? TOOLBAR_TYPE.SUB_CONTAINER_BOTTOM : TOOLBAR_TYPE.CONTAINER_BOTTOM)
-            +
-            generateMetaData.call(self, metaData)
-        );
+        container.append(generateToolbar.call(self, isNested ? TOOLBAR_TYPE.SUB_CONTAINER : TOOLBAR_TYPE.CONTAINER, options.containerSettingEnabled(self, container)));
+        container.append(generateToolbar.call(self, isNested ? TOOLBAR_TYPE.SUB_CONTAINER_BOTTOM : TOOLBAR_TYPE.CONTAINER_BOTTOM));
+        container.append(generateMetaData.call(self, metaData, CSS_CLASS.META_DATA_TOP));
 
         container.attr('id', generateId());
 

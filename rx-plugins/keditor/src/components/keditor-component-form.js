@@ -128,7 +128,7 @@ KEditor.components['form'] = {
 
     settingTitle: 'Form Settings',
 
-    initSettingForm: function (form, keditor) {
+    initSettingForm: function (keditor, component, form) {
         let self = this;
 
         form.html(`

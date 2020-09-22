@@ -107,7 +107,7 @@ Utility.ajaxCall = (settings, success, error) => {
     }
 
     if (!settings.data) {
-        throw new ReferenceError('Missing request data in settings');
+        // throw new ReferenceError('Missing request data in settings');
     }
 
     if (settings.element && settings.rx.hasPlugin('loading-overlay')) {

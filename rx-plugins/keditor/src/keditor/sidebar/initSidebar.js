@@ -12,7 +12,7 @@ export default function () {
                 <span class="${CSS_CLASS.UI} ${CSS_CLASS.SIDEBAR_TITLE}"></span>
                 <a href="javascript:void(0);" class="${CSS_CLASS.UI} ${CSS_CLASS.SIDEBAR_CLOSER}">&times;</a>
             </div>
-            <div class="${CSS_CLASS.UI} ${CSS_CLASS.SIDEBAR_BODY}"></div>
+            <div class="${CSS_CLASS.UI} ${CSS_CLASS.SIDEBAR_BODY} ajax-overlay"></div>
         </div>
     `);
 

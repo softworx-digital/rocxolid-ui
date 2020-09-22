@@ -13,7 +13,7 @@ KEditor.components['audio'] = {
         }
     },
 
-    initSettingForm: function (form, keditor) {
+    initSettingForm: function (keditor, component, form) {
         form.append(
             '<form class="form-horizontal">' +
             '     <div class="form-group">' +
@@ -58,7 +58,7 @@ KEditor.components['audio'] = {
             if (/audio/.test(file.type)) {
                 // Todo: Upload to your server :)
 
-                let audio = keditor.getSettingComponent().find('audio');
+                let audio = component.find('audio');
                 audio.attr('src', URL.createObjectURL(file));
             } else {
                 alert('Your selected file is not an audio file!');
@@ -67,19 +67,19 @@ KEditor.components['audio'] = {
 
         let autoplayToggle = form.find('.audio-autoplay');
         autoplayToggle.on('click', function () {
-            let audio = keditor.getSettingComponent().find('audio');
+            let audio = component.find('audio');
             audio.prop('autoplay', this.checked);
         });
 
         let controlsToggle = form.find('.audio-controls');
         controlsToggle.on('click', function () {
-            let audio = keditor.getSettingComponent().find('audio');
+            let audio = component.find('audio');
             audio.prop('controls', this.checked);
         });
 
         let audioWidth = form.find('.audio-width');
         audioWidth.on('change', function () {
-            let audio = keditor.getSettingComponent().find('audio');
+            let audio = component.find('audio');
             let wrapper = audio.parent();
 
             wrapper.attr('data-width', this.value);

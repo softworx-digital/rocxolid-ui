@@ -10,9 +10,11 @@
     position: absolute;
     display: none;
     z-index: 5;
+    overflow: hidden;
     .keditor-text();
     color: @text-color;
-    overflow: hidden;
+    background-color: @component-toolbar-bg;
+    padding: @meta-data-padding;
 
     ul {
         padding: 0;
@@ -22,8 +24,12 @@
     &.keditor-meta-data-top {
         top: 0 !important;
         right: 0 !important;
-        background-color: @component-toolbar-bg;
         border-radius: 0 0 0 @border-radius !important;
-        padding: @meta-data-padding;
+    }
+
+    &.keditor-meta-data-bottom {
+        bottom: 0 !important;
+        right: 0 !important;
+        border-radius: @border-radius 0 0 0 !important;
     }
 }

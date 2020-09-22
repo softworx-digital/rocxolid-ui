@@ -138,6 +138,7 @@ const CSS_CLASS = {
 
     META_DATA: 'keditor-meta-data',
     META_DATA_TOP: 'keditor-meta-data-top',
+    META_DATA_BOTTOM: 'keditor-meta-data-bottom',
 };
 
 export default CSS_CLASS;

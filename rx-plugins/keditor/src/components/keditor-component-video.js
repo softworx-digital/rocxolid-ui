@@ -22,7 +22,7 @@ KEditor.components['video'] = {
 
     settingTitle: 'Video Settings',
 
-    initSettingForm: function (form, keditor) {
+    initSettingForm: function (keditor, component, form) {
         form.append(`
             <form class="form-horizontal">
                 <div class="form-group">
@@ -78,7 +78,7 @@ KEditor.components['video'] = {
         });
         fileInput.on('change', function () {
             let file = this.files[0];
-            let video = keditor.getSettingComponent().find('video');
+            let video = component.find('video');
 
             if (/video/.test(file.type)) {
                 // Todo: Upload to your server :)
@@ -91,33 +91,33 @@ KEditor.components['video'] = {
 
         let autoplayToggle = form.find('.video-autoplay');
         autoplayToggle.on('click', function () {
-            let video = keditor.getSettingComponent().find('video');
+            let video = component.find('video');
 
             video.prop('autoplay', this.checked);
         });
 
         let loopToggle = form.find('.video-loop');
         loopToggle.on('click', function () {
-            let video = keditor.getSettingComponent().find('video');
+            let video = component.find('video');
             video.prop('loop', this.checked);
         });
 
         let ratio = form.find('.video-ratio');
         ratio.on('click', function () {
-            let video = keditor.getSettingComponent().find('video');
+            let video = component.find('video');
             video.attr('data-ratio', this.value);
             form.find('.video-width').trigger('change');
         });
 
         let controlToggle = form.find('.video-controls');
         controlToggle.on('click', function () {
-            let video = keditor.getSettingComponent().find('video');
+            let video = component.find('video');
             video.prop('controls', this.checked);
         });
 
         let videoWidth = form.find('.video-width');
         videoWidth.on('change', function () {
-            let video = keditor.getSettingComponent().find('video');
+            let video = component.find('video');
 
             let currentRatio = video.attr('data-ratio') === '16/9' ? 16 / 9 : 4 / 3;
             let height = this.value / currentRatio;

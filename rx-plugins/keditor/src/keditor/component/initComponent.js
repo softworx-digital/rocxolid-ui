@@ -2,6 +2,7 @@ import TOOLBAR_TYPE from '../constants/toolbarType';
 import CSS_CLASS from '../constants/cssClass';
 import generateId from '../utils/generateId';
 import generateToolbar from '../utils/generateToolbar';
+import generateMetaData from '../utils/generateMetaData';
 import getComponentType from './getComponentType';
 import initDynamicContent from './initDynamicContent';
 
@@ -10,6 +11,7 @@ export default function (component) {
     let options = self.options;
     let container = component.closest(`.${CSS_CLASS.CONTAINER}`);
     let contentArea = container.closest(`.${CSS_CLASS.CONTENT_AREA}`);
+    let metaData = component.data('elementMeta') ? JSON.parse(atob(component.data('elementMeta'))) : {};
 
     if (!component.hasClass(CSS_CLASS.STATE_INITIALIZED) || !component.hasClass(CSS_CLASS.STATE_INITIALIZING)) {
         component.addClass(CSS_CLASS.STATE_INITIALIZING);
@@ -25,8 +27,9 @@ export default function (component) {
         let componentType = getComponentType.call(self, component);
         let componentData = KEditor.components[componentType];
 
-        component.append(generateToolbar.call(self, TOOLBAR_TYPE.COMPONENT, componentData.settingEnabled));
+        component.append(generateToolbar.call(self, TOOLBAR_TYPE.COMPONENT, componentData.settingEnabled(self, component)));
         component.append(generateToolbar.call(self, TOOLBAR_TYPE.COMPONENT_BOTTOM));
+        component.append(generateMetaData.call(self, metaData, CSS_CLASS.META_DATA_BOTTOM));
 
         component.find('[data-dynamic-href]').each(function () {
             let dynamicElement = $(this);
@@ -44,5 +47,9 @@ export default function (component) {
 
         component.addClass(CSS_CLASS.STATE_INITIALIZED);
         component.removeClass(CSS_CLASS.STATE_INITIALIZING);
+
+        if (!$.isEmptyObject(metaData)) {
+            component.addClass(CSS_CLASS.STATE_META_DATA_ACTIVE);
+        }
     }
 };

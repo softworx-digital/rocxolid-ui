@@ -12,7 +12,7 @@ KEditor.components['googlemap'] = {
 
     settingTitle: 'Google Map Settings',
 
-    initSettingForm: function (form, keditor) {
+    initSettingForm: function (keditor, component, form) {
         form.append(
             '<form class="form-horizontal">' +
             '   <div class="form-group">' +
@@ -38,7 +38,7 @@ KEditor.components['googlemap'] = {
             let iframe = $(inputData);
             let src = iframe.attr('src');
             if (iframe.length > 0 && src && src.length > 0) {
-                keditor.getSettingComponent().find('.embed-responsive-item').attr('src', src);
+                component.find('.embed-responsive-item').attr('src', src);
             } else {
                 alert('Your Google Map embed code is invalid!');
             }
@@ -48,14 +48,14 @@ KEditor.components['googlemap'] = {
         btn169.on('click', function (e) {
             e.preventDefault();
 
-            keditor.getSettingComponent().find('.embed-responsive').removeClass('embed-responsive-4by3').addClass('embed-responsive-16by9');
+            component.find('.embed-responsive').removeClass('embed-responsive-4by3').addClass('embed-responsive-16by9');
         });
 
         let btn43 = form.find('.btn-googlemap-43');
         btn43.on('click', function (e) {
             e.preventDefault();
 
-            keditor.getSettingComponent().find('.embed-responsive').removeClass('embed-responsive-16by9').addClass('embed-responsive-4by3');
+            component.find('.embed-responsive').removeClass('embed-responsive-16by9').addClass('embed-responsive-4by3');
         });
     }
 };

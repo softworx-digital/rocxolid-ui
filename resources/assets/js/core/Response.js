@@ -11,6 +11,7 @@ class Response
     {
         this.rx = rx;
         this.data = data;
+        this.extension = null;
     }
 
     set(data)
@@ -20,27 +21,44 @@ class Response
         return this;
     }
 
-    handle(callback)
+    handle(callback, extension)
     {
-        var res = this;
+        var self = this;
+
+        if (typeof extension !== 'undefined') {
+            if (typeof extension !== 'object') {
+                throw new TypeError(`Invalid extension definition, JSON format of { "<cmd-1>": <callback-function-1>, "<cmd-2>": <callback-function-2>, ... } expected`);
+            }
+
+            $.each(extension, function(cmd, callback)
+            {
+                if (typeof callback !== 'function') {
+                    throw new TypeError(`Invalid extension definition, JSON format of { "<cmd-1>": <callback-function-1>, "<cmd-2>": <callback-function-2>, ... } expected, [${cmd}] value is not a function`);
+                }
+            });
+        }
 
         $.each(this.data, function(cmd, pack)
         {
-            if (typeof res[cmd] === 'undefined') {
+            if ((typeof self[cmd] === 'undefined') && (typeof extension === 'object') && (typeof extension[cmd] === 'undefined')) {
                 throw new TypeError('Undefined Response handler for [' + cmd + '] - unsupported command');
             }
 
             if (pack instanceof Array) {
                 $.each(pack, function(i, data)
                 {
-                    let ret = res[cmd](data);
+                    let ret = (typeof extension === 'object') && (typeof extension[cmd] !== 'undefined')
+                            ? extension[cmd](data)
+                            : self[cmd](data);
 
                     if (ret && (typeof callback === 'function')) {
                         callback(ret);
                     }
                 });
             } else {
-                let ret = res[cmd](pack);
+                let ret = (typeof extension === 'object') && (typeof extension[cmd] !== 'undefined')
+                        ? extension[cmd](pack)
+                        : self[cmd](pack);
 
                 if (ret && (typeof callback === 'function')) {
                     callback(ret);

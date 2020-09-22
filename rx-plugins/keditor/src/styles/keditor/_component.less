@@ -22,6 +22,12 @@
         z-index: -1;
     }
 
+    &.meta-data-active {
+        &:before {
+            border-right: 3px solid @meta-data-border-color;
+        }
+    }
+
     .keditor-toolbar {
         top: unit(-@toolbar-item-size - @component-outline-with, px);
         left: unit(-@component-outline-with, px);
@@ -78,6 +84,12 @@
 
         .keditor-toolbar {
             display: block;
+        }
+
+        &.meta-data-active {
+            > .keditor-meta-data {
+                display: block;
+            }
         }
     }
 

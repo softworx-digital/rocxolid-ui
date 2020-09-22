@@ -5,6 +5,100 @@ import '../styles/keditor-component-text.less';
 // Text component
 // ---------------------------------------------------------------------
 KEditor.components['text'] = {
+    settingEnabled: function (keditor, component) {
+        return component.is('[data-element-settings-url');
+    },
+
+    settingTitle: function (keditor, component) {
+        return keditor.options.locale.component.text.settingsTitle;
+    },
+
+    initSettingForm: function (keditor, component, form) {
+        let self = this;
+        let options = keditor.options;
+        let rx = keditor.options.rx;
+        let rxUtility = keditor.options.rxUtility;
+        var meta_data_viewer_element = component.find('.keditor-meta-data');
+
+        rxUtility.ajaxCall({
+            rx: rx,
+            element: $(form),
+            type: 'get',
+            url: component.data('elementSettingsUrl'),
+        }, function (data) {
+            if (rx.hasPlugin('loading-overlay')) {
+                rx.getPlugin('loading-overlay').hide($(form).closest('.ajax-overlay'));
+            }
+
+            let $form = $(data.form);
+
+            rx.bindPlugins($form);
+
+            $form.on('submit', function () {
+                $(this).ajaxSubmit({
+                    beforeSubmit: function(arr, $form, options)
+                    {
+                        if (rx.hasPlugin('loading-overlay')) {
+                            rx.getPlugin('loading-overlay').show($form.closest('.ajax-overlay'));
+                        }
+                    },
+                    success: function(data, statusText, xhr, $form)
+                    {
+                        if (rx.hasPlugin('loading-overlay')) {
+                            rx.getPlugin('loading-overlay').hide($form.closest('.ajax-overlay'));
+                        }
+
+                        rx.getResponse().set(data).handle(null, {
+                            'meta_data': function(data) {
+                                let metaData = data ? JSON.parse(atob(data)) : {};
+
+                                if (!$.isEmptyObject(metaData)) {
+                                    var $list = $('<ul>');
+
+                                    for (var key in metaData) {
+                                        $list.append(`<li>${metaData[key].title}: ${metaData[key].value}</li>`);
+                                    }
+
+                                    meta_data_viewer_element.html($list);
+                                    component.attr('data-element-meta', data);
+                                    component.addClass('meta-data-active');
+                                } else {
+                                    meta_data_viewer_element.text('');
+                                    component.removeAttr('data-element-meta');
+                                    component.removeClass('meta-data-active');
+                                }
+
+                                keditor.sidebarCloser.click();
+                            }
+                        });
+                    },
+                    error: function(data)
+                    {
+                        rx.handleAjaxError(data);
+                    }
+                });
+
+
+
+                return false;
+            });
+
+            form
+                .append($form)
+                .on('keydown', function (e) {
+                    switch (e.which) {
+                        case 13: // enter
+                            $form.submit();
+                            return false;
+                        case 27: // esc
+                            keditor.sidebarCloser.click();
+                            return false;
+                    }
+                })
+                .find(':input:visible').first().focus();
+        });
+    },
+
     init: function (contentArea, container, component, keditor)
     {
         let self = this;
@@ -73,6 +167,7 @@ KEditor.components['text'] = {
     withEditables: function(keditor, contentArea, component, componentContent, callback, callbackResponse)
     {
         let self = this;
+        let rx = keditor.options.rx;
         let names = [];
 
         componentContent.find('.editable').each(function(index, editable) {
@@ -95,8 +190,8 @@ KEditor.components['text'] = {
             } catch (e) {
                 console.error(e, editable);
 
-                if (rx().hasPlugin('notification')) {
-                    rx().getPlugin('notification').show(e, 'error');
+                if (rx.hasPlugin('notification')) {
+                    rx.getPlugin('notification').show(e, 'error');
                 }
             }
         });
@@ -104,15 +199,17 @@ KEditor.components['text'] = {
 
     bindEditor: function(keditor, contentArea, component, componentContent, editable, isSingleEditable, callbackResponse)
     {
+        let rx = keditor.options.rx;
+
         $(editable)
             .prop('contenteditable', true)
             .attr('data-editable-id', this.makeEditableId(componentContent, editable, isSingleEditable));
 
-        if (!rx().hasPlugin('inline-editor')) {
+        if (!rx.hasPlugin('inline-editor')) {
             return;
         }
 
-        let editor = rx().getPlugin('inline-editor').inline(editable);
+        let editor = rx.getPlugin('inline-editor').inline(editable);
 
         editor.on('instanceReady', function () {
             // $('#cke_' + componentContent.attr('id')).appendTo(keditor.wrapper);
@@ -130,11 +227,13 @@ KEditor.components['text'] = {
 
     getEditorContent: function(keditor, contentArea, component, componentContent, editable, isSingleEditable, callbackResponse)
     {
+        let rx = keditor.options.rx;
+
         // const param = isSingleEditable ? null : $(editable).data('name');
         const param = $(editable).is('[data-name]') ? $(editable).data('name') : null;
 
-        if (rx().hasPlugin('inline-editor')) {
-            var editor = rx().getPlugin('inline-editor').findInstance(editable);
+        if (rx.hasPlugin('inline-editor')) {
+            var editor = rx.getPlugin('inline-editor').findInstance(editable);
         }
 
         callbackResponse[param] = editor ? editor.getData() : $(editable).html();
@@ -142,8 +241,10 @@ KEditor.components['text'] = {
 
     destroyEditor: function(keditor, contentArea, component, componentContent, editable, isSingleEditable, callbackResponse)
     {
-        if (rx().hasPlugin('inline-editor')) {
-            const editor = rx().getPlugin('inline-editor').findInstance(editable);
+        let rx = keditor.options.rx;
+
+        if (rx.hasPlugin('inline-editor')) {
+            const editor = rx.getPlugin('inline-editor').findInstance(editable);
 
             editor && editor.destroy();
         }
