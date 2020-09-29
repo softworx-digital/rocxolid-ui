@@ -31,6 +31,7 @@ class CKEditor extends PluginBinder
                 { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
                 { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'paragraph' ] },
                 { name: 'links', groups: [ 'links' ] },
+                // { name: 'links', items : [ 'Link', 'Unlink' ] },
                 { name: 'insert', groups: [ 'insert' ] },
                 { name: 'styles', groups: [ 'styles' ] },
                 { name: 'colors', groups: [ 'colors' ] },
@@ -40,7 +41,7 @@ class CKEditor extends PluginBinder
             bodyId: 'editor',
             // templates_replaceContent: false,
             enterMode: 2,
-            removeButtons: 'Subscript,Superscript,Cut,Copy,Paste,PasteText,PasteFromWord',
+            removeButtons: 'Subscript,Superscript,Cut,Copy,Paste,PasteText,PasteFromWord,Anchor',
             // removePlugins: 'widgetselection', // throws "editor-plugin-required" exception when removed
             minimumChangeMilliseconds: 100
         };

@@ -203,7 +203,7 @@ Utility.extendJQuery = () => {
         $('input.autosubmit[type="checkbox"],input.autosubmit[type="radio"]', $form).on('change', function(e)
         {
             e.preventDefault();
-            $form.find('input[type="submit"], button[type="button"][data-ajax-submit-form]').click();
+            $form.find('input[type="submit"], button[type="button"][data-ajax-submit-form]').trigger('click');
         });
 
         $form.find('select').on('change', function(e)
@@ -211,7 +211,7 @@ Utility.extendJQuery = () => {
             if ($(this).is(':focus')) {
                 e.preventDefault();
                 e.stopPropagation();
-                $form.find('input[type="submit"], button[type="button"][data-ajax-submit-form]').click();
+                $form.find('input[type="submit"], button[type="button"][data-ajax-submit-form]').trigger('click');
             }
         });
 
@@ -227,15 +227,6 @@ Utility.extendJQuery = () => {
             }
         });
         */
-
-        $('input[type="text"]', $form).on('keypress', function(e)
-        {
-            if ((e.keyCode ? e.keyCode : e.which) == 13) {
-                e.preventDefault();
-                e.stopPropagation();
-                $form.find('input[type="submit"], button[type="button"][data-ajax-submit-form]').click();
-            }
-        });
 
         return $(this);
     }

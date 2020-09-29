@@ -1,27 +1,27 @@
 {
-  "_from": "ckeditor4",
-  "_id": "ckeditor4@4.14.0",
+  "_from": "ckeditor4@4.15.0",
+  "_id": "ckeditor4@4.15.0",
   "_inBundle": false,
-  "_integrity": "sha512-g5p3bhbxbwB094bE7ss0rOyvG/azYdRjLTyngnPM2+fKZhnPrMVaFDx3SiiWKB+zyvndT3Deu54VTv/z2MQJCA==",
+  "_integrity": "sha512-OhL3gqCU2JjulhyrF24LlwLKIZ/CO5sPoiHRdDwihRkz9FOeZQnL+iMa0q/zxXY/jt1R+MxDvt4/6uiQk663hQ==",
   "_location": "/ckeditor4",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "version",
     "registry": true,
-    "raw": "ckeditor4",
+    "raw": "ckeditor4@4.15.0",
     "name": "ckeditor4",
     "escapedName": "ckeditor4",
-    "rawSpec": "",
+    "rawSpec": "4.15.0",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "4.15.0"
   },
   "_requiredBy": [
     "#DEV:/",
     "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/ckeditor4/-/ckeditor4-4.14.0.tgz",
-  "_shasum": "bfcbe942599fa0c6f488309ecbfe38b2519f919b",
-  "_spec": "ckeditor4",
+  "_resolved": "https://registry.npmjs.org/ckeditor4/-/ckeditor4-4.15.0.tgz",
+  "_shasum": "9f66bbec00f4ca1c93ce79298714cb56d21e52bc",
+  "_spec": "ckeditor4@4.15.0",
   "_where": "/home/vagrant/code/rocxolid-release/packages/rocxolid-ui",
   "author": {
     "name": "CKSource",
@@ -52,5 +52,5 @@
     "type": "git",
     "url": "git+https://github.com/ckeditor/ckeditor4-releases.git"
   },
-  "version": "4.14.0"
+  "version": "4.15.0"
 }

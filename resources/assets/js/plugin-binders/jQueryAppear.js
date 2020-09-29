@@ -14,7 +14,6 @@ class jQueryAppear extends PluginBinder
 
         $(container).on('appear', '[data-timeout-remove]', function(e)
         {
-            alert('appear event triggered');
             $(this).fadeTo($(this).data('timeout-remove'), 250).slideUp(250, function()
             {
                 $(this).remove();

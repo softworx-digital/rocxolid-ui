@@ -23,6 +23,8 @@ class Response
 
     handle(callback, extension)
     {
+        this._log('handle');
+
         var self = this;
 
         if (typeof extension !== 'undefined') {
@@ -69,6 +71,8 @@ class Response
 
     errors(data)
     {
+        this._log('errors');
+
         var rx = this.rx;
 
         console.log('Request data invalid', data);
@@ -80,6 +84,8 @@ class Response
 
     modal(modal)
     {
+        this._log('modal');
+
         var res = this;
 
         return $(modal)
@@ -96,31 +102,43 @@ class Response
 
     modalOpen(selector)
     {
+        this._log('modalOpen', selector);
+
         return $(selector).modal();
     }
 
     modalClose(selector)
     {
+        this._log('modalClose', selector);
+
         return $(selector).modal('hide');
     }
 
     reload()
     {
+        this._log('reload');
+
         location.reload();
     }
 
     redirect(url)
     {
+        this._log('redirect');
+
         $(location).attr('href', url);
     }
 
     openTab(url)
     {
+        this._log('openTab');
+
         window.open(url, '_blank');
     }
 
     replace(data)
     {
+        this._log('replace');
+
         var res = this;
 
         $.each(data, function(selector, html)
@@ -133,6 +151,8 @@ class Response
 
     insert(data)
     {
+        this._log('insert');
+
         var res = this;
 
         $.each(data, function(selector, html)
@@ -145,6 +165,8 @@ class Response
 
     append(data)
     {
+        this._log('append');
+
         var res = this;
 
         $.each(data, function(selector, html)
@@ -157,6 +179,8 @@ class Response
 
     val(data)
     {
+        this._log('val');
+
         $.each(data, function(selector, val)
         {
             $(selector).val(val);
@@ -165,6 +189,8 @@ class Response
 
     destroy(data)
     {
+        this._log('destroy');
+
         if (!(data instanceof Array)) {
             data = [ data ];
         }
@@ -177,6 +203,8 @@ class Response
 
     empty(data)
     {
+        this._log('empty');
+
         if (!(data instanceof Array)) {
             data = [ data ];
         }
@@ -189,6 +217,8 @@ class Response
 
     notify(data)
     {
+        this._log('notify');
+
         var rx = this.rx;
 
         if (rx.hasPlugin('notification')) {
@@ -198,6 +228,8 @@ class Response
 
     bindForm(selector)
     {
+        this._log('bindForm');
+
         $('[data-toggle=tooltip]', selector).tooltip();
 
         $('select[data-toggle-visibility]', selector).change(function()
@@ -242,11 +274,13 @@ class Response
 
     ping(data)
     {
-
+        this._log('ping');
     }
 
     file64(data)
     {
+        this._log('file64');
+
         // var disposition = jqXHR.getResponseHeader('Content-Disposition');
         // var type = jqXHR.getResponseHeader('Content-Type');
         var filename = data.filename || false;
@@ -307,7 +341,23 @@ class Response
      */
     _bindPlugins(selector)
     {
+        this._log('_bindPlugins', selector);
+
         this.rx.bindPlugins(selector);
+    }
+
+    /**
+     * Bind plugins to given element.
+     *
+     * @param {*} selector
+     */
+    _log(method, message)
+    {
+        message
+            ? console.debug(`%c [Response]`, 'color: #bada55;', method, message)
+            : console.debug(`%c [Response]`, 'color: #bada55;', method);
+
+        return this;
     }
 }
 

@@ -30,14 +30,14 @@
 
 /*!
  * 
- * Super simple wysiwyg editor v0.8.16
+ * Super simple wysiwyg editor v0.8.18
  * https://summernote.org
  * 
  * 
  * Copyright 2013- Alan Hong. and other contributors
  * summernote may be freely distributed under the MIT license.
  * 
- * Date: 2020-02-19T09:12Z
+ * Date: 2020-05-20T16:47Z
  * 
  */
 
@@ -59,9 +59,9 @@
  */
 
 /*!
- * Bootstrap-select v1.13.12 (https://developer.snapappointments.com/bootstrap-select)
+ * Bootstrap-select v1.13.18 (https://developer.snapappointments.com/bootstrap-select)
  *
- * Copyright 2012-2019 SnapAppointments, LLC
+ * Copyright 2012-2020 SnapAppointments, LLC
  * Licensed under MIT (https://github.com/snapappointments/bootstrap-select/blob/master/LICENSE)
  */
 
@@ -89,24 +89,24 @@
  */
 
 /*!
- * bootstrap-fileinput v5.0.8
+ * bootstrap-fileinput v5.1.2
  * http://plugins.krajee.com/file-input
  *
  * Author: Kartik Visweswaran
- * Copyright: 2014 - 2019, Kartik Visweswaran, Krajee.com
+ * Copyright: 2014 - 2020, Kartik Visweswaran, Krajee.com
  *
  * Licensed under the BSD-3-Clause
  * https://github.com/kartik-v/bootstrap-fileinput/blob/master/LICENSE.md
  */
 
 /*!
- * bootstrap-fileinput v5.0.8
+ * bootstrap-fileinput v5.1.2
  * http://plugins.krajee.com/file-input
  *
  * Font Awesome icon theme configuration for bootstrap-fileinput. Requires font awesome assets to be loaded.
  *
  * Author: Kartik Visweswaran
- * Copyright: 2014 - 2019, Kartik Visweswaran, Krajee.com
+ * Copyright: 2014 - 2020, Kartik Visweswaran, Krajee.com
  *
  * Licensed under the BSD-3-Clause
  * https://github.com/kartik-v/bootstrap-fileinput/blob/master/LICENSE.md
@@ -131,7 +131,7 @@
 
 /*!
  * jQuery Form Plugin
- * version: 4.2.2
+ * version: 4.3.0
  * Requires jQuery v1.7.2 or later
  * Project repository: https://github.com/jquery-form/form
 
@@ -172,7 +172,7 @@
 * Includes: widget.js, data.js, disable-selection.js, scroll-parent.js, widgets/resizable.js, widgets/sortable.js, widgets/mouse.js
 * Copyright jQuery Foundation and other contributors; Licensed MIT */
 
-/*! tooltipster v4.2.7 */
+/*! tooltipster v4.2.8 */
 
 /*! version : 4.17.47
  =========================================================
@@ -191,16 +191,13 @@
  */
 
 /**
-* @version: 3.0.5
+* @version: 3.1
 * @author: Dan Grossman http://www.dangrossman.info/
 * @copyright: Copyright (c) 2012-2019 Dan Grossman. All rights reserved.
 * @license: Licensed under the MIT license. See http://www.opensource.org/licenses/mit-license.php
 * @website: http://www.daterangepicker.com/
 */
 
-/**!
- * Sortable 1.10.2
- * @author	RubaXa   <trash@rubaxa.org>
- * @author	owenm    <owen23355@gmail.com>
- * @license MIT
- */
+//! moment.js
+
+//! moment.js locale configuration

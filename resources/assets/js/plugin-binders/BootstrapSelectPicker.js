@@ -18,7 +18,7 @@ class BootstrapSelectPicker extends PluginBinder
             showTick: true
         }).on('change', function() {
             if ($(this).closest('form').hasClass('autosubmit')) {
-                $(this).closest('form').find('input[type="submit"], button[type="button"][data-ajax-submit-form]').click();
+                $(this).closest('form').find('input[type="submit"], button[type="button"][data-ajax-submit-form]').trigger('click');
             }
         });
     }

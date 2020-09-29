@@ -14,6 +14,8 @@ class EventsBinder
 
     bind(container)
     {
+        this._log('Binding events...');
+
         container = container || document;
 
         this
@@ -34,12 +36,26 @@ class EventsBinder
 
     bindSubmit(container)
     {
-        let rx = this.rx;
+        this._log('Binding submit event');
 
-        $(container).on('submit', 'form', function(e)
+        let rx = this.rx;
+        let self = this;
+
+        $(container).on('submit', 'form.ajaxify', function(e)
         {
             if (rx.hasPlugin('loading-overlay')) {
                 rx.getPlugin('loading-overlay').show($(this).closest('.ajax-overlay'));
+            }
+        });
+
+        $(container).on('keydown', 'form :text, :password', function (e) {
+            switch (e.which) {
+                case 13: // enter
+                    $(this).closest('form').submit();
+                    return false;
+                case 27: // esc
+                    // $(this).closest('.modal').modal('hide');
+                    return false;
             }
         });
 
@@ -48,6 +64,8 @@ class EventsBinder
 
     bindClick(container)
     {
+        this._log('Binding click event');
+
         let rx = this.rx;
 
         $(container).on('click', '[data-ajax-url]', function(e)
@@ -226,6 +244,8 @@ class EventsBinder
 
     bindChange(container)
     {
+        this._log('Binding change event');
+
         let rx = this.rx;
 
         // $(container).on('change', '[data-change-action]', function(e)
@@ -273,6 +293,8 @@ class EventsBinder
 
     bindWindowUnload()
     {
+        this._log('Binding window unload event');
+
         let rx = this.rx;
 
         $(window).on('beforeunload', function(e) {
@@ -294,11 +316,14 @@ class EventsBinder
 
     bindWindowFocus()
     {
+        this._log('Binding window focus event');
+
         let rx = this.rx;
+        let self = this;
 
         $(window).on('focus', function(e)
         {
-            console.debug('%c Window focused', 'color: #bada55;', e);
+            // self._log('Window focused', e);
 
             let need_ping = (rx.ping < ((new Date()).getTime() / 1000));
 
@@ -328,6 +353,8 @@ class EventsBinder
 
     bindWindowFullscreen()
     {
+        this._log('Binding document fullscreenchange event');
+
         document.addEventListener('fullscreenchange', function() {
             $('body').toggleClass('fullscreen', !!document.fullscreenElement);
         });
@@ -337,8 +364,14 @@ class EventsBinder
 
     bindModalEvents(container)
     {
-        $(container).on('show.bs.modal', '.modal', function()
+        let self = this;
+
+        this._log('Binding modal events');
+
+        $(container).on('show.bs.modal', '.modal', function(e)
         {
+            self._log('Fired show.bs.modal event', e);
+
             const zIndex = 1040 + (10 * $('.modal:visible').length);
 
             $(this).css('z-index', zIndex);
@@ -354,6 +387,8 @@ class EventsBinder
 
     bindCollapseEvents(container)
     {
+        this._log('Binding collapse events');
+
         $(container).on('show.bs.collapse', '.collapse', function()
         {
             const $btn = $('[data-target="#' + $(this).attr('id') + '"]');
@@ -377,6 +412,8 @@ class EventsBinder
 
     bindTabsEvents(container)
     {
+        this._log('Binding tab events');
+
         /*
         $('a[data-toggle="tab"]').on('hide.bs.tab', function(e)
         {
@@ -419,6 +456,15 @@ class EventsBinder
             // your code on active tab shown
         });
         */
+
+        return this;
+    }
+
+    _log(message, event)
+    {
+        event
+            ? console.debug(`%c [EventsBinder]`, 'color: #bada55;', message, event)
+            : console.debug(`%c [EventsBinder]`, 'color: #bada55;', message);
 
         return this;
     }
