@@ -37,6 +37,7 @@ import { jQueryVisibility as ElementVisibilityPluginBinder } from '../plugin-bin
 import { jQueryDependency as ElementDependencyPluginBinder } from '../plugin-binders/jQueryDependency';
 import { Autosubmit as AutosubmitPluginBinder } from '../plugin-binders/Autosubmit';
 import { ImagePlaceholder as ImagePlaceholderPluginBinder } from '../plugin-binders/ImagePlaceholder';
+import { PDFObjectJS as DocumentViewerPluginBinder } from '../plugin-binders/PDFObjectJS';
 // import { RxDocumentComposer as DocumentComposerPluginBinder } from '../plugin-binders/RxDocumentComposer';
 import { KEditorBinder as DocumentComposerPluginBinder } from '../plugin-binders/KEditorBinder';
 
@@ -149,6 +150,9 @@ export default {
     },
     'image-placeholder': {
         'binder': ImagePlaceholderPluginBinder
+    },
+    'document-viewer': {
+        'binder': DocumentViewerPluginBinder
     },
     'document-composer': {
         'binder': DocumentComposerPluginBinder

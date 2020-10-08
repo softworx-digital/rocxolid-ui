@@ -71,5 +71,7 @@
         }
     ],
     "license": "MIT",
-    "dependencies": {}
+    "dependencies": {
+        "pdfobject": "^2.2.3"
+    }
 }
