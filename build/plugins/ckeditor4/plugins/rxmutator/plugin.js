@@ -47,6 +47,8 @@
 							$(modal).on('click', '[data-mutator]', function(e) {
 								var selection = editor.getSelection();
 								var restricted_multiple_placeholder = $(this).data('mutatorMultiplePlaceholder');
+								var restricted_expression_selection = $(this).data('mutatorAllowedExpression');
+								var allowed_selection_regex = $(this).data('mutatorAllowedSelectionRegex');
 								var mutator = editor.document.createElement('span');
 
 								mutator.setAttributes({
@@ -68,7 +70,9 @@
 									}
 
 									// @todo: could not find a prettier way to do this
-									if (restricted_multiple_placeholder && editor.widgets.selected && (editor.widgets.selected.length > 1)) {
+									if (restricted_expression_selection) {
+										self.handleExpressionMutator(lang, $(this), editor, selection, mutator);
+									} else if (restricted_multiple_placeholder && editor.widgets.selected && (editor.widgets.selected.length > 1)) {
 										self.handleMultiplePlaceholderMutator(lang, $(this), editor, selection, mutator);
 									} else {
 										self.handleSimpleMutator(lang, $(this), editor, selection, mutator);
@@ -158,10 +162,29 @@
 			}
 		},
 
+		handleExpressionMutator: function(lang, $choice, editor, selection, mutator) {
+			let allowed_selection_regex = $choice.data('mutatorAllowedSelectionRegex');
+
+			if (selection.getSelectedText() === '') {
+				throw lang.error.selection_empty;
+			} else if (allowed_selection_regex && !(new RegExp(allowed_selection_regex, 'u')).test(selection.getSelectedText())) {
+				throw lang.error.selection_invalid_expression;
+			}
+
+			var style = new CKEDITOR.style({attributes: {
+				'data-mutator': $choice.data('mutator'),
+				'title': $choice.data('title')
+			}});
+
+			console.log(editor.applyStyle(style));
+			// editor.widgets.initOn(mutator, 'rxmutator');
+		},
+
 		handleMultiplePlaceholderMutator: function(lang, $choice, editor, selection, mutator) {
 			let mutator_content = [];
 
 			editor.widgets.selected.forEach(el => {
+
 				let $element = $(el.element.$)
 					.removeAttr('data-cke-widget-data')
 					.removeAttr('data-cke-widget-upcasted')
