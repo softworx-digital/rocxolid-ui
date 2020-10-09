@@ -18,9 +18,9 @@ class SortableJS extends PluginBinder
             group: settings.group || $(container).attr('data-sortable-group') || 'sortable',
             handle: settings.handle || '.drag-handle',
             animation: settings.animation || 250,
-            forceFallback: settings.forceFallback || true,
+            // forceFallback: settings.forceFallback || true, // commented out, causes troubles with fallback positioning
             touchStartThreshold: settings.touchStartThreshold || 0,
-            fallbackTolerance: settings.fallbackTolerance || 1,
+            // fallbackTolerance: settings.fallbackTolerance || 1, // commented out, causes troubles with fallback positioning
             dataIdAttr: settings.dataIdAttr || 'data-item-id',
             onStart: settings.onStart || function(e)
             {

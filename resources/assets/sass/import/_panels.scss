@@ -177,3 +177,25 @@
         }
     }
 }
+
+.masonry-panel-container {
+    column-width: $screen-xs;
+    column-gap: 0;
+
+    &.masonry-panel-container-two-column {
+        column-count: 2;
+    }
+
+    &.masonry-panel-container-three-column {
+        column-count: 3;
+    }
+
+    &.masonry-panel-container-four-column {
+        column-count: 4;
+    }
+
+    > div {
+        display: block;
+        break-inside: avoid;
+    }
+}
