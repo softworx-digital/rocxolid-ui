@@ -69,7 +69,7 @@
 										throw lang.error.selection_forbids_multiple_placeholder;
 									}
 
-									// @todo: could not find a prettier way to do this
+									// @todo: find a prettier way to do this
 									if (restricted_expression_selection) {
 										self.handleExpressionMutator(lang, $(this), editor, selection, mutator);
 									} else if (restricted_multiple_placeholder && editor.widgets.selected && (editor.widgets.selected.length > 1)) {
@@ -162,6 +162,7 @@
 			}
 		},
 
+		// @todo: currently this doesn't create a full-featured widget element (save is required)
 		handleExpressionMutator: function(lang, $choice, editor, selection, mutator) {
 			let allowed_selection_regex = $choice.data('mutatorAllowedSelectionRegex');
 
