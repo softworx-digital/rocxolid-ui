@@ -2,81 +2,81 @@ $orientations: top, left, bottom, right;
 
 // paddings
 .padding-no {
-    padding: 0;
+    padding: 0!important;
 }
 .padding-right-no {
-    padding-right: 0;
+    padding-right: 0!important;
 }
 .padding-left-no {
-    padding-left: 0;
+    padding-left: 0!important;
 }
 .padding-top-no {
-    padding-top: 0;
+    padding-top: 0!important;
 }
 .padding-bottom-no {
-    padding-bottom: 0;
+    padding-bottom: 0!important;
 }
 @for $i from 0 through 100 {
     .padding-#{$i} {
-        padding: #{$i}px;
+        padding: #{$i}px!important;
     }
 }
 @each $orientation in $orientations {
     @for $i from 0 through 100 {
         .padding-#{$orientation}-#{$i} {
-            padding-#{$orientation}: #{$i}px;
+            padding-#{$orientation}: #{$i}px!important;
         }
     }
 }
 @for $i from 0 through 100 {
     .padding-rel-#{$i} {
-        padding: percentage($i/100);
+        padding: percentage($i/100)!important;
     }
 }
 @each $orientation in $orientations {
     @for $i from 0 through 100 {
         .padding-rel-#{$orientation}-#{$i} {
-            padding-#{$orientation}: percentage($i/100);
+            padding-#{$orientation}: percentage($i/100)!important;
         }
     }
 }
 // margins
 .margin-no {
-    margin: 0;
+    margin: 0!important;
 }
 .margin-right-no {
-    margin-right: 0;
+    margin-right: 0!important;
 }
 .margin-left-no {
-    margin-left: 0;
+    margin-left: 0!important;
 }
 .margin-top-no {
-    margin-top: 0;
+    margin-top: 0!important;
 }
 .margin-bottom-no {
-    margin-bottom: 0;
+    margin-bottom: 0!important;
 }
 @for $i from 0 through 100 {
     .margin-#{$i} {
-        margin: #{$i}px;
+        margin: #{$i}px!important;
     }
 }
 @each $orientation in $orientations {
     @for $i from 0 through 100 {
         .margin-#{$orientation}-#{$i} {
-            margin-#{$orientation}: #{$i}px;
+            margin-#{$orientation}: #{$i}px!important;
         }
     }
 }
 @for $i from 0 through 100 {
     .margin-rel-#{$i} {
-        margin: percentage($i/100);
+        margin: percentage($i/100)!important;
     }
 }
 @each $orientation in $orientations {
     @for $i from 0 through 100 {
         .margin-rel-#{$orientation}-#{$i} {
-            margin-#{$orientation}: percentage($i/100);
+            margin-#{$orientation}: percentage($i/100)!important;
         }
     }
 }

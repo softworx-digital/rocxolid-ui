@@ -29,6 +29,9 @@
 
 			editor.addCommand('rxMutatorDialog', {
 				exec: function (editor) {
+					// custom flag
+					editor.rxModal = true;
+
 					window.rxUtility().ajaxCall({
 						rx: rx,
 						// element: $element,
@@ -46,6 +49,7 @@
 						rx.getResponse().set(data).handle(function(modal) {
 							$(modal).on('click', '[data-mutator]', function(e) {
 								var selection = editor.getSelection();
+								var restricted_single_placeholder = $(this).data('mutatorSinglePlaceholder');
 								var restricted_multiple_placeholder = $(this).data('mutatorMultiplePlaceholder');
 								var restricted_expression_selection = $(this).data('mutatorAllowedExpression');
 								var allowed_selection_regex = $(this).data('mutatorAllowedSelectionRegex');
@@ -61,15 +65,15 @@
 										throw lang.error.selection_invalid_wrapped;
 									}
 
+									if (restricted_single_placeholder && editor.widgets.selected && (editor.widgets.selected.length > 1)) {
+										throw lang.error.selection_forbids_multiple_placeholder;
+									}
+
 									if (restricted_multiple_placeholder && (!editor.widgets.selected || (editor.widgets.selected.length < 2))) {
 										throw lang.error.selection_requires_multiple_placeholder;
 									}
 
-									if (!restricted_multiple_placeholder && editor.widgets.selected && (editor.widgets.selected.length > 1)) {
-										throw lang.error.selection_forbids_multiple_placeholder;
-									}
-
-									// @todo: find a prettier way to do this
+									// @todo: find a more sophisticated way to do this
 									if (restricted_expression_selection) {
 										self.handleExpressionMutator(lang, $(this), editor, selection, mutator);
 									} else if (restricted_multiple_placeholder && editor.widgets.selected && (editor.widgets.selected.length > 1)) {
@@ -78,8 +82,14 @@
 										self.handleSimpleMutator(lang, $(this), editor, selection, mutator);
 									}
 								} catch (e) {
-									self.notifyError(e);
+									self.notifyError(editor, e);
 								}
+
+								return false;
+							});
+
+							$(modal).on('hidden.bs.modal', function(e) {
+								editor.rxModal = false;
 							});
 						});
 					});
@@ -162,14 +172,14 @@
 			}
 		},
 
-		// @todo: currently this doesn't create a full-featured widget element (save is required)
 		handleExpressionMutator: function(lang, $choice, editor, selection, mutator) {
 			let allowed_selection_regex = $choice.data('mutatorAllowedSelectionRegex');
 
 			if (selection.getSelectedText() === '') {
 				throw lang.error.selection_empty;
 			} else if (allowed_selection_regex && !(new RegExp(allowed_selection_regex, 'u')).test(selection.getSelectedText())) {
-				throw lang.error.selection_invalid_expression;
+				// @todo: temporary hardcoded since only arithmetic mutator uses this methdo
+				throw `${lang.error.selection_invalid_arithmetic_expression} ${selection.getSelectedText()}`;
 			}
 
 			var style = new CKEDITOR.style({attributes: {
@@ -177,8 +187,8 @@
 				'title': $choice.data('title')
 			}});
 
-			console.log(editor.applyStyle(style));
-			// editor.widgets.initOn(mutator, 'rxmutator');
+			editor.applyStyle(style);
+			// editor.widgets.initOn(mutator, 'rxmutator'); // not working this way for unknown reason
 		},
 
 		handleMultiplePlaceholderMutator: function(lang, $choice, editor, selection, mutator) {
@@ -211,7 +221,9 @@
 			return ancestor && $(ancestor.$.parentNode).is('span[data-mutator]');
 		},
 
-		notifyError: function(msg) {
+		notifyError: function(editor, msg) {
+			console.error(`[CKEditor][${editor.name}].getSelection().getSelectedText() [${editor.getSelection().getSelectedText()}]`);
+
 			if (window.rx().hasPlugin('notification')) {
 				window.rx().getPlugin('notification').show(msg, 'error');
 			}

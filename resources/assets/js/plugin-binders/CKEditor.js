@@ -15,6 +15,8 @@ class CKEditor extends PluginBinder
 
         // global CKEditor configuration
         CKEDITOR.disableAutoInline = true;
+        // CKEDITOR.config.startupFocus = true;
+        // CKEDITOR.config.readOnly = false;
         CKEDITOR.config.language = settings.lang || this.lang;
         CKEDITOR.config.extraPlugins = 'justify,font,colorbutton,colordialog,widget,widgetselection,rxplaceholder,rxmutator';
         CKEDITOR.config.skin = 'bootstrapck';
@@ -37,6 +39,8 @@ class CKEditor extends PluginBinder
                 { name: 'colors', groups: [ 'colors' ] },
                 { name: 'rx', groups: [ 'rx' ] },
             ],
+            // startupFocus: true,
+            readOnly: false,
             allowedContent: true, // DISABLES Advanced Content Filter. This is so templates with classes: allowed through
             bodyId: 'editor',
             // templates_replaceContent: false,
@@ -65,7 +69,7 @@ class CKEditor extends PluginBinder
         */
     }
 
-    inline(element, options)
+    inline(element, options, callback)
     {
         var rx = this.rx;
         var options = options || {};
@@ -77,6 +81,10 @@ class CKEditor extends PluginBinder
 
         // this.instances[$(element).data('editableId')] = editor.id;
         this.instances[$(element).data('editableId')] = editor.name;
+
+        if (typeof callback == 'function') {
+            callback.call(this, editor);
+        }
 
         return editor;
     }
@@ -91,7 +99,8 @@ class CKEditor extends PluginBinder
         let elementId = $(element).data('editableId');
 
         if (typeof this.instances[elementId] == 'undefined') {
-            throw `Cannot find CKEDITOR instance named [${elementId}]`;
+            // throw `Cannot find CKEDITOR instance named [${elementId}]`;
+            return false;
         }
 
         return this.instance(this.instances[elementId]);

@@ -1,39 +1,12 @@
 {
-  "_from": "ckeditor4@4.15.0",
-  "_id": "ckeditor4@4.15.0",
-  "_inBundle": false,
-  "_integrity": "sha512-OhL3gqCU2JjulhyrF24LlwLKIZ/CO5sPoiHRdDwihRkz9FOeZQnL+iMa0q/zxXY/jt1R+MxDvt4/6uiQk663hQ==",
-  "_location": "/ckeditor4",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "ckeditor4@4.15.0",
-    "name": "ckeditor4",
-    "escapedName": "ckeditor4",
-    "rawSpec": "4.15.0",
-    "saveSpec": null,
-    "fetchSpec": "4.15.0"
-  },
-  "_requiredBy": [
-    "#DEV:/",
-    "#USER"
-  ],
-  "_resolved": "https://registry.npmjs.org/ckeditor4/-/ckeditor4-4.15.0.tgz",
-  "_shasum": "9f66bbec00f4ca1c93ce79298714cb56d21e52bc",
-  "_spec": "ckeditor4@4.15.0",
-  "_where": "/home/vagrant/code/rocxolid-release/packages/rocxolid-ui",
-  "author": {
-    "name": "CKSource",
-    "url": "https://cksource.com/"
-  },
-  "bugs": {
-    "url": "https://github.com/ckeditor/ckeditor4/issues"
-  },
-  "bundleDependencies": false,
-  "deprecated": false,
+  "name": "ckeditor4",
+  "version": "4.15.0",
   "description": "JavaScript WYSIWYG web text editor.",
-  "homepage": "https://ckeditor.com/ckeditor-4/",
+  "main": "ckeditor.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ckeditor/ckeditor4-releases.git"
+  },
   "keywords": [
     "ckeditor4",
     "ckeditor",
@@ -45,12 +18,10 @@
     "text",
     "javascript"
   ],
+  "author": "CKSource (https://cksource.com/)",
   "license": "(GPL-2.0 OR LGPL-2.1 OR MPL-1.1)",
-  "main": "ckeditor.js",
-  "name": "ckeditor4",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ckeditor/ckeditor4-releases.git"
+  "bugs": {
+    "url": "https://github.com/ckeditor/ckeditor4/issues"
   },
-  "version": "4.15.0"
+  "homepage": "https://ckeditor.com/ckeditor-4/"
 }

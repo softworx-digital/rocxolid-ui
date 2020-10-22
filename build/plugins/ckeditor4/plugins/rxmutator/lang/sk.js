@@ -17,8 +17,8 @@ CKEDITOR.plugins.setLang('rxmutator', 'sk', {
         selection_requires_multiple_placeholder: 'Pre použitie tohto prvku je potrebný výber aspoň jedného placeholdera.',
         selection_forbids_multiple_placeholder: 'Pre použitie tohto prvku nie je možný výber viacerých placeholderov',
         selection_invalid_wrapped: 'Vybraný text už má aplikovaný mutátor. Vnorené mutátory nie sú povolené.',
-        selection_invalid_regex: 'Vybraný text obsahuje nepovolené znaky.',
-        selection_invalid_expression: 'Vybraný text nepredstavuje aritmetický výraz.',
         selection_invalid_whitespace: 'Vybraný text obsahuje nepovolené znaky. Povolený je súvislý reťazec - slovo.',
+        selection_invalid_regex: 'Vybraný text obsahuje nepovolené znaky.',
+        selection_invalid_arithmetic_expression: 'Vybraný text nepredstavuje aritmetický výraz. Vybraný text:',
     }
 });

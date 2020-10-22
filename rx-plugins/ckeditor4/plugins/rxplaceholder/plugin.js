@@ -28,6 +28,9 @@
 
             editor.addCommand('RxPlaceholderDialog', {
                 exec: function (editor) {
+					// custom flag
+                    editor.rxModal = true;
+
                     window.rxUtility().ajaxCall({
                         rx: rx,
                         // element: $element,
@@ -56,7 +59,13 @@
                                 }
 
                                 editor.insertHtml($placeholder.get(0).outerHTML + ' ');
+
+                                return false;
                             });
+
+							$(modal).on('hidden.bs.modal', function(e) {
+								editor.rxModal = false;
+							});
                         });
                     });
                 }
