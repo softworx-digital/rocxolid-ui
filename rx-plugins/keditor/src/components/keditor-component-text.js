@@ -161,7 +161,7 @@ KEditor.components['text'] = {
         let self = this;
         let componentContent = component.find('.keditor-component-content');
 
-        self.withEditables(keditor, null, component, componentContent, self.destroyEditor);
+        // self.withEditables(keditor, null, component, componentContent, self.destroyEditor);
     },
 
     withEditables: function(keditor, contentArea, component, componentContent, callback, callbackResponse)
@@ -252,61 +252,8 @@ KEditor.components['text'] = {
                         console.debug(`%c [CKEditor][${editor.name}] of [${$(editable).data('editableId')}] BLUR, rxModal Opened, keeping...`, 'color: #ffcc00;');
                     }
                 });
-
-                /* this doesn't work quite well
-                editor.on('blur', function() {
-                    if (!editor.rxModal) {
-                        console.debug(`%c [CKEditor][${editor.name}] BLUR, destroying...`, 'color: #ffcc00;');
-                        try {
-                            editor.destroy();
-                        } catch (e) {
-                            console.debug(`%c [CKEditor][${editor.name}] Destroy error`, 'color: #ff0000;', e);
-                        }
-                    } else {
-                        console.debug(`%c [CKEditor][${editor.name}]  BLUR, rxModal Opened, keeping...`, 'color: #ffcc00;');
-                    }
-                }); */
             });
         });
-
-        /*
-        $(editable).on('blur', function() {
-            console.debug(`%c [${$(editable).data('editableId')}] BLUR`, 'color: #ffcc00;', editable);
-
-            const editor = rx.getPlugin('inline-editor').findInstance(editable)
-console.log(editor);
-            if (editor && !editor.rxModal) {
-                console.debug(`%c [CKEditor][${editor.name}] of [${$(editable).data('editableId')}] destroying...`, 'color: #ffcc00;');
-
-                try {
-                    editor.destroy();
-                } catch (e) {
-                    console.debug(`%c [CKEditor][${editor.name}] of [${$(editable).data('editableId')}] Destroy error`, 'color: #ff0000;', e);
-                }
-            } else if (editor) {
-                console.debug(`%c [CKEditor][${editor.name}] of [${$(editable).data('editableId')}] BLUR, rxModal Opened, keeping...`, 'color: #ffcc00;');
-            } else {
-                console.debug(`%c [CKEditor] not initialized on [${$(editable).data('editableId')}]`, 'color: #ff0000;', e);
-            }
-        });
-        */
-
-        /* this will bind CKEditor instances to all editables which has shown to be VERY ineffective
-        let editor = rx.getPlugin('inline-editor').inline(editable);
-
-        editor.on('instanceReady', function () {
-            // $('#cke_' + componentContent.attr('id')).appendTo(keditor.wrapper);
-            $(`.${editor.id}`)
-                .addClass('animated')
-                .addClass('fadeIn')
-                .addClass('speed-200')
-                .appendTo(keditor.wrapper); // add it to the keditor wrapper to apply specific styling
-
-            if (typeof keditor.options.onComponentReady === 'function') {
-                keditor.options.onComponentReady.call(contentArea, component, editable, editor);
-            }
-        });
-        */
     },
 
     getEditorContent: function(keditor, contentArea, component, componentContent, editable, isSingleEditable, callbackResponse)
@@ -330,7 +277,7 @@ console.log(editor);
         let rx = keditor.options.rx;
 
         if (rx.hasPlugin('inline-editor')) {
-            // const editor = rx.getPlugin('inline-editor').findInstance(editable);
+            let editor = rx.getPlugin('inline-editor').findInstance(editable);
 
             editor && editor.destroy();
         }
