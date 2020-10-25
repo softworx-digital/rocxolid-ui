@@ -106,6 +106,13 @@ class CKEditor extends PluginBinder
         return this.instance(this.instances[elementId]);
     }
 
+    destroyAllInstances()
+    {
+        for (name in CKEDITOR.instances) {
+            CKEDITOR.instances[name].destroy(true);
+        }
+    }
+
     get lang()
     {
         const lang = $('html').attr('lang');

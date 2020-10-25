@@ -199,6 +199,7 @@ KEditor.components['text'] = {
 
     bindEditor: function(keditor, contentArea, component, componentContent, editable, isSingleEditable, callbackResponse)
     {
+        let self = this;
         let rx = keditor.options.rx;
 
         $(editable)
@@ -210,7 +211,7 @@ KEditor.components['text'] = {
         }
 
         $(editable).on('focus', function(e) {
-            console.debug(`%c [${$(editable).data('editableId')}] FOCUS`, 'color: #d1ffa3;', editable, e);
+            console.debug(`%c [${$(editable).data('editableId')}] FOCUS`, 'color: #d1ffa3;', editable);
 
             scrollIntoView(editable, { time: 100 });
 
@@ -220,7 +221,7 @@ KEditor.components['text'] = {
             // console.log('POS', pos);
             // console.log('OFF', off);
 
-            rx.getPlugin('inline-editor').findInstance(editable) || rx.getPlugin('inline-editor').inline(editable, {}, function (editor) {
+            rx.getPlugin('inline-editor').findInstance(editable) || rx.getPlugin('inline-editor').inline(editable, {} /*{ enableContextMenu: false }*/, function (editor) {
                 console.debug(`%c [CKEditor][${editor.name}] BOUND to [${$(editable).data('editableId')}]`, 'color: #d1ffa3;', editor);
 
                 editor.on('instanceReady', function () {
@@ -236,23 +237,26 @@ KEditor.components['text'] = {
                         keditor.options.onComponentReady.call(contentArea, component, editable, editor);
                     }
                 });
-
-                editor.on('blur', function() {
-                    console.debug(`%c [${$(editable).data('editableId')}] BLUR`, 'color: #ffcc00;', editable);
-
-                    if (editor && !editor.rxModal) {
-                        console.debug(`%c [CKEditor][${editor.name}] of [${$(editable).data('editableId')}] destroying...`, 'color: #ffcc00;');
-
-                        try {
-                            editor.destroy();
-                        } catch (e) {
-                            console.debug(`%c [CKEditor][${editor.name}] of [${$(editable).data('editableId')}] Destroy error`, 'color: #ff0000;', e);
-                        }
-                    } else {
-                        console.debug(`%c [CKEditor][${editor.name}] of [${$(editable).data('editableId')}] BLUR, rxModal Opened, keeping...`, 'color: #ffcc00;');
-                    }
-                });
             });
+        });
+
+        $(editable).on('blur', function() {
+            console.debug(`%c [${$(editable).data('editableId')}] BLUR`, 'color: #ffcc00;', editable);
+
+            const editor = rx.getPlugin('inline-editor').findInstance(editable)
+
+            if (editor && !editor.rxModal) {
+                // console.debug(`%c [CKEditor][${editor.name}] of [${$(editable).data('editableId')}] destroying...`, 'color: #ffcc00;');
+                try {
+                    // editor.destroy(); // don't destroy the ckeditor cause I cannot identify if the contextmenu has been opened (fires element blur)
+                } catch (e) {
+                    console.debug(`%c [CKEditor][${editor.name}] of [${$(editable).data('editableId')}] Destroy error`, 'color: #ff0000;', e);
+                }
+            } else if (editor) {
+                console.debug(`%c [CKEditor][${editor.name}] of [${$(editable).data('editableId')}] BLUR, rxModal Opened, keeping...`, 'color: #ffcc00;');
+            } else {
+                console.debug(`%c [CKEditor] not initialized on [${$(editable).data('editableId')}]`, 'color: #ff0000;', e);
+            }
         });
     },
 

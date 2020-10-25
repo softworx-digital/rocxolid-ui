@@ -16,3 +16,11 @@
         color: #000;
     }
 }
+
+.cke_widget_wrapper {
+    &:hover {
+        > .cke_widget_element {
+            // background: red;
+        }
+    }
+}

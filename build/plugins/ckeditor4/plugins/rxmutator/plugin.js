@@ -222,7 +222,13 @@
 		},
 
 		notifyError: function(editor, msg) {
-			console.error(`[CKEditor][${editor.name}].getSelection().getSelectedText() [${editor.getSelection().getSelectedText()}]`);
+			let text = editor.getSelection().getSelectedText();
+
+			console.error(`[CKEditor][${editor.name}].getSelection().getSelectedText() [${text}]`);
+
+			text.split().forEach(function (char) {
+				console.debug(char, char.charCodeAt(0));
+			});
 
 			if (window.rx().hasPlugin('notification')) {
 				window.rx().getPlugin('notification').show(msg, 'error');
