@@ -9,6 +9,7 @@ table.table-crud {
             }
         }
     }
+
     > thead {
         > tr {
             > th,
@@ -23,6 +24,7 @@ table.table-crud {
                     min-width: 178px;
                 }
             }
+
             > th {
                 border: none;
 
@@ -40,6 +42,7 @@ table.table-crud {
             }
         }
     }
+
     > tbody {
         > tr {
             &:hover {
@@ -49,6 +52,7 @@ table.table-crud {
                     border-bottom: 1px solid rgba(38, 185, 154, 0.5);
                 }
             }
+
             &.selected {
                 td {
                     background: rgba(38, 185, 154, 0.3);
@@ -56,12 +60,14 @@ table.table-crud {
                     border-bottom: 1px solid rgba(38, 185, 154, 0.75);
                 }
             }
+
             &.blacklisted {
                 td {
                     background: rgba(201, 48, 44, 0.2);
                     border-top: 1px solid rgba(201, 48, 44, 0.5);
                     border-bottom: 1px solid rgba(201, 48, 44, 0.5);
                 }
+
                 &:hover {
                     td {
                         background: rgba(201, 48, 44, 0.3);
@@ -70,12 +76,14 @@ table.table-crud {
                     }
                 }
             }
+
             &.paid {
                 td {
                     background: rgba(188, 226, 34, 0.2);
                     border-top: 1px solid rgba(188, 226, 34, 0.5);
                     border-bottom: 1px solid rgba(188, 226, 34, 0.5);
                 }
+
                 &:hover {
                     td {
                         background: rgba(188, 226, 34, 0.3);
@@ -133,6 +141,90 @@ table.table-crud {
             &:last-child {
                 > td {
                     border-bottom: 2px solid #ddd;
+                }
+            }
+
+            &:hover {
+                &.bg-success {
+                    td {
+                        background-color: darken($state-success-bg, 5%);
+                        border-top-color: darken($state-success-bg, 25%);
+                        border-bottom-color: darken($state-success-bg, 25%);
+                    }
+                }
+
+                &.bg-info {
+                    td {
+                        background-color: darken($state-info-bg, 5%);
+                        border-top-color: darken($state-info-bg, 25%);
+                        border-bottom-color: darken($state-info-bg, 25%);
+                    }
+                }
+
+                &.bg-warning {
+                    td {
+                        background-color: darken($state-warning-bg, 5%);
+                        border-top-color: darken($state-warning-bg, 25%);
+                        border-bottom-color: darken($state-warning-bg, 25%);
+                    }
+                }
+
+                &.bg-danger {
+                    td {
+                        background-color: darken($state-danger-bg, 5%);
+                        border-top-color: darken($state-danger-bg, 25%);
+                        border-bottom-color: darken($state-danger-bg, 25%);
+                    }
+                }
+            }
+
+            &:nth-of-type(odd) {
+                &.bg-success {
+                    background-color: darken($state-success-bg, 10%);
+
+                    &:hover {
+                        td {
+                            background-color: darken($state-success-bg, 15%);
+                            border-top-color: darken($state-success-bg, 25%);
+                            border-bottom-color: darken($state-success-bg, 25%);
+                        }
+                    }
+                }
+
+                &.bg-info {
+                    background-color: darken($state-info-bg, 10%);
+
+                    &:hover {
+                        td {
+                            background-color: darken($state-info-bg, 15%);
+                            border-top-color: darken($state-info-bg, 25%);
+                            border-bottom-color: darken($state-info-bg, 25%);
+                        }
+                    }
+                }
+
+                &.bg-warning {
+                    background-color: darken($state-warning-bg, 10%);
+
+                    &:hover {
+                        td {
+                            background-color: darken($state-warning-bg, 15%);
+                            border-top-color: darken($state-warning-bg, 25%);
+                            border-bottom-color: darken($state-warning-bg, 25%);
+                        }
+                    }
+                }
+
+                &.bg-danger {
+                    background-color: darken($state-danger-bg, 10%);
+
+                    &:hover {
+                        td {
+                            background-color: darken($state-danger-bg, 15%);
+                            border-top-color: darken($state-danger-bg, 25%);
+                            border-bottom-color: darken($state-danger-bg, 25%);
+                        }
+                    }
                 }
             }
         }
