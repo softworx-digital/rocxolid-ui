@@ -78,7 +78,8 @@ class Response
         console.log('Request data invalid', data);
 
         if (rx.hasPlugin('notification')) {
-            rx.getPlugin('notification').show(data.join("\n"), 'error');
+            $.each(data, (index, error) => rx.getPlugin('notification').show(error, 'error'));
+            // rx.getPlugin('notification').show(data.join("\n"), 'error');
         }
     }
 

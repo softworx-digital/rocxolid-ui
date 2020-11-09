@@ -295,6 +295,20 @@ h6 {
             opacity: .5;
             transform: scale(1.1);
         }
+
+        &.img-download {
+            &::before {
+                font-family: 'FontAwesome';
+                font-size: 6rem;
+                content: "\f019";
+                color: #fff;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-left: -2rem;
+                margin-top: -4rem;
+            }
+        }
     }
 }
 

@@ -53,6 +53,8 @@ class PNotifyJS extends PluginBinder
         PNotify.alert({
             type: type || 'notice',
             text: text,
+            textTrusted: true,
+            titleTrusted: true,
             stack: this.stack
         });
     }
