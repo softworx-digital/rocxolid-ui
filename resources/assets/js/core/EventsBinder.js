@@ -258,6 +258,9 @@ class EventsBinder
             }
 
             const $form = $(this).closest('form');
+
+            $form.find($(this).attr('data-change-disable')).attr('disabled', 'disabled');
+
             const data = $form.find('[name^="_data"],[name="_section"],[name="_param"]').not(':disabled').fieldSerialize();
 
             Utility.ajaxCall({
@@ -272,6 +275,9 @@ class EventsBinder
         $(container).on('change', ':checkbox[data-change-action], :radio[data-change-action]', function(e)
         {
             const $form = $(this).closest('form');
+
+            $form.find($(this).attr('data-change-disable')).attr('disabled', 'disabled');
+
             const data = $form.find('[name^="_data"],[name="_section"],[name="_param"]').not(':disabled').fieldSerialize();
 
             Utility.ajaxCall({
