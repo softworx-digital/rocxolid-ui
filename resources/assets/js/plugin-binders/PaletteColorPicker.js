@@ -16,8 +16,9 @@ class PaletteColorPicker extends PluginBinder
         var rx = this.rx;
 
         $('.palette-colorpicker', container).paletteColorPicker({
-            timeout: 2000,
-            position: 'downside',
+            timeout: 1000,
+            position: 'upside',
+            close_all_but_this: true,
         });
         $('.palette-color-picker-button').addClass('input-group-addon').prepend('<i class="fa fa-chevron-circle-down fa-lg"></i>');
     }

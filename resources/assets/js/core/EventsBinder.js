@@ -272,6 +272,11 @@ class EventsBinder
             });
         });
 
+        $(container).on('changed.bs.select', 'select[data-change-redirect]', function(e, clickedIndex, newValue, oldValue)
+        {
+            $(location).attr('href', $(this).val());
+        });
+
         $(container).on('change', ':checkbox[data-change-action], :radio[data-change-action]', function(e)
         {
             const $form = $(this).closest('form');
@@ -287,6 +292,11 @@ class EventsBinder
                 url: $(this).data('change-action'),
                 data: data
             });
+        });
+
+        $(container).on('change', ':checkbox[data-change-redirect], :radio[data-change-redirect]', function(e)
+        {
+            $(location).attr('href', $(this).val());
         });
 
         $(container).on('change keydown', '.has-error :input', function(e)
