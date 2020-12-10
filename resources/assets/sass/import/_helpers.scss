@@ -62,7 +62,7 @@ $orientations: top, left, bottom, right;
     }
 }
 @each $orientation in $orientations {
-    @for $i from 0 through 100 {
+    @for $i from -100 through 100 {
         .margin-#{$orientation}-#{$i} {
             margin-#{$orientation}: #{$i}px!important;
         }
@@ -300,6 +300,10 @@ $cursor: (
 
 .no-left-border {
     border-left: 0!important;
+}
+
+.no-border-radius {
+    border-radius: 0!important;
 }
 
 .no-shadow {

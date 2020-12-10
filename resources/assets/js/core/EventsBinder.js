@@ -351,7 +351,7 @@ class EventsBinder
                     .fail(function(data)
                     {
                         if (data.status === 401) {
-                            if (!$('#login-modal').exists()) {
+                            if (true || !$('#login-modal').exists()) {
                                 $.getJSON(configuration.loginUrl, function(data)
                                 {
                                     rx.getResponse().set(data).handle();

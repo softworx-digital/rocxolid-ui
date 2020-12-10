@@ -31,8 +31,12 @@ class jQueryForm extends PluginBinder
 
                 rx.getResponse().set(data).handle();
             },
-            error: settings.error || function(data)
+            error: settings.error || function(data, statusText, xhr, $form)
             {
+                if (rx.hasPlugin('loading-overlay')) {
+                    rx.getPlugin('loading-overlay').hide($form.closest('.ajax-overlay'));
+                }
+
                 rx.handleAjaxError(data);
             }
         }
