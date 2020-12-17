@@ -1,3 +1,4 @@
+
 import 'tooltipster/dist/css/tooltipster.bundle.min.css';
 import 'tooltipster';
 import { PluginBinder } from '../core/PluginBinder';
@@ -18,6 +19,8 @@ class Tooltipster extends PluginBinder
             animation: 'fade',
             delay: 100,
             maxWidth: 300,
+            contentAsHTML: true,
+            // interactive: true,
         });
     }
 }
