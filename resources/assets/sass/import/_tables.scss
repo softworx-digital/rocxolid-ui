@@ -100,7 +100,7 @@ table.table-crud {
                     font-size: 100%;
                     display: inline-block;
                     margin: 1px;
-                    @include text-overflow();
+                    @include text-overflow(false);
                     max-width: 100%;
 
                     &.has-image {

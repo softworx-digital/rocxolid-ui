@@ -43,6 +43,18 @@ h6 {
         max-width: 230px;
         z-index: 1000;
 
+        .nav_title {
+            height: auto;
+        }
+
+        .site_title {
+            padding: 0;
+
+            img {
+                margin-top: -5px;
+            }
+        }
+
         .avatar {
             width: 70%;
             margin-left: 15%;
@@ -80,6 +92,8 @@ h6 {
                         color: #ecf0f1!important;
                         display: flex;
                         align-items: center;
+                        line-height: 30px;
+                        transition: all .2s ease-in-out;
 
                         &:hover {
                             color: #2A3F54!important;
@@ -119,6 +133,8 @@ h6 {
     }
 
     .sidebar-footer {
+        padding: 0;
+
         a {
             &:hover {
                 background: $red-background-color;

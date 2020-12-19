@@ -8,16 +8,45 @@ import { PluginBinder } from '../core/PluginBinder';
  */
 class jQueryNicescroll extends PluginBinder
 {
-    bind(container) {}
+    bind(container)
+    {
+        var rx = this.rx;
+
+        $('.scrollable', container).each(function(index) {
+            $(this).niceScroll({
+                cursorcolor: '#fff',
+                cursoropacitymin: 0,
+                cursoropacitymax: .75,
+                cursorwidth: '5px',
+                cursorborder: '1px solid transparent',
+                cursorborderradius: '3px',
+            });
+
+            $(this).on('shown.bs.collapse hidden.bs.collapse', '.collapse', function(e) {
+                $(this).niceScroll().resize();
+            });
+        });
+    }
 
     bindElement(selector)
     {
-        $(selector).niceScroll();
+        $(selector).niceScroll({
+            cursorcolor: '#fff',
+            cursoropacitymin: 0,
+            cursoropacitymax: .75,
+            cursorwidth: '5px',
+            cursorborder: '1px solid transparent',
+            cursorborderradius: '3px',
+        });
 
-        $(selector).on('heightChanged', function(e)
-        {
+        $(selector).on('shown.bs.collapse hidden.bs.collapse', '.collapse', function(e) {
             $(selector).niceScroll().resize();
         });
+    }
+
+    resizeElement(selector)
+    {
+        $(selector).niceScroll().resize();
     }
 }
 

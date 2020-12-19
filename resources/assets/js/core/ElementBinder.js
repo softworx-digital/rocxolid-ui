@@ -30,48 +30,19 @@ class ElementBinder {
 
     sidebar()
     {
+        var rx = this.rx;
+
         $(document).on('click', '#menu-toggle', function(e)
         {
-            // @todo: hotfixed
             $('.left_col.menu_fixed').toggle();
         });
 
-        $('#sidebar-menu').height($('.left_col').height() - ($('.left_col .fixed-scroll').height() + $('.left_col .sidebar-footer').height()));
+        $('#sidebar-menu').on('show.bs.collapse', '.collapse', function() {
+            $('#sidebar-menu').find('.collapse.in').collapse('hide');
+        });
 
-        // @todo: use bootstrap collapse
-        $('#sidebar-menu ul.side-menu')
-            .find('a')
-            .on('click', function(e)
-            {
-                var $li = $(this).parent();
-
-                if ($li.is('.active')) {
-                    $li.removeClass('active active-sm');
-                    $('ul:first', $li).slideUp(function()
-                    {
-                        //setContentHeight();
-                    });
-                } else {
-                    if (!$li.parent().is('.child_menu')) {
-                        $('#sidebar-menu ul.side-menu')
-                            .find('li')
-                            .removeClass('active active-sm');
-                        $('#sidebar-menu ul.side-menu')
-                            .find('li ul')
-                            .slideUp();
-                    }
-
-                    $li.addClass('active');
-
-                    $('ul:first', $li).slideDown(function()
-                    {
-                        //setContentHeight();
-                    });
-                }
-            });
-
-        if (this.rx.hasPlugin('scroll')) {
-            this.rx.getPlugin('scroll').bindElement('#sidebar-menu');
+        if (rx.hasPlugin('scroll')) {
+            rx.getPlugin('scroll').bindElement('#sidebar-menu');
         }
 
         return this;

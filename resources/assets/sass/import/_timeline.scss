@@ -2,6 +2,8 @@ ul.timeline {
     list-style: none;
     padding: 20px 0 20px;
     position: relative;
+    left: 15%;
+    width: 85%;
 
     &:before {
         top: 40px;
@@ -9,8 +11,8 @@ ul.timeline {
         position: absolute;
         content: " ";
         width: 3px;
-        background-color: #eeeeee;
-        left: 50%;
+        background-color: #ddd;
+        left: 25px;
         margin-left: -1.5px;
     }
 
@@ -22,7 +24,7 @@ ul.timeline {
         left: 0;
         pointer-events: none;
         background-image: linear-gradient(to bottom, rgba(255,255,255, 0), rgba(255,255,255, 1) 90%);
-        width: 100%;
+        width: 50px;
         height: 4em;
     }
 
@@ -42,11 +44,12 @@ ul.timeline {
         }
 
         & > .timeline-panel {
-            width: 50%;
-            float: left;
-            position: relative;/*
+            position: relative;
+            margin-left: 75px;
+            /*
             -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.175);
-            box-shadow: 0 0 2px rgba(0, 0, 0, 0.175);*/
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.175);
+            */
 
             &:before {
                 position: absolute;
@@ -77,16 +80,13 @@ ul.timeline {
             color: #fff;
             width: 50px;
             height: 50px;
-            line-height: 45px;
+            line-height: 42px;
             font-size: 1.4em;
             text-align: center;
             position: absolute;
             top: -5px;
-            left: 50%;
-            margin-left: -25px;
             z-index: 100;
-            // background-color: #999999;
-            border: 3px solid #eeeeee;
+            border: 5px solid #ddd;
             border-top-right-radius: 50%;
             border-top-left-radius: 50%;
             border-bottom-right-radius: 50%;
@@ -127,14 +127,11 @@ ul.timeline {
         }
 
         &:not(.timeline-inverted) {
-            padding-right:90px;
+            padding-right: 90px;
         }
 
         &.timeline-inverted {
-            padding-left:90px;
-
             & > .timeline-panel {
-                float: right;
 
                 &:before {
                     border-left-width: 0;
@@ -146,7 +143,7 @@ ul.timeline {
                 &:after {
                     border-left-width: 0;
                     border-right-width: 14px;
-                    left: -14px;
+                    left: -13px;
                     right: auto;
                 }
             }
