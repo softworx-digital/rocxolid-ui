@@ -6,6 +6,7 @@ table.table-crud {
             > th,
             > td {
                 vertical-align: middle;
+                position: relative;
             }
         }
     }
@@ -47,48 +48,48 @@ table.table-crud {
         > tr {
             &:hover {
                 td {
-                    background: rgba(38, 185, 154, 0.2);
-                    border-top: 1px solid rgba(38, 185, 154, 0.5);
-                    border-bottom: 1px solid rgba(38, 185, 154, 0.5);
+                    background: rgba(38, 185, 154, .2);
+                    border-top: 1px solid rgba(38, 185, 154, .5);
+                    border-bottom: 1px solid rgba(38, 185, 154, .5);
                 }
             }
 
             &.selected {
                 td {
-                    background: rgba(38, 185, 154, 0.3);
-                    border-top: 1px solid rgba(38, 185, 154, 0.75);
-                    border-bottom: 1px solid rgba(38, 185, 154, 0.75);
+                    background: rgba(38, 185, 154, .3);
+                    border-top: 1px solid rgba(38, 185, 154, .75);
+                    border-bottom: 1px solid rgba(38, 185, 154, .75);
                 }
             }
 
             &.blacklisted {
                 td {
-                    background: rgba(201, 48, 44, 0.2);
-                    border-top: 1px solid rgba(201, 48, 44, 0.5);
-                    border-bottom: 1px solid rgba(201, 48, 44, 0.5);
+                    background: rgba(201, 48, 44, .2);
+                    border-top: 1px solid rgba(201, 48, 44, .5);
+                    border-bottom: 1px solid rgba(201, 48, 44, .5);
                 }
 
                 &:hover {
                     td {
-                        background: rgba(201, 48, 44, 0.3);
-                        border-top: 1px solid rgba(201, 48, 44, 0.75);
-                        border-bottom: 1px solid rgba(201, 48, 44, 0.75);
+                        background: rgba(201, 48, 44, .3);
+                        border-top: 1px solid rgba(201, 48, 44, .75);
+                        border-bottom: 1px solid rgba(201, 48, 44, .75);
                     }
                 }
             }
 
             &.paid {
                 td {
-                    background: rgba(188, 226, 34, 0.2);
-                    border-top: 1px solid rgba(188, 226, 34, 0.5);
-                    border-bottom: 1px solid rgba(188, 226, 34, 0.5);
+                    background: rgba(188, 226, 34, .2);
+                    border-top: 1px solid rgba(188, 226, 34, .5);
+                    border-bottom: 1px solid rgba(188, 226, 34, .5);
                 }
 
                 &:hover {
                     td {
-                        background: rgba(188, 226, 34, 0.3);
-                        border-top: 1px solid rgba(188, 226, 34, 0.75);
-                        border-bottom: 1px solid rgba(188, 226, 34, 0.75);
+                        background: rgba(188, 226, 34, .3);
+                        border-top: 1px solid rgba(188, 226, 34, .75);
+                        border-bottom: 1px solid rgba(188, 226, 34, .75);
                     }
                 }
             }
@@ -100,8 +101,8 @@ table.table-crud {
                     font-size: 100%;
                     display: inline-block;
                     margin: 1px;
-                    @include text-overflow(false);
                     max-width: 100%;
+                    @include text-overflow(false);
 
                     &.has-image {
                         padding: .5em .4em .5em;
@@ -119,6 +120,10 @@ table.table-crud {
                 .btn-group {
                     display: flex;
                     justify-content: flex-end;
+
+                    .btn {
+                        font-size: 1.175em;
+                    }
                 }
 
                 &.ordered-by {

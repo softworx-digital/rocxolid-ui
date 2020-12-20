@@ -117,9 +117,9 @@ $orientations: top, left, bottom, right;
         padding-top: 10px;
     }
     &:hover {
-        background: rgba(38, 185, 154, 0.2);
-        border-top: 1px solid rgba(38, 185, 154, 0.5);
-        border-bottom: 1px solid rgba(38, 185, 154, 0.5);
+        background: rgba(38, 185, 154, .2);
+        border-top: 1px solid rgba(38, 185, 154, .5);
+        border-bottom: 1px solid rgba(38, 185, 154, .5);
     }
 }
 //

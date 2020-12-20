@@ -21,8 +21,20 @@ class ElementBinder {
 
     window()
     {
+        // simulate element click when page bookmark present
         if (window.location.hash) {
             $('[href="' + window.location.hash + '"]').trigger('click');
+        }
+
+        // reload the page when clicking back / forward
+        const [entry] = performance.getEntriesByType('navigation');
+
+        console.table(entry.toJSON());
+
+        switch (entry.type) {
+            case 'back_forward':
+                location.reload();
+                break;
         }
 
         return this;

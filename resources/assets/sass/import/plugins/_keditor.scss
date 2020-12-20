@@ -17,7 +17,7 @@
 */
 
 .keditor-modal {
-    transition: top .3s;
+    @include transition(top .3s);
 
     &.showed {
         /*
