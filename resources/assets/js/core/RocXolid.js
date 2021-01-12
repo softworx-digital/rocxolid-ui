@@ -28,6 +28,7 @@ class RocXolid
 
         this.eventsBinder.bind();
         this.elementBinder.bind();
+        this.bindPluginsEvents();
 
         return this;
     }
@@ -72,6 +73,13 @@ class RocXolid
         }
     }
 
+    bindPluginsEvents(selector)
+    {
+        for (let plugin in this.pluginBinders) {
+            this.bindPluginEvents(plugin, selector);
+        }
+    }
+
     bindPlugin(plugin, selector)
     {
         selector = selector || document;
@@ -91,6 +99,19 @@ class RocXolid
 
         if (this.hasPlugin(plugin)) {
             this.getPlugin(plugin).unbind(selector);
+        } else {
+            console.warn('No RocXolid plugin binder for', plugin);
+        }
+
+        return this;
+    }
+
+    bindPluginEvents(plugin, selector)
+    {
+        selector = selector || document;
+
+        if (this.hasPlugin(plugin)) {
+            this.getPlugin(plugin).bindEvents(selector);
         } else {
             console.warn('No RocXolid plugin binder for', plugin);
         }

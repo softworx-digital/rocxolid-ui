@@ -4,7 +4,8 @@ mix
    .setResourceRoot('../') // this sets the path prefix to font files etc., useful for apps in subdir
    .setPublicPath('build')
    .autoload({
-      jquery: [ '$', 'jQuery', 'window.jQuery' ]
+      jquery: [ '$', 'jQuery', 'window.jQuery' ],
+      knockout: [ 'knockout', 'window.ko' ]
    })
    .webpackConfig({
       resolve: {
@@ -31,7 +32,10 @@ mix
 
 // javascript
 mix.js('resources/assets/js/index.js', 'build/js/rocXolid.js')
-   .extract([ 'jquery' ])
+   .extract([
+      'jquery',
+      'knockout'
+   ])
    .sourceMaps()
    .version();
 

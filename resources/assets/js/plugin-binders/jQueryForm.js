@@ -67,7 +67,14 @@ class jQueryForm extends PluginBinder
 
         $(container).on('click', '[data-ajax-submit-form]', function(e)
         {
-            const $form = $('form' + $(this).data('ajax-submit-form'), container);
+            switch ($(this).data('ajax-submit-form')) {
+                case 'parent':
+                    var $form = $(this).closest('form');
+                    break;
+                default:
+                    var $form = $('form' + $(this).data('ajax-submit-form'), container);
+                    break;
+            }
 
             if ($form.exists()) {
                 e.preventDefault(e);

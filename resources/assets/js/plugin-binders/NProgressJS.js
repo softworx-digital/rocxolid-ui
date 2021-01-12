@@ -23,20 +23,19 @@ class NProgressJS extends PluginBinder
     {
         var rx = this.rx;
 
-        $(container).ajaxStart(function()
-        {
+        /*
+        this is commented out since the plugin blurring the input element is very obtrusive
+        $(container).ajaxStart(function() {
             NProgress.start();
         });
 
-        $(container).ajaxComplete(function()
-        {
+        $(container).ajaxComplete(function() {
             NProgress.done();
-            $(':focus').blur();
-        })
-        .on('changed.bs.select', function(event, clickedIndex, newValue, oldValue)
-        {
-            $(this).prev().find('input').focus();
+            $(':focus').trigger('blur');
+        }).on('changed.bs.select', function(event, clickedIndex, newValue, oldValue) {
+            $(this).prev().find('input').trigger('focus');
         });
+        */
     }
 }
 

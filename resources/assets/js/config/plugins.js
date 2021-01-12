@@ -20,6 +20,7 @@ import { BootstrapMaxlength as MaxlengthPluginBinder } from '../plugin-binders/B
 // import { BlueimpFileUpload as FileUploadPluginBinder } from '../plugin-binders/BlueimpFileUpload';
 import { BootstrapFileinput as FileinputPluginBinder } from '../plugin-binders/BootstrapFileinput';
 import { BootstrapSelectPicker as SelectPickerPluginBinder } from '../plugin-binders/BootstrapSelectPicker';
+// import { BootstrapMultiSelectPicker as MultiSelectPickerPluginBinder } from '../plugin-binders/BootstrapMultiSelectPicker';
 import { BootstrapAjaxSelectPicker as AjaxSelectPickerPluginBinder } from '../plugin-binders/BootstrapAjaxSelectPicker';
 import { BootstrapDaterangePicker as DateRangePickerPluginBinder } from '../plugin-binders/BootstrapDaterangePicker';
 import { BootstrapDatetimePicker as DateTimePickerPluginBinder } from '../plugin-binders/BootstrapDatetimePicker';
@@ -107,7 +108,10 @@ export default {
     },
     'select': {
         'binder': SelectPickerPluginBinder
-    },
+    },/*
+    'multi-select': {
+        'binder': MultiSelectPickerPluginBinder
+    },*/
     'ajax-select': {
         'binder': AjaxSelectPickerPluginBinder
     },

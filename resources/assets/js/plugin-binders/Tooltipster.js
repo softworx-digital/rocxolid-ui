@@ -14,7 +14,7 @@ class Tooltipster extends PluginBinder
     {
         var rx = this.rx;
 
-        $('[title!=""][title]', container).tooltipster({
+        $('[title!=""][title]:not(select)', container).tooltipster({
             theme: 'tooltipster-rocXolid',
             animation: 'fade',
             delay: 100,

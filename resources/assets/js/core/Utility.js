@@ -11,10 +11,8 @@ class Utility {}
  * Iterate through all fields and for those having [number] (index) in field name set the index to be the row number.
  */
 Utility.resetArrayFieldsNameParameters = ($container, selector) => {
-    $container.find(selector).each(function(i)
-    {
-        $(this).find('[name]').each(function() // @todo: add additional regex check
-        {
+    $container.find(selector).each(function(i) {
+        $(this).find('[name]').each(function() {// @todo: add additional regex check
             if (!$(this).closest('.control-group-additional').exists()) {
                 const attr = $(this).attr('name').replace(/(.*)\[(\d*)\](.*)/, function($0, $1, $2, $3)
                 {
@@ -34,15 +32,13 @@ Utility.resetFormField = ($field, callback) => {
     $field.find('input:checkbox[data-toggle]').prop('checked', false).change().unwrap().next('.toggle-group').remove();
     $field.find('.has-error').removeClass('has-error');
     $field.find('.error-message').remove();
-    $field.find('.bootstrap-select').replaceWith(function()
-    {
+    $field.find('.bootstrap-select').replaceWith(function() {
         return $('select', this);
     });
     //$clone.find(':input').val('');
     $field.find('input:not([type=radio], [type=checkbox]), select').val('');
     $field.find('input:radio, input:checkbox').attr('checked', false);
-    $field.find('input.flat').each(function(index)
-    {
+    $field.find('input.flat').each(function(index) {
         $(this).next('ins').remove();
         $(this).removeAttr('style').unwrap();
     });
@@ -145,6 +141,32 @@ Utility.ajaxCall = (settings, success, error) => {
     });
 }
 
+/**
+ * Triggers AJAX call on change event.
+ */
+Utility.changeToAction = (rx, $elm, e) => {
+    const $form = $elm.closest('form');
+
+    $form.find($elm.attr('data-change-disable')).attr('disabled', 'disabled');
+
+    const data = $form.find('[name^="_data"],[name="_section"],[name="_param"]').not(':disabled').fieldSerialize();
+
+    Utility.ajaxCall({
+        rx: rx,
+        element: $form,
+        type: $elm.data('request-method') || 'POST',
+        url: $elm.data('change-action'),
+        data: data
+    });
+}
+
+/**
+ * Triggers redirect on change event.
+ */
+Utility.changeToRedirect = (rx, $elm, e) => {
+    $(location).attr('href', $elm.val());
+}
+
 Utility.extendJQuery = () => {
     /**
      * Check DOM element's existence.
@@ -192,7 +214,7 @@ Utility.extendJQuery = () => {
     }
 
     /**
-     * Bind form submission by hitting enter on text inputs or on radio/checkbox change.
+     * Bind form submission by hitting enter on text inputs or on radio/checkbox/select change.
      *
      * @return jQuery
      */
@@ -200,33 +222,15 @@ Utility.extendJQuery = () => {
     {
         let $form = $(this);
 
-        $('input.autosubmit[type="checkbox"],input.autosubmit[type="radio"]', $form).on('change', function(e)
-        {
-            e.preventDefault();
-            $form.find('input[type="submit"], button[type="button"][data-ajax-submit-form]').trigger('click');
-        });
-
-        $form.find('select').on('change', function(e)
-        {
-            if ($(this).is(':focus')) {
+        // bound separately to enable turning off for specific plugin binders
+        $.each([ 'select', ':radio', ':checkbox' ], (i, elm) => {
+            $form.on('change', `${elm}`, function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                $form.find('input[type="submit"], button[type="button"][data-ajax-submit-form]').trigger('click');
-            }
+                $form.trigger('submit');
+                // $form.find('input[type="submit"], button[type="button"][data-ajax-submit-form]').trigger('click');
+            });
         });
-
-        // selectpicker event
-        /*
-        // this is fired together with select.on('change')
-        $form.find('select').on('changed.bs.select', function(e, clickedIndex, newValue, oldValue)
-        {
-            if (newValue !== oldValue) {
-                e.preventDefault();
-                e.stopPropagation();
-                $form.find('input[type="submit"], button[type="button"][data-ajax-submit-form]').click();
-            }
-        });
-        */
 
         return $(this);
     }
@@ -268,7 +272,8 @@ Utility.extendJQuery = () => {
         return $(this);
     };
 
-    $.fn.enableElement = function() {
+    $.fn.enableElement = function()
+    {
         this
             .removeClass('disabled')
             .find(':input')

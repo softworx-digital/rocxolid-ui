@@ -51,7 +51,7 @@ class EventsBinder
         $(container).on('keydown', 'form :text, :password', function (e) {
             switch (e.which) {
                 case 13: // enter
-                    $(this).closest('form').submit();
+                    $(this).closest('form').trigger('submit');
                     return false;
                 case 27: // esc
                     // $(this).closest('.modal').modal('hide');
@@ -93,7 +93,7 @@ class EventsBinder
             const $btngroup = $(this).closest('.btn-group.submit-actions');
 
             $btngroup.closest('form').find('input[name="_submit-action"]').val($(this).data('submit-action'));
-            $btngroup.find('input[type="submit"], button[data-ajax-submit-form]').click();
+            $btngroup.find('input[type="submit"], button[data-ajax-submit-form]').trigger('click');
         });
 
         $(container).on('click', '[data-add-element]', function(e)
@@ -103,8 +103,7 @@ class EventsBinder
 
             $clone.find('input:not([type=radio], [type=checkbox]), select').val('');
             $clone.find('input[type=radio], input[type=checkbox]').attr('checked', false);
-            $clone.find('input.flat').each(function(index)
-            {
+            $clone.find('input.flat').each(function(index) {
                 $(this).next('ins').remove();
                 $(this).removeAttr('style').unwrap();
             });
@@ -239,6 +238,25 @@ class EventsBinder
             $(this).closest(econtainer).find(selector).attr('disabled', 'disabled').parent().addClass('disabled');
         });
 
+        $(container).on('click', '[data-click-reset]', function(e)
+        {
+            const selector = $(this).attr('data-click-reset');
+            const $container = $(this).closest('form');
+            const $input = $container.find('[name="' + selector + '"]');
+
+            $input.val('');
+
+            if ($input.is('select')) {
+                $input.selectpicker('refresh');
+            }
+
+            if ($input.is(':text')) {
+                $container.trigger('submit');
+            } else {
+                $input.trigger('change');
+            }
+        });
+
         return this;
     }
 
@@ -248,59 +266,22 @@ class EventsBinder
 
         let rx = this.rx;
 
-        // $(container).on('change', '[data-change-action]', function(e)
-        $(container).on('changed.bs.select', 'select[data-change-action]', function(e, clickedIndex, newValue, oldValue)
-        {
-            if (newValue == oldValue) {
-                return false;
-            } else {
-                $(this).find('.bs-searchbox input').focus();
-            }
-
-            const $form = $(this).closest('form');
-
-            $form.find($(this).attr('data-change-disable')).attr('disabled', 'disabled');
-
-            const data = $form.find('[name^="_data"],[name="_section"],[name="_param"]').not(':disabled').fieldSerialize();
-
-            Utility.ajaxCall({
-                rx: rx,
-                element: $form,
-                type: $(this).data('request-method') || 'POST',
-                url: $(this).data('change-action'),
-                data: data
+        // bound separately to enable turning off for specific plugin binders
+        $.each([ 'select', ':radio', ':checkbox' ], (i, elm) => {
+            $(container).on('change', `${elm}[data-change-action]`, function(e) {
+                Utility.changeToAction(rx, $(this), e);
             });
         });
 
-        $(container).on('changed.bs.select', 'select[data-change-redirect]', function(e, clickedIndex, newValue, oldValue)
-        {
-            $(location).attr('href', $(this).val());
-        });
-
-        $(container).on('change', ':checkbox[data-change-action], :radio[data-change-action]', function(e)
-        {
-            const $form = $(this).closest('form');
-
-            $form.find($(this).attr('data-change-disable')).attr('disabled', 'disabled');
-
-            const data = $form.find('[name^="_data"],[name="_section"],[name="_param"]').not(':disabled').fieldSerialize();
-
-            Utility.ajaxCall({
-                rx: rx,
-                element: $form,
-                type: $(this).data('request-method') || 'POST',
-                url: $(this).data('change-action'),
-                data: data
+        // bound separately to enable turning off for specific plugin binders
+        $.each([ 'select', ':radio', ':checkbox' ], (i, elm) => {
+            $(container).on('change', `${elm}[data-change-redirect]`, function(e) {
+                Utility.changeToRedirect(rx, $(this), e);
             });
         });
 
-        $(container).on('change', ':checkbox[data-change-redirect], :radio[data-change-redirect]', function(e)
-        {
-            $(location).attr('href', $(this).val());
-        });
-
-        $(container).on('change keydown', '.has-error :input', function(e)
-        {
+        // remove invalid input indication on change or keydown
+        $(container).on('change keydown', '.has-error :input', function(e) {
             $(this).closest('.has-error').removeClass('has-error').find('.error-message').remove();
         });
 

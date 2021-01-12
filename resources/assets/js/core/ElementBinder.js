@@ -29,7 +29,7 @@ class ElementBinder {
         // reload the page when clicking back / forward
         const [entry] = performance.getEntriesByType('navigation');
 
-        console.table(entry.toJSON());
+        // console.table(entry.toJSON());
 
         switch (entry.type) {
             case 'back_forward':

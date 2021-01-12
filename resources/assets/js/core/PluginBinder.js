@@ -30,6 +30,11 @@ class PluginBinder
         throw new ReferenceError('Unbinding must be implemented in specific plugin binder');
     }
 
+    bindEvents(container)
+    {
+        return this;
+    }
+
     onNotAvailable()
     {
         console.warn(this.constructor.packageName, 'not available');

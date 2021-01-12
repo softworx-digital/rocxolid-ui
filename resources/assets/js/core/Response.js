@@ -345,6 +345,7 @@ class Response
         this._log('_bindPlugins', selector);
 
         this.rx.bindPlugins(selector);
+        this.rx.bindPluginsEvents(selector);
     }
 
     /**
