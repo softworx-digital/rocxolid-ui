@@ -36,6 +36,9 @@
         // position: relative;
 
         .btn {
+            max-width: 250px;
+            @include text-overflow(false);
+
             &.pull-right {
                 margin-right: 0;
             }
