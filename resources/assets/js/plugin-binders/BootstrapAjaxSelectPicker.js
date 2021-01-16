@@ -18,7 +18,7 @@ class BootstrapAjaxSelectPicker extends PluginBinder
         $('select.autocomplete', container).ajaxSelectPicker({
             minLength: 3,
             locale: {
-                currentlySelected: pb.t('searchPlaceholder'),
+                currentlySelected: pb.t('currentlySelected'),
                 emptyTitle: pb.t('emptyTitle'),
                 errorText: pb.t('errorText'),
                 searchPlaceholder: pb.t('searchPlaceholder'),
@@ -30,7 +30,7 @@ class BootstrapAjaxSelectPicker extends PluginBinder
             ajax: {
                 data: function() {
                     return {
-                        _param: this.plugin.$element.closest('form').find('[name="_param"]').val(),
+                        _param: this.plugin.$element.closest('form').find('[name="_param"]').val(), // @todo not like this
                         q: '{{{q}}}',
                         ...this.plugin.$element.data('absAjaxRequestData')
                     };

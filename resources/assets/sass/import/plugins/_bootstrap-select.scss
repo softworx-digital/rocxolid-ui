@@ -45,5 +45,19 @@
                 }
             }
         }
+
+        li a span {
+            &.glyphicon {
+                top: -5px;
+                left: -5px;
+            }
+
+            &.text {
+                max-width: 80vw;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
     }
 }

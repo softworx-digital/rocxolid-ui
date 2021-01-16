@@ -335,10 +335,13 @@ class EventsBinder
                             if (true || !$('#login-modal').exists()) {
                                 $.getJSON(configuration.loginUrl, function(data)
                                 {
+                                    // hide all modals
+                                    $('.modal').modal('hide');
+                                    // blur the screen
+                                    $('body').addClass('offline');
+                                    // display login modal
                                     rx.getResponse().set(data).handle();
                                 });
-
-                                $('body').addClass('offline');
                             }
                         }
                     });
