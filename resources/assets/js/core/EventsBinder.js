@@ -302,8 +302,16 @@ class EventsBinder
                 $('body').addClass('unloading');
                 $('.modal').modal('hide');
 
-                if (rx.hasPlugin('loading-overlay')) {
-                    rx.getPlugin('loading-overlay').show($('.right_col .x_panel'));
+                if ($(document.activeElement).parents('.content-out').exists()) {
+                    $('.right_col > div').addClass('animate').addClass('slideOutRight');
+
+                    if (rx.hasPlugin('loading-overlay')) {
+                        rx.getPlugin('loading-overlay').show($('.right_col').addClass('viewport-height'));
+                    }
+                } else {
+                    if (rx.hasPlugin('loading-overlay')) {
+                        rx.getPlugin('loading-overlay').show($('.right_col .x_panel'));
+                    }
                 }
             }
         });

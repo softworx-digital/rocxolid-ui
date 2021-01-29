@@ -1,7 +1,11 @@
 {
-    "/js/manifest.js": "/js/manifest.js?id=41f053ba9a94d81b39f8",
-    "/js/rocXolid.js": "/js/rocXolid.js?id=f5e8b55a53d7ea854d3c",
-    "/css/rocXolid.css": "/css/rocXolid.css?id=48317d272825f1b64cf9",
-    "/js/vendor.js": "/js/vendor.js?id=3ca9441408e1199315fa",
+    "/js/manifest.js": "/js/manifest.js?id=d91051ea7d0c9bd1981e",
+    "/js/manifest.js.map": "/js/manifest.js.map?id=a07956f82042cc418451",
+    "/js/rocXolid.js": "/js/rocXolid.js?id=03a33fad0e4a16100038",
+    "/css/rocXolid.css": "/css/rocXolid.css?id=22726075db5aa4c71e20",
+    "/js/rocXolid.js.map": "/js/rocXolid.js.map?id=8e32a415718f7f05fe8a",
+    "/css/rocXolid.css.map": "/css/rocXolid.css.map?id=9f08c39c7210ab302bab",
+    "/js/vendor.js": "/js/vendor.js?id=2067ddb11230937e558e",
+    "/js/vendor.js.map": "/js/vendor.js.map?id=515a0f9c04ae20ad1a5b",
     "/css/bootstrap.css.map": "/css/bootstrap.css.map?id=ba33e6ee183995913c20"
 }
