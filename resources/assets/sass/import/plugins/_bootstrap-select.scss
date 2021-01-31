@@ -20,6 +20,7 @@
                         color: #fff;
                     }
                 }
+
                 &.selected {
                     a {
                         /*background: rgba(63, 192, 165, .15);*/
@@ -31,6 +32,7 @@
                     }
                 }
             }
+
             &.dropdown-header {
                 font-weight: bold;
             }
@@ -46,19 +48,25 @@
             }
         }
 
-        li a span {
-            &.glyphicon {
-                top: -5px;
-                left: -5px;
+        li {
+            a {
+                padding: 10px 15px 5px;
 
-                &.check-mark {
-                    left: auto;
+                span {
+                    &.glyphicon {
+                        top: -5px;
+                        left: -5px;
+
+                        &.check-mark {
+                            left: auto;
+                        }
+                    }
+
+                    &.text {
+                        max-width: 80vw;
+                        @include text-overflow(false);
+                    }
                 }
-            }
-
-            &.text {
-                max-width: 80vw;
-                @include text-overflow(false);
             }
         }
     }
