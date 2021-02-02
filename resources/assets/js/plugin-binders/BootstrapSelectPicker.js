@@ -24,12 +24,14 @@ class BootstrapSelectPicker extends PluginBinder
     {
         var rx = this.rx;
 
-        $(container).off('change', 'select[data-change-action]');
+        $('select[data-change-action]').off('change');
+        $('select[data-change-action]').off('changed.bs.select');
         $(container).on('changed.bs.select', 'select[data-change-action]', function(e, clickedIndex, newValue, oldValue) {
             Utility.changeToAction(rx, $(this), e);
         });
 
-        $(container).off('change', 'select[data-change-redirect]');
+        $('select[data-change-redirect]').off('change');
+        $('select[data-change-redirect]').off('changed.bs.select');
         $(container).on('changed.bs.select', 'select[data-change-redirect]', function(e, clickedIndex, newValue, oldValue) {
             Utility.changeToRedirect(rx, $(this), e);
         });
@@ -38,6 +40,7 @@ class BootstrapSelectPicker extends PluginBinder
             const $form = $(this);
 
             $form.off('change', 'select');
+            $form.off('changed.bs.select', 'select');
             $form.on('changed.bs.select', 'select', function(e, clickedIndex, newValue, oldValue) {
                 e.preventDefault();
                 e.stopPropagation();
