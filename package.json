@@ -9,6 +9,7 @@
         "@ckeditor/ckeditor5-core": "^18.0.0",
         "@kademi/keditor": "^2.0.1",
         "ajax-bootstrap-select": "^1.4.5",
+        "anima-counters": "^1.1.1",
         "animate.css": "^3.7.2",
         "blueimp-file-upload": "^10.31.0",
         "bootstrap": "^3.4.1",

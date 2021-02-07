@@ -80,6 +80,10 @@ class jQueryForm extends PluginBinder
                 e.preventDefault(e);
                 // e.stopPropagation();
 
+                if ($(this).is('[data-submit-action]')) {
+                    $form.find('input[name="_submit-action"]').val($(this).data('submit-action'));
+                }
+
                 if ($(this).is(':reset')) {
                     $form.find('input:visible').val('');
                     $form.find('select').val('').selectpicker('refresh');
@@ -101,6 +105,11 @@ class jQueryForm extends PluginBinder
         settings = settings || {};
 
         return {...this.formSubmitOptions, ...settings};
+    }
+
+    bindEvents(container)
+    {
+        $(container, 'form').eq(0).focusFirst();
     }
 }
 

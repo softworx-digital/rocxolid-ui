@@ -92,7 +92,10 @@ class Response
         return $(modal)
             .appendTo('body')
             .on('show.bs.modal', function(e) {
-                res._bindPlugins($(this));
+                res._bindPlugins($(this), false);
+            })
+            .on('shown.bs.modal', function(e) {
+                res._bindPluginsEvents($(this));
             })
             .on('hidden.bs.modal', function(e) {
                 $(this).remove();
@@ -340,12 +343,31 @@ class Response
      *
      * @param {*} selector
      */
-    _bindPlugins(selector)
+    _bindPlugins(selector, bind_events = true)
     {
         this._log('_bindPlugins', selector);
 
         this.rx.bindPlugins(selector);
+
+        if (bind_events) {
+            this._bindPluginsEvents(selector);
+        }
+
+        return this;
+    }
+
+    /**
+     * Bind plugins events to given element.
+     *
+     * @param {*} selector
+     */
+    _bindPluginsEvents(selector)
+    {
+        this._log('_bindPluginsEvents', selector);
+
         this.rx.bindPluginsEvents(selector);
+
+        return this;
     }
 
     /**

@@ -1,4 +1,5 @@
 import { MomentJS as DateManipulationPluginBinder } from '../plugin-binders/MomentJS';
+import { CounterUp as CounterUpPluginBinder } from '../plugin-binders/CounterUp';
 import { Clipboard as ClipboardPluginBinder } from '../plugin-binders/Clipboard';
 import { Tooltipster as TooltipPluginBinder } from '../plugin-binders/Tooltipster';
 import { NProgressJS as LoadingProgressPluginBinder } from '../plugin-binders/NProgressJS';
@@ -48,6 +49,9 @@ import { KEditorBinder as DocumentComposerPluginBinder } from '../plugin-binders
 export default {
     'date': {
         'binder': DateManipulationPluginBinder
+    },
+    'counter-up': {
+        'binder': CounterUpPluginBinder
     },
     'clipboard': {
         'binder': ClipboardPluginBinder

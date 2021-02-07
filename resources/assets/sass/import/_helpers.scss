@@ -219,6 +219,18 @@ $orientations: top, left, bottom, right;
     }
 }
 
+.text-xl {
+    font-size: x-large;
+}
+
+.text-xxl {
+    font-size: xx-large;
+}
+
+.text-xxxl {
+    font-size: xxx-large;
+}
+
 // width
 @for $i from 0 through 100 {
     .width-#{$i} {

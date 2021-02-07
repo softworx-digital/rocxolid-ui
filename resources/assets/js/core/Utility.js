@@ -256,13 +256,17 @@ Utility.extendJQuery = () => {
      */
     $.fn.focusFirst = function()
     {
-        const $focusField = $(this).find(':text, textarea, select').eq(0);
+        let $focus_field = $(this).find(':text, textarea, select').eq(0);
 
-        if ($focusField.exists()) {
-            const fieldOffset = $focusField.offset().top;
+        if ($focus_field.parent().is('.bootstrap-select')) {
+            $focus_field = $focus_field.next('[role="combobox"]');
+        }
+
+        if ($focus_field.exists()) {
+            const fieldOffset = $focus_field.offset().top;
             const scrollTolerance = $(window).height() / 2;
 
-            $focusField.trigger('focus');
+            $focus_field.trigger('focus');
 
             if (fieldOffset > scrollTolerance) {
                 $('html, body').animate({scrollTop: (fieldOffset - 30)});

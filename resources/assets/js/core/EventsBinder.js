@@ -48,7 +48,8 @@ class EventsBinder
             }
         });
 
-        $(container).on('keydown', 'form :text, :password', function (e) {
+        $(container).on('keydown', 'form :text, :password', function (e)
+        {
             switch (e.which) {
                 case 13: // enter
                     $(this).closest('form').trigger('submit');
@@ -86,8 +87,13 @@ class EventsBinder
             });
         });
 
+        // @todo subject to revision and rewrite since it may collide if the button is [data-submit-action] together with [data-ajax-submit-form]
         $(container).on('click', '[data-submit-action]', function(e)
         {
+            if ($(this).is('input[type="submit"], button[data-ajax-submit-form]')) {
+                return false; // handled in jQueryForm PluginBinder
+            }
+
             e.preventDefault(e);
 
             const $btngroup = $(this).closest('.btn-group.submit-actions');
