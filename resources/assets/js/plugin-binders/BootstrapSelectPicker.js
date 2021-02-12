@@ -24,19 +24,23 @@ class BootstrapSelectPicker extends PluginBinder
     {
         var rx = this.rx;
 
-        $('select[data-change-action]').off('change');
-        $('select[data-change-action]').off('changed.bs.select');
-        $(container).on('changed.bs.select', 'select[data-change-action]', function(e, clickedIndex, newValue, oldValue) {
+        // commented out, doesn't work as intended, rewrite needed, collides with EventsBinder.bindChange
+        // $('select[data-change-action]').off('change');
+        // $('select[data-change-action]').off('changed.bs.select');
+        $(document).off('changed.bs.select', 'select[data-change-action]');
+        $(document).on('changed.bs.select', 'select[data-change-action]', function(e, clickedIndex, newValue, oldValue) {
             Utility.changeToAction(rx, $(this), e);
         });
 
-        $('select[data-change-redirect]').off('change');
-        $('select[data-change-redirect]').off('changed.bs.select');
-        $(container).on('changed.bs.select', 'select[data-change-redirect]', function(e, clickedIndex, newValue, oldValue) {
+        // commented out, doesn't work as intended, rewrite needed, collides with EventsBinder.bindChange
+        // $('select[data-change-redirect]').off('change');
+        // $('select[data-change-redirect]').off('changed.bs.select');
+        $(document).off('changed.bs.select', 'select[data-change-redirect]');
+        $(document).on('changed.bs.select', 'select[data-change-redirect]', function(e, clickedIndex, newValue, oldValue) {
             Utility.changeToRedirect(rx, $(this), e);
         });
 
-        $(container).find('form.autosubmit').each(function() {
+        $(document).find('form.autosubmit').each(function() {
             const $form = $(this);
 
             $form.off('change', 'select');

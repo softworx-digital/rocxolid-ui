@@ -273,14 +273,16 @@ class EventsBinder
         let rx = this.rx;
 
         // bound separately to enable turning off for specific plugin binders
-        $.each([ 'select', ':radio', ':checkbox' ], (i, elm) => {
+        // $.each([ 'select', ':radio', ':checkbox' ], (i, elm) => {
+        $.each([ ':radio', ':checkbox' ], (i, elm) => { // excluding select, causes troubles with BootstrapSelectPicker
             $(container).on('change', `${elm}[data-change-action]`, function(e) {
                 Utility.changeToAction(rx, $(this), e);
             });
         });
 
         // bound separately to enable turning off for specific plugin binders
-        $.each([ 'select', ':radio', ':checkbox' ], (i, elm) => {
+        // $.each([ 'select', ':radio', ':checkbox' ], (i, elm) => {
+        $.each([ ':radio', ':checkbox' ], (i, elm) => { // excluding select, causes troubles with BootstrapSelectPicker
             $(container).on('change', `${elm}[data-change-redirect]`, function(e) {
                 Utility.changeToRedirect(rx, $(this), e);
             });
