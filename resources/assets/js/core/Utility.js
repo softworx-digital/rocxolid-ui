@@ -126,6 +126,10 @@ Utility.ajaxCall = (settings, success, error) => {
                 settings.rx.getResponse().set(data).handle();
                 // History.pushState(data, title, url);
                 // History.pushState(null, null, this.clientUrl);
+                // @todo hotfixed
+                if (settings.element && settings.target && settings.target.is('[data-change-action-focus]')) {
+                    $(settings.element).find(settings.target.attr('data-change-action-focus')).focusAtEnd();
+                }
             };
         }),
         error: ((data) => {
@@ -149,11 +153,14 @@ Utility.changeToAction = (rx, $elm, e) => {
 
     $form.find($elm.attr('data-change-disable')).attr('disabled', 'disabled');
 
-    const data = $form.find('[name^="_data"],[name="_section"],[name="_param"]').not(':disabled').fieldSerialize();
+    var data = $form.find('[name^="_data"],[name="_section"],[name="_param"]').not(':disabled').fieldSerialize();
+    data += '&_event-target=' + $elm.attr('name'); // @todo ugly
+    // const data = $form.find('[name^="_data"],[name="_section"],[name="_param"]').not(':disabled').serializeArray();
 
     Utility.ajaxCall({
         rx: rx,
         element: $form,
+        target: $elm,
         type: $elm.data('request-method') || 'POST',
         url: $elm.data('change-action'),
         data: data
@@ -382,6 +389,24 @@ Utility.extendJQuery = () => {
         });
 
         return this;
+    };
+
+    /**
+     * Focus element and put cursor at end.
+     *
+     * @return jQuery
+     */
+    $.fn.focusAtEnd = function() {
+        return this.each(function() {
+            $(this).trigger('focus')
+
+            if (typeof this.setSelectionRange === 'function') {
+                const len = $(this).val().length * 2;
+                this.setSelectionRange(len, len);
+            } else {
+                $(this).val($(this).val());
+            }
+        });
     };
 }
 
