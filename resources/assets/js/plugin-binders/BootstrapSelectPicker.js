@@ -20,7 +20,7 @@ class BootstrapSelectPicker extends PluginBinder
         });
     }
 
-    bindEvents(container)
+    bindEvents(container, $target)
     {
         var rx = this.rx;
 

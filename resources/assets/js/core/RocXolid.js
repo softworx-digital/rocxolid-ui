@@ -73,10 +73,10 @@ class RocXolid
         }
     }
 
-    bindPluginsEvents(selector)
+    bindPluginsEvents(selector, $target)
     {
         for (let plugin in this.pluginBinders) {
-            this.bindPluginEvents(plugin, selector);
+            this.bindPluginEvents(plugin, selector, $target);
         }
     }
 
@@ -106,12 +106,12 @@ class RocXolid
         return this;
     }
 
-    bindPluginEvents(plugin, selector)
+    bindPluginEvents(plugin, selector, $target)
     {
         selector = selector || document;
 
         if (this.hasPlugin(plugin)) {
-            this.getPlugin(plugin).bindEvents(selector);
+            this.getPlugin(plugin).bindEvents(selector, $target);
         } else {
             console.warn('No RocXolid plugin binder for', plugin);
         }

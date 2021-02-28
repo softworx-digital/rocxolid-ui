@@ -14,9 +14,10 @@ class Response
         this.extension = null;
     }
 
-    set(data)
+    set(data, target)
     {
         this.data = data;
+        this.target = target;
 
         return this;
     }
@@ -365,7 +366,7 @@ class Response
     {
         this._log('_bindPluginsEvents', selector);
 
-        this.rx.bindPluginsEvents(selector);
+        this.rx.bindPluginsEvents(selector, this.target);
 
         return this;
     }

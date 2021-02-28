@@ -30,7 +30,7 @@ class PluginBinder
         throw new ReferenceError('Unbinding must be implemented in specific plugin binder');
     }
 
-    bindEvents(container)
+    bindEvents(container, $target)
     {
         return this;
     }

@@ -107,9 +107,13 @@ class jQueryForm extends PluginBinder
         return {...this.formSubmitOptions, ...settings};
     }
 
-    bindEvents(container)
+    bindEvents(container, $target)
     {
-        $(container, 'form').eq(0).focusFirst();
+        if (typeof $target === 'undefined') {
+            $(container, 'form').eq(0).focusFirst();
+        } else {
+            $(container, 'form').eq(0).focusFirst($target);
+        }
     }
 }
 

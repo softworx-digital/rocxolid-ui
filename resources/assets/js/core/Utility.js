@@ -123,7 +123,7 @@ Utility.ajaxCall = (settings, success, error) => {
                 if (settings.element && settings.rx.hasPlugin('loading-overlay')) {
                     settings.rx.getPlugin('loading-overlay').hide($(settings.element).closest('.ajax-overlay'));
                 }
-                settings.rx.getResponse().set(data).handle();
+                settings.rx.getResponse().set(data, settings.target).handle();
                 // History.pushState(data, title, url);
                 // History.pushState(null, null, this.clientUrl);
                 // @todo hotfixed
@@ -261,9 +261,12 @@ Utility.extendJQuery = () => {
      *
      * @return jQuery
      */
-    $.fn.focusFirst = function()
+    $.fn.focusFirst = function($target)
     {
-        let $focus_field = $(this).find(':text, textarea, select').eq(0);
+        let $focus_field = (typeof $target === 'undefined')
+            ? $(this).find(':text, textarea, select').eq(0)
+            // : $(this).find('[name="' + $target.attr('name') + '"]').eq(0); // if used in modal, scroll base "layer"
+            : $target; // so hotfixing with this, won't harm further execution
 
         if ($focus_field.parent().is('.bootstrap-select')) {
             $focus_field = $focus_field.next('[role="combobox"]');
