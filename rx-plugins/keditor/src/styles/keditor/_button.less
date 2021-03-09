@@ -8,12 +8,12 @@
 // -------------------------------------------------
 .keditor-btn-group {
     letter-spacing: -1em;
-    
+
     .keditor-btn {
         letter-spacing: normal;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
-        
+
         &:first-child {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
@@ -35,36 +35,36 @@
     box-shadow: @btn-box-shadow;
     display: inline-block;
     text-decoration: none !important;
-    
+
     i {
         line-height: unit(@btn-height - 1, px);
     }
-    
+
     &.keditor-btn-default {
         border: 1px solid @btn-default-border;
         background: @btn-default-bg;
-        color: @btn-default-color;
-        
+        color: @btn-default-color !important;
+
         &:hover {
             background: darken(@btn-default-bg, 5%);
         }
-        
+
         &:focus,
         &:active {
             border-color: darken(@btn-default-border, 8%);
             background: darken(@btn-default-bg, 8%);
         }
     }
-    
+
     &.keditor-btn-primary {
         border: 1px solid @btn-primary-border;
         background: @btn-primary-bg;
-        color: @btn-primary-color;
-        
+        color: @btn-primary-color !important;
+
         &:hover {
             background: darken(@btn-primary-bg, 5%);
         }
-        
+
         &:focus,
         &:active {
             border-color: darken(@btn-primary-border, 8%);

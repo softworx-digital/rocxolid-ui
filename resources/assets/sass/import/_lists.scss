@@ -1,12 +1,20 @@
 dl {
     dt, dd {
         line-height: 1.75;
+
+        &:last-of-type {
+            border-bottom: none;
+        }
     }
 
     dd {
         padding-left: 1em;
         border-bottom: 1px dotted $description-list-border-color;
         @include text-overflow();
+    }
+
+    &.dl-horizontal {
+        margin-bottom: 0;
     }
 
     &.dl-horizontal-high {
