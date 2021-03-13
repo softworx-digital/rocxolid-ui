@@ -147,6 +147,16 @@
         &.with-controls {
             padding: 7px 0;
         }
+
+        &.with-icon {
+            position: relative;
+
+            > i {
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+        }
     }
 
     .panel-body + .panel-heading {
