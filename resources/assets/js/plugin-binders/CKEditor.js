@@ -18,6 +18,7 @@ class CKEditor extends PluginBinder
         // CKEDITOR.config.startupFocus = true;
         // CKEDITOR.config.readOnly = false;
         CKEDITOR.config.language = settings.lang || this.lang;
+        // CKEDITOR.config.extraPlugins = 'justify,font,colorbutton,colordialog,widget,widgetselection,fontawesome5,rxplaceholder,rxmutator';
         CKEDITOR.config.extraPlugins = 'justify,font,colorbutton,colordialog,widget,widgetselection,rxplaceholder,rxmutator';
         CKEDITOR.config.skin = 'bootstrapck';
         CKEDITOR.config.format_tags = 'p;h1;h2;h3;h4;h5;h6';
@@ -47,7 +48,13 @@ class CKEditor extends PluginBinder
             enterMode: 2,
             removeButtons: 'Subscript,Superscript,Cut,Copy,Paste,PasteText,PasteFromWord,Anchor',
             // removePlugins: 'widgetselection', // throws "editor-plugin-required" exception when removed
-            minimumChangeMilliseconds: 100
+            minimumChangeMilliseconds: 100/*
+            fontawesome : {
+                'path': 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css',
+                'version': '5.15.2',
+                'edition': 'free',
+                'element': 'i'
+            }*/
         };
 
         // map of instances - element.id => editor.id

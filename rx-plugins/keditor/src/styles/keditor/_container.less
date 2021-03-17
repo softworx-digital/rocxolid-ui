@@ -122,11 +122,13 @@
 
 // @todo hotfixed, doesn't belong here
 .keditor-rx-page-content-area {
-    .keditor-container {
-        > .keditor-toolbar {
-            top: 0;
-            left: 0;
-            border-radius: 0 0 @border-radius 0;
+    > .keditor-content-area-inner {
+        > .keditor-container {
+            > .keditor-toolbar {
+                top: 0;
+                left: 0;
+                border-radius: 0 0 @border-radius 0;
+            }
         }
     }
 }
