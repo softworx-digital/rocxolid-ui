@@ -22,9 +22,18 @@
 		init: function(editor) {
 			var self = this;
 			var rx = window.rx();
-			var lang = editor.lang.rxmutator;
-			var $element = $(editor.element.$).closest('[data-element-type]');
-			var $composition = window.parent.$('iframe').closest('[data-keditor]').find('.content-composition');
+            var lang = editor.lang.rxmutator;
+            var $element = $(editor.element.$).closest('[data-element-type]');
+            // var $parent_document = $element.closest('html').parent();
+            var $composition;
+
+            // the the iframe / keditor that contains the element
+            window.$('iframe').each(function() {
+                if ($(this).contents().is($element.closest('html').parent())) {
+                    $composition = $(this).closest('[data-keditor]').find('.content-composition');
+                }
+            });
+
 			var $loading_element = $('.right_col > .x_panel');
 
 			editor.addCommand('rxMutatorDialog', {
