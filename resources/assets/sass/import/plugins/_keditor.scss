@@ -1,10 +1,51 @@
-.keditor-iframe-width-switcher {
-    height: calc(100vh - 315px);
+&.fullscreen {
+    .keditor-iframe-width-switcher {
+        height: calc(100vh - 50px);
+    }
 }
 
+.keditor-iframe-width-switcher {
+    height: calc(100vh - 510px);
+}
+
+/*
+.editable-part {
+    .keditor-iframe-width-switcher {
+        height: calc(20vh);
+    }
+}
+*/
+
 .keditor-modal {
+    @include transition(top .3s);
+
     &.showed {
-        top: 55px;
+        /*
+        top: calc(100vh - 123px);
         height: calc(100vh - 90px);
+        */
+        top: 57px;
+        left: 230px;
+        height: calc(100vh - 92px);
+        width: calc(100vw - 230px);
+        z-index: 999;
+    }
+
+    .keditor-modal-header {
+        .keditor-snippets-filter-wrapper {
+            flex: 2;
+        }
+
+        .keditor-modal-close {
+            flex: 1;
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .keditor-modal {
+        &.showed {
+            left: 0;
+        }
     }
 }

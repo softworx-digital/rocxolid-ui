@@ -1,4 +1,4 @@
-export default {
-    "success": "Skopírované",
-    "error": "Vyskytla sa chyba pri kopírovaní"
+export const translation = {
+    'success': 'Skopírované',
+    'error': 'Vyskytla sa chyba pri kopírovaní',
 }

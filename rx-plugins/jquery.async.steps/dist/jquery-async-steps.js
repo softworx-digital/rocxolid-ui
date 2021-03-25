@@ -130,7 +130,7 @@
                         var self = this;
                         this._$steps = $$1(this.el).find(this.options.stepSelector);
                         this._$steps
-                            .width(((window.screen.width > 992) ? (100 / this._$steps.length) : 100) + '%')
+                            .width(((window.innerWidth > 992) ? (100 / this._$steps.length) : 100) + '%')
                             .each(function() {
                                 $$1('.nmbr', this).html($$1(this).index(self.options.stepSelector) + 1);
                             });

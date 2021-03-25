@@ -56,8 +56,8 @@ ul.sortable {
     }
 }
 
-body.dragging,
-body.dragging * {
+&.dragging,
+&.dragging * {
     cursor: move !important;
 
     ul.sortable {
@@ -159,4 +159,17 @@ body.dragging * {
             }
         }
     }
+}
+
+.sortable-chosen {
+    // padding: 1rem 0;
+    @include box-shadow(0, 0, 10px, rgba(0, 0, 0, .15));
+    @include rounded(3px);
+}
+
+.sortable-ghost {
+    // padding: 1rem 0;
+    background: rgba($highlight-color, .15);
+    border: 1px solid rgba($highlight-color, .5);
+    @include box-shadow-none;
 }

@@ -9,6 +9,12 @@ export default {
     rx: null,
 
     /*
+     * Reference to RocXolid FE utilities
+     * @option {Object}
+     */
+    rxUtility: null,
+
+    /*
      * Title will be showed in left of topbar
      * @option {String}
      */
@@ -309,7 +315,9 @@ export default {
      * Enable setting panel for container
      * @option {Boolean}
      */
-    containerSettingEnabled: false,
+    containerSettingEnabled: function (keditor, container) {
+        return false;
+    },
 
     /*
      * Method will be called when initializing setting panel for container

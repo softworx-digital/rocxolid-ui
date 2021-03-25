@@ -1,9 +1,10 @@
 import Sortable from 'sortablejs';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
+import { Utility } from '../core/Utility';
 
 /**
  * @author softworx <hello@softworx.digital>
- * @package Softworx\RocXolid\Design
+ * @package Softworx\RocXolid\UI
  * @version 1.0.0
  */
 class SortableJS extends PluginBinder
@@ -13,29 +14,29 @@ class SortableJS extends PluginBinder
 
         settings = settings || {};
 
-        this.sortableOptions = {
-            group: settings.group || 'sortable',
+        this.sortableOptions = (container) => ({
+            group: settings.group || $(container).attr('data-sortable-group') || 'sortable',
             handle: settings.handle || '.drag-handle',
             animation: settings.animation || 250,
-            forceFallback: settings.forceFallback || true,
+            // forceFallback: settings.forceFallback || true, // commented out, causes troubles with fallback positioning
             touchStartThreshold: settings.touchStartThreshold || 0,
-            fallbackTolerance: settings.fallbackTolerance || 1,
+            // fallbackTolerance: settings.fallbackTolerance || 1, // commented out, causes troubles with fallback positioning
             dataIdAttr: settings.dataIdAttr || 'data-item-id',
-            onStart: settings.onStart || function (evt)
+            onStart: settings.onStart || function(e)
             {
                 $('body').addClass('dragging');
             },
-            onMove: settings.onMove || function (evt, originalEvent)
+            onMove: settings.onMove || function(e, originalEvent)
             {
-                const $item = $(evt.dragged),
-                      $related = $(evt.related),
-                      $container = $(evt.from);
+                const $item = $(e.dragged),
+                      $related = $(e.related),
+                      $container = $(e.from);
 
                 $('.drag-hover').removeClass('drag-hover');
                 $related.addClass('drag-hover');
                 $item.removeClass('drag-hover');
             },
-            onEnd: settings.onEnd || function (evt)
+            onEnd: settings.onEnd || function(e)
             {
                 const serialize = function($container)
                 {
@@ -65,26 +66,32 @@ class SortableJS extends PluginBinder
                     return [ tree ];
                 };
 
-                const $item = $(evt.item);
-                const $from = $(evt.from);
-                const $from_container = $item.closest('.sortable[data-update-url]');
-                const tree = serialize($from_container);
+                const $item = $(e.item);
+                const $from = $(e.from);
+                const $from_container = $item.closest('.sortable');
+
+                if ($from_container.is('[data-reindex-item]')) {
+                    Utility.resetArrayFieldsNameParameters($from_container, $from_container.attr('data-reindex-item'));
+                }
+
+                if ($from_container.is('[data-update-url]')) {
+                    $('ul.sortable:not(:has(li))').addClass('empty');
+                    $('ul.sortable:has(li)').removeClass('empty');
+
+                    // $item.closest('.ajax-overlay').LoadingOverlay('show');
+                    // @todo: Utility.ajaxCall
+                    $.post($from_container.data('update-url'), { _data: serialize($from_container) }, function(data)
+                    {
+                        // $item.closest('.ajax-overlay').LoadingOverlay('hide');
+
+                        rx.getResponse().set(data).handle();
+                    });
+                }
 
                 // @todo: bind to container
                 $('body').removeClass('dragging');
-                $('ul.sortable:not(:has(li))').addClass('empty');
-                $('ul.sortable:has(li)').removeClass('empty');
-
-                // $item.closest('.ajax-overlay').LoadingOverlay('show');
-
-                $.post($from_container.data('update-url'), { _data: tree }, function(data)
-                {
-                    // $item.closest('.ajax-overlay').LoadingOverlay('hide');
-
-                    rx.getResponse().set(data).handle();
-                });
             }
-        }
+        })
     }
 
     bind(container)
@@ -94,7 +101,7 @@ class SortableJS extends PluginBinder
 
         $('.sortable', container).each(function(index)
         {
-            Sortable.create(this, pb.sortableOptions);
+            Sortable.create(this, pb.sortableOptions(this));
         });
     }
 }

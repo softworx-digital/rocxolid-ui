@@ -46,10 +46,6 @@ class KEditor {
     categoryContainer = [];
 
     constructor(target, config) {
-        if (typeof config.rx == 'undefined') {
-            throw new Error('[ KEditor ] RocXolid reference (providing [rx] option) is required.');
-        }
-
         init.apply(this, [target, config]);
     }
 

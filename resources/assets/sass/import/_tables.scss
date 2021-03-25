@@ -1,3 +1,11 @@
+.table-filter {
+    .table-filter-field {
+        .dropdown {
+            max-width: 0; // hack to prevent dropdowns to exceed wrapper width
+        }
+    }
+}
+
 table.table-crud {
     > thead,
     > tbody,
@@ -6,9 +14,11 @@ table.table-crud {
             > th,
             > td {
                 vertical-align: middle;
+                position: relative;
             }
         }
     }
+
     > thead {
         > tr {
             > th,
@@ -20,9 +30,10 @@ table.table-crud {
                 }
                 &.last {
                     //width: 148px;
-                    min-width: 178px;
+                    // min-width: 178px;
                 }
             }
+
             > th {
                 border: none;
 
@@ -40,47 +51,53 @@ table.table-crud {
             }
         }
     }
+
     > tbody {
         > tr {
             &:hover {
                 td {
-                    background: rgba(38, 185, 154, 0.2);
-                    border-top: 1px solid rgba(38, 185, 154, 0.5);
-                    border-bottom: 1px solid rgba(38, 185, 154, 0.5);
+                    background: rgba(38, 185, 154, .2);
+                    border-top: 1px solid rgba(38, 185, 154, .5);
+                    border-bottom: 1px solid rgba(38, 185, 154, .5);
                 }
             }
+
             &.selected {
                 td {
-                    background: rgba(38, 185, 154, 0.3);
-                    border-top: 1px solid rgba(38, 185, 154, 0.75);
-                    border-bottom: 1px solid rgba(38, 185, 154, 0.75);
+                    background: rgba(38, 185, 154, .3);
+                    border-top: 1px solid rgba(38, 185, 154, .75);
+                    border-bottom: 1px solid rgba(38, 185, 154, .75);
                 }
             }
+
             &.blacklisted {
                 td {
-                    background: rgba(201, 48, 44, 0.2);
-                    border-top: 1px solid rgba(201, 48, 44, 0.5);
-                    border-bottom: 1px solid rgba(201, 48, 44, 0.5);
+                    background: rgba(201, 48, 44, .2);
+                    border-top: 1px solid rgba(201, 48, 44, .5);
+                    border-bottom: 1px solid rgba(201, 48, 44, .5);
                 }
+
                 &:hover {
                     td {
-                        background: rgba(201, 48, 44, 0.3);
-                        border-top: 1px solid rgba(201, 48, 44, 0.75);
-                        border-bottom: 1px solid rgba(201, 48, 44, 0.75);
+                        background: rgba(201, 48, 44, .3);
+                        border-top: 1px solid rgba(201, 48, 44, .75);
+                        border-bottom: 1px solid rgba(201, 48, 44, .75);
                     }
                 }
             }
+
             &.paid {
                 td {
-                    background: rgba(188, 226, 34, 0.2);
-                    border-top: 1px solid rgba(188, 226, 34, 0.5);
-                    border-bottom: 1px solid rgba(188, 226, 34, 0.5);
+                    background: rgba(188, 226, 34, .2);
+                    border-top: 1px solid rgba(188, 226, 34, .5);
+                    border-bottom: 1px solid rgba(188, 226, 34, .5);
                 }
+
                 &:hover {
                     td {
-                        background: rgba(188, 226, 34, 0.3);
-                        border-top: 1px solid rgba(188, 226, 34, 0.75);
-                        border-bottom: 1px solid rgba(188, 226, 34, 0.75);
+                        background: rgba(188, 226, 34, .3);
+                        border-top: 1px solid rgba(188, 226, 34, .75);
+                        border-bottom: 1px solid rgba(188, 226, 34, .75);
                     }
                 }
             }
@@ -92,11 +109,15 @@ table.table-crud {
                     font-size: 100%;
                     display: inline-block;
                     margin: 1px;
-                    @include text-overflow();
                     max-width: 100%;
+                    @include text-overflow(false);
 
                     &.has-image {
                         padding: .5em .4em .5em;
+                    }
+
+                    .country-flag {
+                        height: 1.35rem;
                     }
                 }
 
@@ -107,12 +128,16 @@ table.table-crud {
                 .btn-group {
                     display: flex;
                     justify-content: flex-end;
+
+                    .btn {
+                        font-size: 1.175em;
+                    }
                 }
 
                 &.ordered-by {
                     border-left: #26B99A;
                     border-right: #26B99A;
-                    background: rgba(38, 185, 154, .1);
+                    background: rgba(38, 185, 154, .1) !important;
                 }
             }
         }
@@ -129,6 +154,90 @@ table.table-crud {
             &:last-child {
                 > td {
                     border-bottom: 2px solid #ddd;
+                }
+            }
+
+            &:hover {
+                &.bg-success {
+                    td {
+                        background-color: darken($state-success-bg, 5%);
+                        border-top-color: darken($state-success-bg, 25%);
+                        border-bottom-color: darken($state-success-bg, 25%);
+                    }
+                }
+
+                &.bg-info {
+                    td {
+                        background-color: darken($state-info-bg, 5%);
+                        border-top-color: darken($state-info-bg, 25%);
+                        border-bottom-color: darken($state-info-bg, 25%);
+                    }
+                }
+
+                &.bg-warning {
+                    td {
+                        background-color: darken($state-warning-bg, 5%);
+                        border-top-color: darken($state-warning-bg, 25%);
+                        border-bottom-color: darken($state-warning-bg, 25%);
+                    }
+                }
+
+                &.bg-danger {
+                    td {
+                        background-color: darken($state-danger-bg, 5%);
+                        border-top-color: darken($state-danger-bg, 25%);
+                        border-bottom-color: darken($state-danger-bg, 25%);
+                    }
+                }
+            }
+
+            &:nth-of-type(odd) {
+                &.bg-success {
+                    background-color: darken($state-success-bg, 10%);
+
+                    &:hover {
+                        td {
+                            background-color: darken($state-success-bg, 15%);
+                            border-top-color: darken($state-success-bg, 25%);
+                            border-bottom-color: darken($state-success-bg, 25%);
+                        }
+                    }
+                }
+
+                &.bg-info {
+                    background-color: darken($state-info-bg, 10%);
+
+                    &:hover {
+                        td {
+                            background-color: darken($state-info-bg, 15%);
+                            border-top-color: darken($state-info-bg, 25%);
+                            border-bottom-color: darken($state-info-bg, 25%);
+                        }
+                    }
+                }
+
+                &.bg-warning {
+                    background-color: darken($state-warning-bg, 10%);
+
+                    &:hover {
+                        td {
+                            background-color: darken($state-warning-bg, 15%);
+                            border-top-color: darken($state-warning-bg, 25%);
+                            border-bottom-color: darken($state-warning-bg, 25%);
+                        }
+                    }
+                }
+
+                &.bg-danger {
+                    background-color: darken($state-danger-bg, 10%);
+
+                    &:hover {
+                        td {
+                            background-color: darken($state-danger-bg, 15%);
+                            border-top-color: darken($state-danger-bg, 25%);
+                            border-bottom-color: darken($state-danger-bg, 25%);
+                        }
+                    }
                 }
             }
         }

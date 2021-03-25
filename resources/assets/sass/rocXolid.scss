@@ -7,6 +7,9 @@
 @import '~animate.css/animate.min.css';
 @import '~gentelella/build/css/custom.css';
 
+// @todo: workaround
+@import '~summernote/dist/summernote.css';
+
 // @import 'bootstrap/bootstrap/mixins/text-overflow'; // customized
 // @import '~bootstrap/scss/bootstrap';
 // @import '~bootstrap/scss/bootstrap-grid';
@@ -26,15 +29,23 @@
 @import 'import/media';
 @import 'import/wizard';
 @import 'import/auth';
-@import 'import/plugins/bootstrap-maxlength';
-@import 'import/plugins/bootstrap-select';
-@import 'import/plugins/bootstrap-slider';
-@import 'import/plugins/bootstrap-tagsinput';
-@import 'import/plugins/bootstrap-toggle';
-@import 'import/plugins/fileinput';
-@import 'import/plugins/loading-overlay';
-@import 'import/plugins/note-editor';
-@import 'import/plugins/pnotify';
-@import 'import/plugins/sortable';
-@import 'import/plugins/masonry';
-@import 'import/plugins/keditor';
+@import 'import/timeline';
+@import 'import/pdf-viewer';
+
+body.rocXolid {
+    @import 'import/plugins/bootstrap-maxlength';
+    @import 'import/plugins/bootstrap-select';
+    @import 'import/plugins/bootstrap-slider';
+    @import 'import/plugins/bootstrap-tagsinput';
+    @import 'import/plugins/bootstrap-toggle';
+    @import 'import/plugins/tooltipster';
+    @import 'import/plugins/fileinput';
+    @import 'import/plugins/palette-color-picker';
+    @import 'import/plugins/loading-overlay';
+    @import 'import/plugins/note-editor';
+    @import 'import/plugins/pnotify';
+    @import 'import/plugins/sortable';
+    @import 'import/plugins/masonry';
+    @import 'import/plugins/ckeditor';
+    @import 'import/plugins/keditor';
+}

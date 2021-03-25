@@ -1,11 +1,11 @@
 import 'pnotify/dist/PNotifyBrightTheme.css';
 import PNotify from 'pnotify/dist/es/PNotify';
 import PNotifyStyleMaterial from 'pnotify/dist/es/PNotifyStyleMaterial';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>
- * @package Softworx\RocXolid\Design
+ * @package Softworx\RocXolid\UI
  * @version 1.0.0
  */
 class PNotifyJS extends PluginBinder
@@ -53,6 +53,8 @@ class PNotifyJS extends PluginBinder
         PNotify.alert({
             type: type || 'notice',
             text: text,
+            textTrusted: true,
+            titleTrusted: true,
             stack: this.stack
         });
     }

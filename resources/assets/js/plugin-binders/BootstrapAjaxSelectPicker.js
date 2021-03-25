@@ -1,11 +1,11 @@
 import 'ajax-bootstrap-select/dist/css/ajax-bootstrap-select.min.css';
 import 'ajax-bootstrap-select';
 // import 'ajax-bootstrap-select/dist/js/locale/ajax-bootstrap-select.sk-SK.js'; // @todo: not available & find out how to support multiple and switch between them at runtime
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>
- * @package Softworx\RocXolid\Design
+ * @package Softworx\RocXolid\UI
  * @version 1.0.0
  */
 class BootstrapAjaxSelectPicker extends PluginBinder
@@ -13,23 +13,24 @@ class BootstrapAjaxSelectPicker extends PluginBinder
     bind(container)
     {
         var rx = this.rx;
+        var pb = this;
 
         $('select.autocomplete', container).ajaxSelectPicker({
             minLength: 3,
             locale: {
-                currentlySelected: this.t('searchPlaceholder'),
-                emptyTitle: this.t('emptyTitle'),
-                errorText: this.t('errorText'),
-                searchPlaceholder: this.t('searchPlaceholder'),
-                statusInitialized: this.t('statusInitialized'),
-                statusNoResults: this.t('statusNoResults'),
-                statusSearching: this.t('statusSearching'),
-                statusTooShort: this.t('statusTooShort')
+                currentlySelected: pb.t('currentlySelected'),
+                emptyTitle: pb.t('emptyTitle'),
+                errorText: pb.t('errorText'),
+                searchPlaceholder: pb.t('searchPlaceholder'),
+                statusInitialized: pb.t('statusInitialized'),
+                statusNoResults: pb.t('statusNoResults'),
+                statusSearching: pb.t('statusSearching'),
+                statusTooShort: pb.t('statusTooShort')
             },
             ajax: {
-                data: function () {
+                data: function() {
                     return {
-                        _param: this.plugin.$element.closest('form').find('[name="_param"]').val(),
+                        _param: this.plugin.$element.closest('form').find('[name="_param"]').val(), // @todo not like this
                         q: '{{{q}}}',
                         ...this.plugin.$element.data('absAjaxRequestData')
                     };

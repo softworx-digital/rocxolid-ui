@@ -7,7 +7,7 @@ export default function () {
     let self = this;
     let options = self.options;
     let topbarCenter = self.topbarCenter;
-    
+
     let btnMobile = self.btnMobile = $(`
         <a href="javascript:void(0);" title="${options.locale.viewOnMobile}" class="${CSS_CLASS.UI} ${CSS_CLASS.TOPBAR_BUTTON}">${ICON.DEVICE_MOBILE}</a>
     `);
@@ -15,7 +15,7 @@ export default function () {
         e.preventDefault();
         switchDevice.call(self, DEVICE_MODE.MOBILE, btnMobile);
     });
-    
+
     let btnTablet = self.btnTablet = $(`
         <a href="javascript:void(0);" title="${options.locale.viewOnTablet}" class="${CSS_CLASS.UI} ${CSS_CLASS.TOPBAR_BUTTON}">${ICON.DEVICE_TABLET}</a>
     `);
@@ -23,7 +23,7 @@ export default function () {
         e.preventDefault();
         switchDevice.call(self, DEVICE_MODE.TABLET, btnTablet);
     });
-    
+
     let btnLaptop = self.btnLaptop = $(`
         <a href="javascript:void(0);" title="${options.locale.viewOnLaptop}" class="${CSS_CLASS.UI} ${CSS_CLASS.TOPBAR_BUTTON}">${ICON.DEVICE_LAPTOP}</a>
     `);
@@ -31,7 +31,7 @@ export default function () {
         e.preventDefault();
         switchDevice.call(self, DEVICE_MODE.LAPTOP, btnLaptop);
     });
-    
+
     let btnDesktop = self.btnDesktop = $(`
         <a href="javascript:void(0);" title="${options.locale.viewOnDesktop}" class="${CSS_CLASS.UI} ${CSS_CLASS.TOPBAR_BUTTON}">${ICON.DEVICE_DESKTOP}</a>
     `);
@@ -39,9 +39,20 @@ export default function () {
         e.preventDefault();
         switchDevice.call(self, DEVICE_MODE.DESKTOP, btnDesktop);
     }).trigger('click');
-    
-    topbarCenter.append(btnMobile);
-    topbarCenter.append(btnTablet);
-    topbarCenter.append(btnLaptop);
-    topbarCenter.append(btnDesktop);
+
+    if (typeof options.bootstrap.deviceClass.MOBILE !== 'undefined') {
+        topbarCenter.append(btnMobile);
+    }
+
+    if (typeof options.bootstrap.deviceClass.TABLET !== 'undefined') {
+        topbarCenter.append(btnTablet);
+    }
+
+    if (typeof options.bootstrap.deviceClass.LAPTOP !== 'undefined') {
+        topbarCenter.append(btnLaptop);
+    }
+
+    if (typeof options.bootstrap.deviceClass.DESKTOP !== 'undefined') {
+        topbarCenter.append(btnDesktop);
+    }
 };

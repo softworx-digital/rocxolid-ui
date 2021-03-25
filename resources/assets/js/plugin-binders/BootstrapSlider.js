@@ -1,10 +1,10 @@
 import 'bootstrap-slider/dist/css/bootstrap-slider.min.css';
 import 'bootstrap-slider';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>
- * @package Softworx\RocXolid\Design
+ * @package Softworx\RocXolid\UI
  * @version 1.0.0
  */
 class BootstrapSlider extends PluginBinder

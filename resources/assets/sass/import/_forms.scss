@@ -1,31 +1,66 @@
-.form-field-group {
-    margin-bottom: 10px;
-}
 .form-group {
-    .bootstrap-select {
+    .bootstrap-select,
+    .list-group {
         margin-bottom: 0;
     }
 
-    > .input-group {
+    .input-group {
         margin-bottom: 0;
     }
+
+    .btn-group-vertical {
+        .btn {
+            margin-bottom: 0;
+
+            &.text-left {
+                text-align: left;
+            }
+        }
+    }
 }
+
 .form-control {
     @include rounded(3px);
 }
+
 .ln_solid {
     margin: 10px 0 20px 0;
 }
+
+.form-horizontal {
+    .form-field-group {
+        margin: 1em 0;
+
+        &:first-child {
+            margin: 0;
+        }
+    }
+
+    .form-field-group-addable {
+        margin: 1em 0;
+
+        &:first-child {
+            margin: 0;
+        }
+    }
+}
+
 .form-inline {
     .form-group {
         vertical-align: top;
     }
 }
+
 .error-message {
     padding: 5px 0;
     margin: 0;
     color: $error-text-color;
 }
+
+legend {
+    margin-bottom: 1rem;
+}
+
 label {
     &.label-fit-height {
         margin-top: 6px;
@@ -36,6 +71,12 @@ label {
         /*top: 2px;*/
     }
 }
+
+.btn-group-xs > .btn,
+.btn-xs {
+    padding: 0 4px;
+}
+
 .btn-group {
     min-height: 34px;
 

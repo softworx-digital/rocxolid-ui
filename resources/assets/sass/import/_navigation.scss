@@ -1,115 +1,119 @@
 #sidebar-menu {
-    ul {
-        &.nav {
-            &.child_menu {
-                li {
-                    .fa-chevron-down {
-                        display: none;
-                    }
+    max-height: calc(100vh - 90px);
 
-                    .fa-chevron-right {
-                        display: inline-block;
-                    }
+    .menu-section {
+        margin-bottom: 0;
 
-                    &.current-page {
-                        &::before {
-                            background: $navbar-li-active-color;
-                        }
-                    }
-
-                    &.current-page,
-                    &.active {
-                        .fa-chevron-down {
-                            display: none;
-                        }
-
-                        .fa-chevron-right {
-                            display: inline-block;
-                        }
-
-                        &:before {
-                            background: $box-focus-color;
-                        }
-                    }
-                }
-            }
-
-            &.side-menu {
-                > li {
-                    > a {
-                        margin-bottom: 0;
-                    }
-
-                    .fa-chevron-down {
-                        display: none;
-                    }
-
-                    .fa-chevron-right {
-                        display: inline-block;
-                    }
-
-                    &.current-page,
-                    &.active {
-                        .fa-chevron-down {
-                            display: inline-block;
-                        }
-
-                        .fa-chevron-right {
-                            display: none;
-                        }
-
-                        .child_menu {
-                            transition: all .5s ease-in-out;
-                            display: block;
-                            background: #172D44;
-                        }
-                    }
-                }
-            }
+        h3 {
+            font-size: 1em;
+            @include text-shadow(0px, 0px, 2px, rgba(0, 0, 0, 1));
+            padding: 10px 0 10px 15px;
         }
-    }
 
-    /*padding-bottom: 40px;*/
-    /*height: 600px;*/
-    margin-top: 20px;
-}
+        > ul {
+            margin-top: 0;
 
-.nav-md ul.nav.child_menu li:before {
-    left: 20px;
-}
-.nav-md ul.nav.child_menu li:after {
-    left: 23.5px;
-}
+            li {
+                a {
+                    @include rx-transition();
+                    margin: 0;
 
-.menu_section {
-    margin-bottom: 0;
+                    span {
+                        @include rx-transition();
+                    }
 
-    h3 {
-        background: #203040;
-        text-shadow: 0px 0px 5px rgba(0, 0, 0, .75);
-        padding: 10px 5px 8px 15px;
-        -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, .25);
-        -moz-box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, .25);
-        box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, .25);
-    }
+                    .collapse-arrow {
+                        width: 9px;
+                        float: right;
+                        font-size: .75em;
+                        margin-top: .55em;
+                        @include rx-transition();
+                    }
 
-    > ul {
-        margin-top: 0;
-    }
-}
+                    &.collapsed {
+                        .collapse-arrow {
+                            transform: rotate(-90deg);
+                        }
+                    }
 
-ul {
-    &.namedays {
-        padding: 0 0 0 15px;
+                    &:hover {
+                        span {
+                            margin-left: .5em;
+                        }
+                    }
+                }
 
-        li {
-            list-style: none;
+                &.active {
+                    border-right-color: $box-focus-color;
 
-            img {
-                width: 24px;
-            }
-            span {
-                color: #BAB8B8;
+                    > a {
+                        box-shadow: none;
+                        margin: 0;
+
+                        span {
+                            margin-left: .5em;
+                        }
+                    }
+
+                    &:before {
+                        background: $box-focus-color;
+                    }
+                }
+
+                > ul {
+                    background: #172D44;
+
+                    > li {
+                        padding-left: 2em;
+
+                        a {
+                            color: #e7e7e7;
+
+                            &:hover {
+                                color: #f2f5f7!important;
+                            }
+                        }
+
+                        &.active {
+                            > a {
+                                span {
+                                    margin-left: .5em;
+                                }
+                            }
+                        }
+
+                        // bullet
+                        &:before {
+                            background: #425668;
+                            bottom: auto;
+                            content: "";
+                            height: 7px;
+                            left: 1.5em;
+                            margin-top: 18px;
+                            position: absolute;
+                            right: auto;
+                            width: 7px;
+                            z-index: 1;
+                            border-radius: 50%;
+                        }
+
+                        // line
+                        &:after {
+                            border-left: 1px solid #223b52;
+                            bottom: 0;
+                            content: "";
+                            left: 1.75em;
+                            position: absolute;
+                            top: 0;
+                        }
+
+                        &:last-child {
+                            &:after {
+                                bottom: 50%;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

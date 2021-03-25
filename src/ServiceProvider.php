@@ -2,13 +2,15 @@
 
 namespace Softworx\RocXolid\UI;
 
+use Illuminate\Foundation\AliasLoader;
+// rocXolid service providers
 use Softworx\RocXolid\AbstractServiceProvider as RocXolidAbstractServiceProvider;
 
 /**
- * rocXolid UI package service provider.
+ * rocXolid UI package primary service provider.
  *
  * @author softworx <hello@softworx.digital>
- * @package Softworx\RocXolid\Admin
+ * @package Softworx\RocXolid\UI
  * @version 1.0.0
  */
 class ServiceProvider extends RocXolidAbstractServiceProvider
@@ -20,6 +22,9 @@ class ServiceProvider extends RocXolidAbstractServiceProvider
      */
     public function register()
     {
+        $this
+            ->bindContracts()
+            ->bindAliases(AliasLoader::getInstance());
     }
 
     /**
@@ -42,7 +47,12 @@ class ServiceProvider extends RocXolidAbstractServiceProvider
     {
         // assets files
         // php artisan vendor:publish --provider="Softworx\RocXolid\UI\ServiceProvider" --tag="assets" (--force to overwrite)
-        // @todo: "hotfixed" - unify?
+        // @todo "hotfixed" - unify?
+        $this->publishes([
+            __DIR__ . '/../build' => public_path('vendor/softworx/rocXolid'),
+        ], 'assets');
+
+        /*
         $this->publishes([
             __DIR__ . '/../build/plugins' => public_path('vendor/softworx/rocXolid/plugins'),
             __DIR__ . '/../build/images' => public_path('vendor/softworx/rocXolid/images'),
@@ -52,7 +62,34 @@ class ServiceProvider extends RocXolidAbstractServiceProvider
             __DIR__ . '/../build/images/vendor' => public_path('images/vendor'),
             __DIR__ . '/../build/fonts' => public_path('fonts'),
         ], 'assets');
+        */
 
+        return $this;
+    }
+
+    /**
+     * Bind contracts / facades, so they don't have to be added to config/app.php.
+     *
+     * Usage:
+     *      $this->app->bind(<SomeContract>::class, <SomeImplementation>::class);
+     *
+     * @return \Softworx\RocXolid\AbstractServiceProvider
+     */
+    private function bindContracts(): RocXolidAbstractServiceProvider
+    {
+        return $this;
+    }
+
+    /**
+     * Bind aliases, so they don't have to be added to config/app.php.
+     *
+     * Usage:
+     *      $loader->alias('<alias>', <Facade/>Contract>::class);
+     *
+     * @return \Softworx\RocXolid\AbstractServiceProvider
+     */
+    private function bindAliases(AliasLoader $loader): RocXolidAbstractServiceProvider
+    {
         return $this;
     }
 }

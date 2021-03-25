@@ -10,7 +10,7 @@
     position: relative;
     z-index: 1;
     transition: padding-bottom @animation-duration;
-    
+
     &:before {
         position: absolute;
         top: -@component-outline-with;
@@ -21,65 +21,84 @@
         border: @component-outline-with solid transparent;
         z-index: -1;
     }
-    
+
+    &.meta-data-active {
+        &:before {
+            border-right: 3px solid @meta-data-border-color;
+        }
+    }
+
     .keditor-toolbar {
-        top: 0;
-        left: 0;
+        top: unit(-@toolbar-item-size - @component-outline-with, px);
+        left: unit(-@component-outline-with, px);
         background-color: @component-toolbar-bg;
-        border-bottom-right-radius: @border-radius;
-        
+        border-top-right-radius: @border-radius;
+        border-top-left-radius: @border-radius;
+        border: @component-outline-with solid @component-outline-color-hover;
+        border-bottom: 0;
+
         > a {
             color: @component-toolbar-button-color;
             float: left;
-            
+
             &:hover {
                 background-color: @component-toolbar-button-bg-hover;
             }
         }
     }
-    
+
     .keditor-toolbar-bottom-component {
         bottom: -1px;
     }
-    
+
     .keditor-component-content {
         .clearfix();
         position: relative;
         z-index: 2;
         min-height: 30px !important;
+
+        .editable {
+            outline: none;
+        }
     }
-    
+
     &:hover {
         &:before {
             border-color: @component-outline-color-hover;
         }
     }
-    
+
     &.showed-keditor-toolbar {
         &:before {
             border-color: @component-outline-color-selected;
         }
     }
-    
+
     &:hover,
     &.showed-keditor-toolbar {
-        z-index: 2;
-        
+        z-index: 6;
+
         &:before {
             display: block;
         }
-        
+
         .keditor-toolbar {
             display: block;
         }
+
+        &.meta-data-active {
+            > .keditor-meta-data {
+                display: block;
+            }
+        }
     }
-    
+
     &.showed-keditor-toolbar {
         .keditor-component-content {
             outline: none !important;
         }
     }
-    
+
     &:last-child,
     &:only-child {
         > .keditor-toolbar-bottom-component {

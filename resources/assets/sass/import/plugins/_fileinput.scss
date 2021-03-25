@@ -56,11 +56,27 @@
                 bottom: 0;
                 left: 0;
                 width: 100%;
-                background: rgba(255, 255, 255, .5);
+                background: rgba(0, 0, 0, .33);
                 padding-bottom: 1em;
+
+                .file-footer-caption {
+                    padding: .5em 0;
+                    margin: 0;
+                    color: #fff;
+                }
 
                 .file-thumb-progress {
                     padding: 0 .5em;
+
+                    .progress {
+                        @include rounded(0);
+                        height: 11px;
+
+                        .progress-bar {
+                            @include rounded(0);
+                            line-height: 11px;
+                        }
+                    }
                 }
             }
 
@@ -101,19 +117,6 @@
                             @include rounded(0);
                         }
                     }
-                }
-            }
-        }
-
-        .file-thumbnail-footer {
-            .file-footer-caption {
-                padding: .5em 0;
-                margin: 0;
-            }
-
-            .progress {
-                .progress-bar {
-                    line-height: 11px;
                 }
             }
         }

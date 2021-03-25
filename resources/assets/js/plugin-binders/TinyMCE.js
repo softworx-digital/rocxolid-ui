@@ -1,10 +1,10 @@
-import { PluginBinder } from '../PluginBinder';
 import tinymce from 'tinymce/tinymce';
 import 'tinymce/themes/mobile/theme';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>
- * @package Softworx\RocXolid\Design
+ * @package Softworx\RocXolid\UI
  * @version 1.0.0
  */
 class TinyMCE extends PluginBinder

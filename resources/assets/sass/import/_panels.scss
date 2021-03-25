@@ -1,6 +1,6 @@
 .x_panel {
     @include rounded(6px);
-    @include box-shadow(0, 0, 10px, rgba(0, 0, 0, 0.25));
+    @include box-shadow(0, 0, 10px, rgba(0, 0, 0, .25));
 
     border: 0;
 
@@ -33,9 +33,12 @@
         clear: both;
         margin-top: 5px;
         width: 100%;
-        position: relative;
+        // position: relative;
 
         .btn {
+            max-width: 250px;
+            @include text-overflow(false);
+
             &.pull-right {
                 margin-right: 0;
             }
@@ -138,5 +141,74 @@
                 }
             }
         }
+    }
+
+    .panel-title {
+        &.with-controls {
+            padding: 7px 0;
+        }
+
+        &.with-icon {
+            position: relative;
+
+            > i {
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+        }
+    }
+
+    .panel-body + .panel-heading {
+        @include rounded(0);
+        border-top: 1px solid #255986;
+    }
+}
+
+.panel-group {
+    &.panel-group-collapsed {
+        .panel {
+            @include rounded(0);
+        }
+
+        .panel + .panel {
+            margin-top: 0;
+            border-top-color: #386aa7;
+            @include rounded(0);
+
+            .panel-heading {
+                @include rounded(0);
+            }
+        }
+
+        .panel:first-child {
+            @include rounded-top(4px);
+        }
+
+        .panel:last-child {
+            @include rounded-bottom(4px);
+        }
+    }
+}
+
+.masonry-panel-container {
+    // column-width: $screen-xs;
+    column-gap: 0;
+
+    &.masonry-panel-container-two-column {
+        column-count: 2;
+    }
+
+    &.masonry-panel-container-three-column {
+        column-count: 3;
+    }
+
+    &.masonry-panel-container-four-column {
+        column-count: 4;
+    }
+
+    > div {
+        display: block;
+        break-inside: avoid;
     }
 }

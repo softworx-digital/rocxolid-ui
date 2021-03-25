@@ -1,0 +1,35 @@
+// Import
+// -------------------------------------------------
+@import "../_mixins";
+@import "../_variables";
+
+
+// Meta Data Viewer
+// -------------------------------------------------
+.keditor-meta-data {
+    position: absolute;
+    display: none;
+    z-index: 5;
+    overflow: hidden;
+    .keditor-text();
+    color: @text-color;
+    background-color: @component-toolbar-bg;
+    padding: @meta-data-padding;
+
+    ul {
+        padding: 0;
+        list-style: none;
+    }
+
+    &.keditor-meta-data-top {
+        top: 0 !important;
+        right: 0 !important;
+        border-radius: 0 0 0 @border-radius !important;
+    }
+
+    &.keditor-meta-data-bottom {
+        bottom: 0 !important;
+        right: 0 !important;
+        border-radius: @border-radius 0 0 0 !important;
+    }
+}

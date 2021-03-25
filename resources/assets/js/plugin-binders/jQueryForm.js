@@ -1,9 +1,9 @@
 import 'jquery-form';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>
- * @package Softworx\RocXolid\Design
+ * @package Softworx\RocXolid\UI
  * @version 1.0.0
  */
 class jQueryForm extends PluginBinder
@@ -31,8 +31,12 @@ class jQueryForm extends PluginBinder
 
                 rx.getResponse().set(data).handle();
             },
-            error: settings.error || function(data)
+            error: settings.error || function(data, statusText, xhr, $form)
             {
+                if (rx.hasPlugin('loading-overlay')) {
+                    rx.getPlugin('loading-overlay').hide($form.closest('.ajax-overlay'));
+                }
+
                 rx.handleAjaxError(data);
             }
         }
@@ -63,11 +67,22 @@ class jQueryForm extends PluginBinder
 
         $(container).on('click', '[data-ajax-submit-form]', function(e)
         {
-            const $form = $('form' + $(this).data('ajax-submit-form'), container);
+            switch ($(this).data('ajax-submit-form')) {
+                case 'parent':
+                    var $form = $(this).closest('form');
+                    break;
+                default:
+                    var $form = $('form' + $(this).data('ajax-submit-form'), container);
+                    break;
+            }
 
             if ($form.exists()) {
                 e.preventDefault(e);
                 // e.stopPropagation();
+
+                if ($(this).is('[data-submit-action]')) {
+                    $form.find('input[name="_submit-action"]').val($(this).data('submit-action'));
+                }
 
                 if ($(this).is(':reset')) {
                     $form.find('input:visible').val('');
@@ -90,6 +105,15 @@ class jQueryForm extends PluginBinder
         settings = settings || {};
 
         return {...this.formSubmitOptions, ...settings};
+    }
+
+    bindEvents(container, $target)
+    {
+        if (typeof $target === 'undefined') {
+            $(container, 'form').eq(0).focusFirst();
+        } else {
+            $(container, 'form').eq(0).focusFirst($target);
+        }
     }
 }
 

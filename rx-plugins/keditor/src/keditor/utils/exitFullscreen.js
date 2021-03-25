@@ -2,7 +2,7 @@ export default () => {
     if (!document.fullscreenElement) {
         return;
     }
-    
+
     if (document.exitFullscreen) {
         document.exitFullscreen();
     } else if (document.mozCancelFullScreen) { /* Firefox */

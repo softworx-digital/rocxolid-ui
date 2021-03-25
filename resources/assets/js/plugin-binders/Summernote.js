@@ -1,12 +1,14 @@
-import 'summernote/dist/summernote.css';
+// @todo: this doesn't quite work - the processed font paths are relative to the browser URL, not to the published css
+// dunno how to set it up properly right now, current workaround - imported in scss
+// import 'summernote/dist/summernote.css';
 import 'summernote';
 import 'summernote/dist/lang/summernote-sk-SK.min';
 import 'summernote-extensions/maxlength';
-import { PluginBinder } from '../PluginBinder';
+import { PluginBinder } from '../core/PluginBinder';
 
 /**
  * @author softworx <hello@softworx.digital>
- * @package Softworx\RocXolid\Design
+ * @package Softworx\RocXolid\UI
  * @version 1.0.0
  */
 class Summernote extends PluginBinder
@@ -24,7 +26,7 @@ class Summernote extends PluginBinder
             dialogsInBody: true,
             dialogsFade: true,
             fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36', '48' , '64', '82', '150'],
-            onCreateLink: function (url) {
+            onCreateLink: function(url) {
                 return url;
             }
         });
@@ -36,7 +38,7 @@ class Summernote extends PluginBinder
 
         return $(selector).summernote({
             airMode: true,
-            onCreateLink: function (url) {
+            onCreateLink: function(url) {
                 return url;
             }
         });
