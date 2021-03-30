@@ -13,8 +13,8 @@ class jQueryCustomScrollbar extends PluginBinder
     {
         var rx = this.rx;
 
-        $.mCustomScrollbar.defaults.scrollButtons.enable=true; //enable scrolling buttons by default
-		$.mCustomScrollbar.defaults.axis="yx"; //enable 2 axis scrollbars by default
+        $.mCustomScrollbar.defaults.scrollButtons.enable = true; //enable scrolling buttons by default
+		$.mCustomScrollbar.defaults.axis = 'yx'; //enable 2 axis scrollbars by default
 
         $('.scrollable', container).mCustomScrollbar();
     }
