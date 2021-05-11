@@ -29,8 +29,7 @@ class BootstrapFileinput extends PluginBinder
         var rx = this.rx;
         var pb = this;
 
-        $('input[type="file"]', container).each(function(index)
-        {
+        $('input[type="file"]', container).each(function(index) {
             const $elm = $(this);
             const $form = $elm.closest('form');
 
