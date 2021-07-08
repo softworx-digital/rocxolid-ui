@@ -33,6 +33,11 @@ export default function () {
             pasteContent = source;
         }
 
+        $(pasteContent).removeAttr('data-element-id');
+        $(pasteContent).find('[data-element-id]').removeAttr('data-element-id');
+        $(pasteContent).removeAttr('data-element-settings-url');
+        $(pasteContent).find('[data-element-settings-url]').removeAttr('data-element-settings-url');
+
         // Check target
         let target = null;
 

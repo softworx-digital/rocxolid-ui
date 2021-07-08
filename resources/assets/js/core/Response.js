@@ -70,6 +70,13 @@ class Response
         });
     }
 
+    callFn(data)
+    {
+        this._log('callFn');
+
+        window[data.fn](data.args);
+    }
+
     errors(data)
     {
         this._log('errors');
