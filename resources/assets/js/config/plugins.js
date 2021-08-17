@@ -42,6 +42,7 @@ import { ImagePlaceholder as ImagePlaceholderPluginBinder } from '../plugin-bind
 import { PDFObjectJS as DocumentViewerPluginBinder } from '../plugin-binders/PDFObjectJS';
 // import { RxDocumentComposer as DocumentComposerPluginBinder } from '../plugin-binders/RxDocumentComposer';
 import { KEditorBinder as DocumentComposerPluginBinder } from '../plugin-binders/KEditorBinder';
+import { JsonBeautifier as BeautifierJson } from '../plugin-binders/JsonBeautifier';
 
 /**
  * Plugins definition with their binders.
@@ -164,5 +165,8 @@ export default {
     },
     'document-composer': {
         'binder': DocumentComposerPluginBinder
+    },
+    'json-beautifier': {
+        'binder': BeautifierJson
     },
 };
