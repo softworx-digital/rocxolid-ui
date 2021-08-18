@@ -22,6 +22,7 @@
 
 .login_form {
     text-shadow: none;
+    @include box-shadow(10px, 10px, 10px, rgba(0, 0, 0, .25));
 
     > div {
         margin: 20px 0;
