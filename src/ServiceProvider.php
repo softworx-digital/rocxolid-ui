@@ -43,7 +43,7 @@ class ServiceProvider extends RocXolidAbstractServiceProvider
      *
      * @return \Softworx\RocXolid\AbstractServiceProvider
      */
-    private function publish(): RocXolidAbstractServiceProvider
+    protected function publish(): RocXolidAbstractServiceProvider
     {
         // assets files
         // php artisan vendor:publish --provider="Softworx\RocXolid\UI\ServiceProvider" --tag="assets" (--force to overwrite)

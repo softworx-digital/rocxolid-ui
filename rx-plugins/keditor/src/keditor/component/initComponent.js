@@ -27,7 +27,7 @@ export default function (component) {
         let componentType = getComponentType.call(self, component);
         let componentData = KEditor.components[componentType];
 
-        component.append(generateToolbar.call(self, TOOLBAR_TYPE.COMPONENT, componentData.settingEnabled(self, component)));
+        component.append(generateToolbar.call(self, TOOLBAR_TYPE.COMPONENT, (typeof componentData.settingEnabled == 'function') ? componentData.settingEnabled(self, component) : componentData.settingEnabled));
         component.append(generateToolbar.call(self, TOOLBAR_TYPE.COMPONENT_BOTTOM));
         component.append(generateMetaData.call(self, metaData, CSS_CLASS.META_DATA_BOTTOM));
 
