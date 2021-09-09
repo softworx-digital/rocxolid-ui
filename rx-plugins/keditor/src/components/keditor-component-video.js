@@ -18,6 +18,8 @@ KEditor.components['video'] = {
         return componentContent.html();
     },
 
+    settingSidebarOpen: true,
+
     settingEnabled: true,
 
     settingTitle: 'Video Settings',

@@ -1,6 +1,8 @@
 // import KEditor from 'keditor';
 
 KEditor.components['audio'] = {
+    settingSidebarOpen: true,
+
     settingEnabled: true,
 
     settingTitle: 'Audio Settings',

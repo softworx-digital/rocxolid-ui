@@ -15,7 +15,7 @@ class BootstrapSelectPicker extends PluginBinder
     {
         var rx = this.rx;
 
-        $('select', container).selectpicker({
+        $('select:not(.nopicker)', container).selectpicker({
             showTick: true
         });
     }

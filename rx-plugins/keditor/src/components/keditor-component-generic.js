@@ -7,6 +7,8 @@ var scrollIntoView = require('scroll-into-view');
 // Generic component
 // ---------------------------------------------------------------------
 KEditor.components['generic'] = {
+    settingSidebarOpen: true,
+
     settingEnabled: function (keditor, component) {
         return component.is('[data-element-settings-url');
     },

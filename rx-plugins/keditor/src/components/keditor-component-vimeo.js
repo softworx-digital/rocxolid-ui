@@ -7,6 +7,8 @@ KEditor.components['vimeo'] = {
         keditor.initIframeCover(iframe, wrapper);
     },
 
+    settingSidebarOpen: true,
+
     settingEnabled: true,
 
     settingTitle: 'Vimeo Settings',

@@ -1,0 +1,15 @@
+
+.file-loading {
+    &:before {
+        background-image: url(#{$rx-image-path}/background/loading-24.gif);
+    }
+}
+.file-thumb-loading {
+    background-image: url(#{$rx-image-path}/background/loading-24.gif);
+}
+.file-loading[dir=rtl]:before {
+    background-image: url(#{$rx-image-path}/background/loading-24.gif);
+}
+.file-uploading {
+    background-image: url(#{$rx-image-path}/background/uploading-24.gif);
+}

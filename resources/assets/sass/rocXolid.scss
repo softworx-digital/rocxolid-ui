@@ -33,6 +33,7 @@
 @import 'import/pdf-viewer';
 
 body.rocXolid {
+    @import 'import/plugins/bootstrap-fileinput';
     @import 'import/plugins/bootstrap-maxlength';
     @import 'import/plugins/bootstrap-select';
     @import 'import/plugins/bootstrap-slider';

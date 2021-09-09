@@ -25179,6 +25179,22 @@ body.rocXolid {
   */
 }
 
+body.rocXolid .file-loading:before {
+  background-image: url(/vendor/softworx/rocXolid/images/background/loading-24.gif);
+}
+
+body.rocXolid .file-thumb-loading {
+  background-image: url(/vendor/softworx/rocXolid/images/background/loading-24.gif);
+}
+
+body.rocXolid .file-loading[dir=rtl]:before {
+  background-image: url(/vendor/softworx/rocXolid/images/background/loading-24.gif);
+}
+
+body.rocXolid .file-uploading {
+  background-image: url(/vendor/softworx/rocXolid/images/background/uploading-24.gif);
+}
+
 body.rocXolid .bootstrap-maxlength {
   font-size: 1em;
 }

@@ -12,6 +12,11 @@ class BootstrapTagsinput extends PluginBinder
     bind(container)
     {
         var rx = this.rx;
+
+        $('[data-role="tagsinput"]', container).tagsinput({
+            focusClass: 'nosubmit',
+            confirmKeys: [13, 32]
+        });
     }
 }
 

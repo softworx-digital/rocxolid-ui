@@ -47,6 +47,10 @@ class Response
                 throw new TypeError('Undefined Response handler for [' + cmd + '] - unsupported command');
             }
 
+            if (typeof self[cmd] === 'undefined') {
+                throw new TypeError('Undefined Response handler for [' + cmd + '] - unsupported command');
+            }
+
             if (pack instanceof Array) {
                 $.each(pack, function(i, data)
                 {

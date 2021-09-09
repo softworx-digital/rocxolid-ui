@@ -7,6 +7,8 @@ KEditor.components['youtube'] = {
         keditor.initIframeCover(iframe, wrapper);
     },
 
+    settingSidebarOpen: true,
+
     settingEnabled: true,
 
     settingTitle: 'Youtube Settings',

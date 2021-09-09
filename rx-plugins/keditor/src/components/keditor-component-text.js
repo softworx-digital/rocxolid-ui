@@ -7,6 +7,8 @@ var scrollIntoView = require('scroll-into-view');
 // Text component
 // ---------------------------------------------------------------------
 KEditor.components['text'] = {
+    settingSidebarOpen: true,
+
     settingEnabled: function (keditor, component) {
         return component.is('[data-element-settings-url');
     },

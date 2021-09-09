@@ -8,7 +8,7 @@
 // -------------------------------------------------
 .keditor-snippets-wrapper {
     height: 100%;
-    
+
     .keditor-snippets {
         .keditor-scrollbar();
         height: 100%;
@@ -31,13 +31,13 @@
     width: @snippet-width;
     margin: @snippet-margin;
     flex: none;
-    
+
     .keditor-snippet-inner {
         display: block;
         padding-bottom: 100%;
         position: relative;
     }
-    
+
     .keditor-snippet-preview {
         position: absolute;
         top: 15px;
@@ -45,8 +45,9 @@
         bottom: @snippet-title-height;
         right: 15px;
         background: no-repeat 50% 50% / contain;
+        margin: 3rem;
     }
-    
+
     .keditor-snippet-title {
         position: absolute;
         left: 0;
@@ -61,16 +62,16 @@
         padding: 0 10px;
         white-space: nowrap;
     }
-    
+
     &.not-matched {
         display: none !important;
     }
-    
+
     &.selected {
         border-color: @snippet-border-color-selected;
         box-shadow: @snippet-box-shadow-selected;
     }
-    
+
     @media (max-width: 420px) {
         width: @snippet-width-mobile;
     }

@@ -9,7 +9,7 @@ export default function (target, settingType, settingCategory, settingTitle, ini
     let sidebarTitle = self.sidebarTitle;
     let sidebarBody = self.sidebarBody;
 
-    let {settingForm, isExisting} = initSettingForm.call(self, target, settingType, settingCategory, initFunction, functionContext, () => {
+    let { settingForm, isExisting } = initSettingForm.call(self, target, settingType, settingCategory, initFunction, functionContext, () => {
         if (typeof showFunction === 'function') {
             showFunction.call(functionContext, settingForm, target, self);
         }
@@ -19,17 +19,20 @@ export default function (target, settingType, settingCategory, settingTitle, ini
 
     self.settingComponent = null;
     self.settingContainer = null;
+
     switch (settingCategory) {
         case SETTING_CATEGORY.COMPONENT:
             self.settingComponent = target;
             break;
-
         case SETTING_CATEGORY.CONTAINER:
             self.settingContainer = target;
             break;
-
         default:
-        // Do nothing
+            // nada
+    }
+
+    if ((settingCategory === SETTING_CATEGORY.COMPONENT) && !functionContext.settingSidebarEnabled) {
+        return;
     }
 
     if (isExisting) {

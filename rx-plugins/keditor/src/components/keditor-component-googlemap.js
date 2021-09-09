@@ -8,6 +8,8 @@ KEditor.components['googlemap'] = {
         keditor.initIframeCover(iframe, wrapper);
     },
 
+    settingSidebarOpen: true,
+
     settingEnabled: true,
 
     settingTitle: 'Google Map Settings',

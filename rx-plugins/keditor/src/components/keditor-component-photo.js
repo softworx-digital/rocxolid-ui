@@ -9,6 +9,8 @@ KEditor.components['photo'] = {
         img.css('display', 'inline-block');
     },
 
+    settingSidebarOpen: false,
+
     settingEnabled: true,
 
     settingTitle: 'Photo Settings',

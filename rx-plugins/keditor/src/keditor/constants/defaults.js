@@ -300,6 +300,20 @@ export default {
     contentStyles: [],
 
     /*
+     * Content scripts for iframe mode. If these elements have 'src' attribute, will create script tag with src. If these elements do not have 'src' attribute, will create script tag with code inside element
+     * @option {Array<Object>}
+     * @example:
+     * [
+     *     {
+     *         src: '/path/to/style/file'
+     *     }, {
+     *         content: 'alert("content script");'
+     *     }
+     * ]
+     */
+    contentScripts: [],
+
+    /*
      * Selector of content areas. If is null or selector does not match any elements, will create default content area and wrap all content inside it.
      * @option {String}
      */

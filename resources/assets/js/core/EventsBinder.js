@@ -48,7 +48,7 @@ class EventsBinder
             }
         });
 
-        $(container).on('keydown', 'form :text, :password', function (e)
+        $(container).on('keydown', 'form :text:not(.nosubmit), form :password:not(.nosubmit)', function (e)
         {
             switch (e.which) {
                 case 13: // enter
