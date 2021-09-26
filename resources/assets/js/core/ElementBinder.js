@@ -27,14 +27,15 @@ class ElementBinder {
         }
 
         // reload the page when clicking back / forward
-        const [entry] = performance.getEntriesByType('navigation');
+        const [entry] = window.performance.getEntriesByType('navigation');
 
         // console.table(entry.toJSON());
-
-        switch (entry.type) {
-            case 'back_forward':
-                location.reload();
-                break;
+        if (entry) {
+            switch (entry.type) {
+                case 'back_forward':
+                    location.reload();
+                    break;
+            }
         }
 
         return this;

@@ -22961,6 +22961,7 @@ h6 {
 .rocXolid .right_col {
   background: none !important;
   padding: 10px 15px 0 !important;
+  overflow: hidden;
 }
 
 .rocXolid .right_col.offset-top {

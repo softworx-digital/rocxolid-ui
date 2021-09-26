@@ -184,6 +184,7 @@ h6 {
     .right_col {
         background: none!important;
         padding: 10px 15px 0!important;
+        overflow: hidden;
 
         &.offset-top {
             padding-top: 70px !important;
