@@ -398,6 +398,13 @@ class EventsBinder
             }, 0);
         });
 
+        $(container).on('hidden.bs.modal', '.modal', function(e)
+        {
+            if ($('.modal:visible').length) {
+                $('body').addClass('modal-open');
+            }
+        });
+
         return this;
     }
 

@@ -29,8 +29,15 @@ class BootstrapAjaxSelectPicker extends PluginBinder
             },
             ajax: {
                 data: function() {
+                    let $form = this.plugin.$element.closest('form');
+                    let data = {};
+
+                    $form.find('[name^="_data"],[name="_section"],[name="_param"]').serializeArray().map((e) => {
+                        data[e.name] = e.value;
+                    });
+
                     return {
-                        _param: this.plugin.$element.closest('form').find('[name="_param"]').val(), // @todo not like this
+                        ...data,
                         q: '{{{q}}}',
                         ...this.plugin.$element.data('absAjaxRequestData')
                     };

@@ -13,9 +13,16 @@ class BootstrapDatetimePicker extends PluginBinder
     {
         var rx = this.rx;
 
+        const lang = $('html').attr('lang');
+
         $('.datepicker', container).datetimepicker({
-            locale: 'sk',
+            locale: lang,
             format: 'DD.MM.YYYY'
+        });
+
+        $('.datetimepicker', container).datetimepicker({
+            locale: lang,
+            format: 'DD.MM.YYYY HH:mm'
         });
     }
 }
