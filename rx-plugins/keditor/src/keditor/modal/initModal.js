@@ -24,6 +24,6 @@ export default function (modalId, hasFooter = true, disableOriginEvents = false)
         });
     }
 
-    // return modal.appendTo(self.wrapper);
-    return modal.appendTo(document.body);
+    return modal.appendTo(self.wrapper);
+    // return modal.appendTo(document.body); // this causes troubles in fullscreen mode
 };
