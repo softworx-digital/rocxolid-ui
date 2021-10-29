@@ -22,7 +22,7 @@
         "bootstrap-slider": "^10.6.2",
         "bootstrap-toggle": "^2.2.2",
         "chart.js": "^2.9.3",
-        "ckeditor4": "^4.15.0",
+        "ckeditor4": "^4.16.2",
         "clipboard": "^2.0.6",
         "cross-env": "^6.0.3",
         "css-loader": "^3.6.0",
