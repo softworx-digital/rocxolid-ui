@@ -39,7 +39,7 @@
         "jquery": "^3.5.1",
         "jquery-appear-original": "^0.6.2",
         "jquery-form": "^4.3.0",
-        "jquery-ui": "^1.12.1",
+        "jquery-ui": "^1.13.2",
         "jquery.hotkeys": "^0.1.0",
         "jquery.nicescroll": "^3.7.6",
         "jquery.steps": "^1.0.3",
